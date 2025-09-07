@@ -4,14 +4,13 @@ import { Context } from "./context/context";
 import Newfile from "./Mycomponeents/Newfile";
 import { Route, Routes } from "react-router-dom"; // <-- Router hata diya
 import Main from "./Mycomponeents/Main";
-import Save from "./Mycomponeents/Save";
 
 const SideNavigate = React.lazy(() => import("./Mycomponeents/SideNavigate"));
 const TopNavbar = React.lazy(() => import("./Mycomponeents/Navbar"));
 const Mainprofile = React.lazy(() => import("./Pages/profile/MainProile"));
 
 const App = () => {
-  const { Newfileisopen, Issavefileopen } = useContext(Context);
+  const { Newfileisopen } = useContext(Context);
 
   return (
     <div className="flex bg-[#09090B] h-screen w-full">
@@ -42,7 +41,6 @@ const App = () => {
 
       {/* New File Modal */}
       {Newfileisopen && <Newfile />}
-      {Issavefileopen && <Save />}
     </div>
   );
 };

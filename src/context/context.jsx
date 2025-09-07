@@ -10,11 +10,8 @@ export const Provider = ({ children }) => {
   const [Copiednotificatio, setCopiednotificatio] = useState(false);
   const [copied, setcopied] = useState(false);
   const [Newfileisopen, setNewfileisopen] = useState(false);
-  const [Issavefileopen, setIssavefileopen] = useState(false);
-  const [SavefileData, setSavefileData] = useState([]);
   const [isloginscreenopen, setisloginscreenopen] = useState(false);
 
-  console.log(SavefileData);
 
   // zoom in function
 
@@ -74,11 +71,7 @@ export const Provider = ({ children }) => {
     setCopiednotificatio,
     Newfileisopen,
     setNewfileisopen,
-    Issavefileopen,
-    setIssavefileopen,
-    SavefileData,
 
-    setSavefileData,
     isloginscreenopen,
     setisloginscreenopen,
   };
