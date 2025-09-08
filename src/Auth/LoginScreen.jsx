@@ -2,25 +2,18 @@ import React from "react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Card, CardHeader, CardTitle } from "../components/ui/card";
-import MagnetLines from "../Mycomponeents/Play";
 
 export default function Loginscreen() {
   return (
-    <div className="h-[80vh] mx-auto w-[80vw] flex items-center justify-cente px-4">
-      <div className="w-full  bg-zinc-950 rounded-2xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2  ">
-        {/* Left - Dark Image */}
-        <div className="hidden md:flex items-center justify-center bg-zinc-900">
-          <MagnetLines
-            rows={9}
-            columns={9}
-            containerSize="60vmin"
-            lineColor="tomato"
-            lineWidth="0.8vmin"
-            lineHeight="5vmin"
-            className="text-white"
-            baseAngle={0}
-            style={{ margin: "2rem auto" }}
-          />
+    <div className="h-[80vh] mx-auto w-[80vw] flex items-center justify-center px-4">
+      <div className="w-full bg-zinc-950 rounded-2xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+        {/* Left - MagnetLines instead of image */}
+        <div className="hidden relative md:flex items-center justify-center bg-zinc-900">
+          <img
+            src="https://www.pinterest.com/pin/5981412001285118/"
+            alt="Background"
+            className="w-[100%] h-[100%] object-cover absolute"
+          />{" "}
         </div>
 
         {/* Right - Form */}
