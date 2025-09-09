@@ -1,9 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaPlay, FaSave } from "react-icons/fa";
 import { MdContentCopy } from "react-icons/md";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { Context } from "../context/context";
+
+// ✅ Common function to download file (browser-based)
+function downloadFile(filename, content, mime = "text/plain") {
+  const blob = new Blob([content], { type: `${mime};charset=utf-8` });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
 
 const Topbar = () => {
   const {
@@ -13,8 +26,36 @@ const Topbar = () => {
     Copy,
     copied,
     Copiednotificatio,
-    setIssavefileopen,
   } = useContext(Context);
+
+  // ✅ States
+  const [fileName, setFileName] = useState("untitled.js");
+  const [code, setCode] = useState("// your code will come here...");
+  const [msg, setMsg] = useState("");
+
+  // ✅ Save function
+  const handleSave = () => {
+    if (!fileName) {
+      setMsg("⚠️ Please enter a filename");
+      return;
+    }
+
+    // MIME type guess based on extension
+    const ext = fileName.split(".").pop().toLowerCase();
+    const mime =
+      ext === "json"
+        ? "application/json"
+        : ext === "html"
+        ? "text/html"
+        : ext === "css"
+        ? "text/css"
+        : ext === "js"
+        ? "text/javascript"
+        : "text/plain";
+
+    downloadFile(fileName, code, mime);
+    setMsg("✅ File download started — check your Downloads folder.");
+  };
 
   return (
     <div className="w-[55vw] text-white border-b border-[#27272A] shadow-sm px-4">
@@ -27,6 +68,7 @@ const Topbar = () => {
         Copied <IoCheckmarkDoneCircle />
       </div>
 
+      {/* ✅ Topbar Row */}
       <div className="h-12 px-4 flex items-center justify-between">
         {/* ---------------- Left Side ---------------- */}
         <div className="flex items-center gap-4">
@@ -37,7 +79,7 @@ const Topbar = () => {
             <div className="w-3 h-3 bg-green-500 rounded-full"></div>
           </div>
 
-          {/* ✅ Fixed JavaScript language */}
+          {/* ✅ Language */}
           <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-1.5 rounded-md">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
@@ -46,6 +88,14 @@ const Topbar = () => {
             />
             <span className="text-sm">Javascript</span>
           </div>
+
+          {/* ✅ Filename input */}
+          <input
+            type="text"
+            value={fileName}
+            onChange={(e) => setFileName(e.target.value)}
+            className="bg-zinc-900 border border-zinc-700 px-3 py-1.5 rounded-md text-sm outline-none"
+          />
         </div>
 
         {/* ---------------- Right Side ---------------- */}
@@ -72,8 +122,9 @@ const Topbar = () => {
             {copied ? "Copied" : "Copy"}
           </button>
 
+          {/* ✅ Save Button */}
           <button
-            onClick={() => setIssavefileopen(true)}
+            onClick={handleSave}
             className="btn btn-xs bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white gap-2"
           >
             <FaSave size={14} /> Save
@@ -87,6 +138,9 @@ const Topbar = () => {
           </button>
         </div>
       </div>
+
+      {/* ✅ Show save message */}
+      {msg && <div className="text-xs text-zinc-400 px-4 py-1">{msg}</div>}
     </div>
   );
 };

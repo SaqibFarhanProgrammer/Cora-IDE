@@ -2,52 +2,18 @@ import React, { useState } from "react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Card, CardHeader, CardTitle } from "../components/ui/card";
-import bg from "../../public/5d935ea5beb675da21f42ee58cd33454.jpg";
 
 export default function Loginscreen() {
-  const [issignup, setissignup] = useState(false);
-
   return (
-    <div className="h-screen w-full flex items-center justify-center px-4">
-      <div className="w-[75%] h-[85%] mb-10 border border-[#141414] rounded-2xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
-        {/* Left - Image with Gradient + Text */}
+    <div className="h-[80vh] mx-auto w-[80vw] flex items-center justify-center px-4">
+      <div className="w-full bg-zinc-950 rounded-2xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+        {/* Left - MagnetLines instead of image */}
         <div className="hidden relative md:flex items-center justify-center bg-zinc-900">
           <img
-            src={bg}
+            src="https://www.pinterest.com/pin/5981412001285118/"
             alt="Background"
-            className="w-full h-full object-cover absolute"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/60 to-[#000000]"></div>
-
-          <div className="relative z-10 px-6 flex flex-col justify-center h-full">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
-              CORA IDE
-            </h1>
-            <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6">
-              A modern{" "}
-              <span className="text-white font-semibold">
-                web-based code editor
-              </span>{" "}
-              built for developers.
-              <br />
-              <br />
-              Enjoy a{" "}
-              <span className="text-white font-semibold">clean interface</span>,
-              <span className="text-white font-semibold">
-                {" "}
-                real-time collaboration
-              </span>
-              , and powerful editing tools to{" "}
-              <span className="text-white font-semibold">
-                boost your productivity
-              </span>
-              .
-            </p>
-            <p className="text-sm md:text-base text-zinc-400">
-              Build, edit, and run your code directly in the browser — seamless
-              and efficient.
-            </p>
-          </div>
+            className="w-[100%] h-[100%] object-cover absolute"
+          />{" "}
         </div>
 
         {/* Right - Form */}
@@ -68,52 +34,88 @@ export default function Loginscreen() {
                 </p>
               </CardHeader>
 
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
-                <div>
-                  <label className="block text-sm text-zinc-300 mb-1">
-                    Email
-                  </label>
-                  <Input
-                    type="email"
-                    placeholder="you@example.com"
-                    className="w-full bg-zinc-900 border-zinc-700 text-white"
-                  />
-                </div>
+            <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+              <div>
+                <label className="block text-sm text-zinc-300 mb-1">Name</label>
+                <Input
+                  placeholder="Full name"
+                  className="w-full bg-zinc-900 border-zinc-700 text-white"
+                />
+              </div>
 
-                <div>
-                  <label className="block text-sm text-zinc-300 mb-1">
-                    Password
-                  </label>
-                  <Input
-                    type="password"
-                    placeholder="At least 8 characters"
-                    className="w-full bg-zinc-900 border-zinc-700 text-white"
-                  />
-                </div>
+              <div>
+                <label className="block text-sm text-zinc-300 mb-1">
+                  Email
+                </label>
+                <Input
+                  type="email"
+                  placeholder="you@example.com"
+                  className="w-full bg-zinc-900 border-zinc-700 text-white"
+                />
+              </div>
 
-                <div className="pt-2">
-                  <Button
-                    type="submit"
-                    className="w-full bg-white text-black py-2 rounded-md font-medium hover:opacity-90 transition-all duration-300"
-                  >
-                    {!issignup ? "Create Account" : "Log in"}
-                  </Button>
-                </div>
+              <div>
+                <label className="block text-sm text-zinc-300 mb-1">
+                  Password
+                </label>
+                <Input
+                  type="password"
+                  placeholder="At least 8 characters"
+                  className="w-full bg-zinc-900 border-zinc-700 text-white"
+                />
+              </div>
 
-                <div className="text-center text-sm text-zinc-400">
-                  Already have an account?{" "}
-                  <button
-                    onClick={() => setissignup(!issignup)}
-                    className="underline cursor-pointer"
-                  >
-                    {issignup ? "Create Account" : "Log in"}
-                  </button>
-                </div>
-              </form>
-            </div>
+              <div>
+                <label className="block text-sm text-zinc-300 mb-1">
+                  Tagline
+                </label>
+                <Input
+                  placeholder="Short tagline (eg. Frontend dev)"
+                  className="w-full bg-zinc-900 border-zinc-700 text-white"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm text-zinc-300 mb-1">
+                  Description
+                </label>
+                <textarea
+                  rows={4}
+                  placeholder="A short bio or description"
+                  className="w-full rounded-md border border-zinc-700 bg-zinc-900 p-2 text-sm text-white resize-none focus:outline-none focus:ring-1 focus:ring-zinc-600"
+                />
+              </div>
+
+              <div className="pt-2">
+                <Button
+                  type="submit"
+                  className="w-full bg-white text-black py-2 rounded-md font-medium hover:opacity-90"
+                >
+                  Create account
+                </Button>
+              </div>
+
+              <div className="text-center text-sm text-zinc-400">
+                Already have an account?{" "}
+                <button className="underline">Sign in</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+// ✅ Reusable input component
+function InputField({ label, ...props }) {
+  return (
+    <div>
+      <label className="block text-sm text-zinc-300 mb-1">{label}</label>
+      <Input
+        {...props}
+        className="w-full bg-zinc-900 border-zinc-700 text-white"
+      />
     </div>
   );
 }

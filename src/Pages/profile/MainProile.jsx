@@ -29,14 +29,7 @@ const Mainprofile = () => {
         gap-6 overflow-y-auto"
           style={{ maxHeight: "calc(100vh - 150px)" }}
         >
-          {SavefileData.map((data, index) => (
-            <CodefileCard
-              key={index}
-              title={data.title}
-              code={data.code}
-              extention={data.extention}
-            />
-          ))}
+        
         </div>
       </div>
     </div>
