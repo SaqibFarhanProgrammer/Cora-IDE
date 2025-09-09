@@ -1,61 +1,63 @@
 import React, { useContext } from "react";
-import {
-  FaUserCircle,
-  FaCog,
-  FaSignOutAlt,
-  FaFolder,
-  FaFileCode,
-} from "react-icons/fa";
+import { FaCog, FaSignOutAlt } from "react-icons/fa";
 import { IoCodeSlashOutline } from "react-icons/io5";
-import { IoPersonCircleOutline } from "react-icons/io5";
-import Newfile from "./Newfile";
-import { Context } from "../context/context";
 import { GoPlus } from "react-icons/go";
 import SidebarProfie from "./SidebarProfie";
 import { Link } from "react-router-dom";
+import { Context } from "../context/context";
 
-const SideNavigate = () => {
+const SideNavigate = ({ isOpen, setIsOpen }) => {
   const { setNewfileisopen } = useContext(Context);
 
   return (
-    <div className="w-[10vw] fixed border-r-1 border-[#1e1e20] mb-1  h-[99.5vh] bg-[#09090B] text-white flex flex-col">
+    <div
+      className={`fixed top-0 left-0 h-screen bg-black text-white border-r border-zinc-800 transition-transform duration-300 z-30
+      ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      } w-[60vw] sm:w-[40vw] md:w-[20vw] lg:w-[15vw]`}
+    >
       <SidebarProfie />
-      <div className="p-3 justify-between  overflow-y-auto gap-10 flex-col">
+
+      <div className="p-3 overflow-y-auto flex flex-col gap-2">
         <Link
           to="/profile"
+          onClick={() => setIsOpen(false)}
           className="flex items-center gap-3 p-3 rounded-md hover:bg-zinc-700 transition-colors"
         >
-          <IoCodeSlashOutline className="text-[1vw] " />
+          <IoCodeSlashOutline className="text-lg" />
           <p>Profile</p>
         </Link>
+
         <div
-          onClick={() => setNewfileisopen(true)}
-          href="#"
-          className="flex items-center gap-3 p-3 rounded-md hover:bg-zinc-700 transition-colors"
+          onClick={() => {
+            setNewfileisopen(true);
+            setIsOpen(false);
+          }}
+          className="flex items-center gap-3 p-3 rounded-md hover:bg-zinc-700 transition-colors cursor-pointer"
         >
-          <GoPlus className="text-[1vw]" />
+          <GoPlus className="text-lg" />
           <p>New File</p>
         </div>
       </div>
 
-      {/* Bottom Section: Branding */}
-      <div className="p-4 border-t w-full absolute bottom-0 justify-end items-end border-[#27272A] text-center text-zinc-500 text-xs">
-        <div className="mt-4 flex flex-col gap-2">
-          <a
-            href="#"
-            className="flex items-center gap-3 p-3 rounded-md hover:bg-zinc-700 transition-colors"
-          >
-            <FaCog className="text-xl" />
-            <span>Settings</span>
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 p-3 rounded-md hover:bg-zinc-700 transition-colors text-red-400"
-          >
-            <FaSignOutAlt className="text-xl" />
-            <span>Logout</span>
-          </a>
-        </div>{" "}
+      {/* Bottom Section */}
+      <div className="p-4 border-t border-zinc-800 absolute bottom-0 w-full">
+        <Link
+          to="/settings"
+          onClick={() => setIsOpen(false)}
+          className="flex items-center gap-3 p-3 rounded-md hover:bg-zinc-700 transition-colors"
+        >
+          <FaCog className="text-xl" />
+          <span>Settings</span>
+        </Link>
+
+        <a
+          href="#"
+          className="flex items-center gap-3 p-3 rounded-md hover:bg-zinc-700 transition-colors text-red-400"
+        >
+          <FaSignOutAlt className="text-xl" />
+          <span>Logout</span>
+        </a>
       </div>
     </div>
   );

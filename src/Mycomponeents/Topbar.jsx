@@ -94,7 +94,7 @@ const Topbar = () => {
             type="text"
             value={fileName}
             onChange={(e) => setFileName(e.target.value)}
-            className="bg-zinc-900 border border-zinc-700 px-3 py-1.5 rounded-md text-sm outline-none"
+            className="bg-zinc-900 border border-zinc-700 w-25 px-2 py-[.5vw] rounded-md text-sm outline-none"
           />
         </div>
 

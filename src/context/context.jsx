@@ -1,4 +1,4 @@
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useState } from "react";
 
 export const Context = createContext();
 
@@ -12,12 +12,18 @@ export const Provider = ({ children }) => {
   const [Newfileisopen, setNewfileisopen] = useState(false);
   const [isloginscreenopen, setisloginscreenopen] = useState(false);
 
+  // 🔑 Sidebar toggle state
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  function toggleSidebar() {
+    setSidebarOpen((prev) => !prev);
+  }
 
   // zoom in function
-
   function funczoomin() {
     setzoomin((prev) => prev + 2);
   }
+
   // zoom out function
   function funczoomout() {
     setzoomin((prev) => prev - 2);
@@ -30,7 +36,7 @@ export const Provider = ({ children }) => {
         logs.push(args.join(" "));
       },
       error: (...args) => {
-        logs.push("error" + args.join(" "));
+        logs.push("error " + args.join(" "));
       },
     };
     try {
@@ -65,15 +71,18 @@ export const Provider = ({ children }) => {
     output,
     Copy,
     copied,
-
     setcopied,
     Copiednotificatio,
     setCopiednotificatio,
     Newfileisopen,
     setNewfileisopen,
-
     isloginscreenopen,
     setisloginscreenopen,
+
+    // 🔑 Sidebar states
+    sidebarOpen,
+    setSidebarOpen,
+    toggleSidebar,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
