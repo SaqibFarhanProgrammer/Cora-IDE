@@ -38,13 +38,12 @@ body {
   );
 }
 
-
-.codecard{
+.codecard {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
-.codes{
+.codes {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   mask-image: linear-gradient(
@@ -56,9 +55,9 @@ body {
     black,
     black,
     black,
-    black,  
-    black,  
-    black,  
+    black,
+    black,
+    black,
     transparent
   );
   mask-image: linear-gradient(
@@ -71,4 +70,8 @@ body {
     black,
     transparent
   );
+}
+
+.bt {
+  transition: 1s ease;
 }
