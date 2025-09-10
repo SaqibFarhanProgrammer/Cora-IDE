@@ -13,7 +13,7 @@ export default function SettingsPage() {
   const [darkMode, setDarkMode] = React.useState(false);
 
   return (
-    <div className="h-[100%] w-full bg-[#09090B] flex justify-center items-center text-white">
+    <div className="h-[100%] w-full bg-[#9090B] flex justify-center items-center text-white">
       <Card className="w-full h-[100%] border border-white/10 bg-[#000000] shadow-xl">
         <CardHeader>
           <CardTitle className="text-2xl font-semibold flex items-center gap-2">
@@ -23,7 +23,7 @@ export default function SettingsPage() {
 
         <CardContent className="space-y-6">
           {/* Profile */}
-          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[#111113]">
+          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[">
             <div className="flex items-center gap-3">
               <img
                 src="https://i.pravatar.cc/60"
@@ -44,7 +44,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Theme Control */}
-          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[#111113]">
+          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[">
             <span className="flex items-center gap-2 font-medium text-white">
               {darkMode ? (
                 <Moon className="w-5 h-5 text-white" />
@@ -57,7 +57,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Clear Files */}
-          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[#111113]">
+          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[">
             <span className="flex items-center gap-2 font-medium text-white">
               <Trash2 className="w-5 h-5 text-white" /> Clear Files
             </span>
@@ -67,6 +67,8 @@ export default function SettingsPage() {
           </div>
         </CardContent>
       </Card>
+
+
     </div>
   );
 }

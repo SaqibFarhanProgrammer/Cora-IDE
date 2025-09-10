@@ -10,7 +10,7 @@ const Mainprofile = () => {
   const { SavefileData, isloginscreenopen } = useContext(Context);
   return (
     <div className="p-1 h-[90vh]  w-[100%] my-auto  m-0 flex flex-col pt-16 justify-between  items-start">
-      {isloginscreenopen ? (
+      {!isloginscreenopen ? (
         <>
           <div className="profile  mt-[-9vh]  w-[100%] h-[60vh] ">
             <Profile />
@@ -28,9 +28,7 @@ const Mainprofile = () => {
         grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
         gap-6 overflow-y-auto"
           style={{ maxHeight: "calc(100vh - 150px)" }}
-        >
-        
-        </div>
+        ></div>
       </div>
     </div>
   );

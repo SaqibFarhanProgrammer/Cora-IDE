@@ -5,7 +5,6 @@ import { FiPlus, FiMinus } from "react-icons/fi";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { Context } from "../context/context";
 
-// ✅ Common function to download file (browser-based)
 function downloadFile(filename, content, mime = "text/plain") {
   const blob = new Blob([content], { type: `${mime};charset=utf-8` });
   const url = URL.createObjectURL(blob);
@@ -74,7 +73,7 @@ const Topbar = () => {
         <div className="flex items-center gap-4">
           {/* Mac-style dots */}
           <div className="flex gap-2">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+            <div className=" w-3 h-3 bg-red-500 rounded-full"></div>
             <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
             <div className="w-3 h-3 bg-green-500 rounded-full"></div>
           </div>
@@ -102,21 +101,21 @@ const Topbar = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={funczoomout}
-            className="btn btn-xs bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white gap-2"
+            className="topbarbtns btn btn-xs bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white gap-2"
           >
             Zoom-Out <FiMinus size={14} />
           </button>
 
           <button
             onClick={funczoomin}
-            className="btn btn-xs bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white gap-2"
+            className="btn btn-xs topbarbtns bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white gap-2"
           >
             Zoom-In <FiPlus size={14} />
           </button>
 
           <button
             onClick={Copy}
-            className="btn btn-xs bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white gap-2"
+            className="btn btn-xs topbarbtns bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white gap-2"
           >
             <MdContentCopy size={14} />
             {copied ? "Copied" : "Copy"}
@@ -125,14 +124,14 @@ const Topbar = () => {
           {/* ✅ Save Button */}
           <button
             onClick={handleSave}
-            className="btn btn-xs bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white gap-2"
+            className="btn btn-xs topbarbtns bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white gap-2"
           >
             <FaSave size={14} /> Save
           </button>
 
           <button
             onClick={outputformconsole}
-            className="btn btn-xs bg-green-600 border-none text-white hover:bg-green-500 shadow-md gap-2"
+            className="btn btn-xs topbarbtns bg-green-600 border-none text-white hover:bg-green-500 shadow-md gap-2"
           >
             <FaPlay size={14} /> Run
           </button>
