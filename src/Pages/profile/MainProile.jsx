@@ -9,7 +9,7 @@ import Loginscreen from "../../Auth/LoginScreen";
 const Mainprofile = () => {
   const { SavefileData, isloginscreenopen } = useContext(Context);
   return (
-    <div className="p-1 h-[90vh]  w-[100%] my-auto  m-0 flex flex-col pt-16 justify-between  items-start">
+    <div className="p-1 h-[100vh]  w-[100%] my-auto  m-0 flex flex-col pt-16 justify-between  items-start">
       {!isloginscreenopen ? (
         <>
           <div className="profile  mt-[-9vh]  w-[100%] h-[60vh] ">

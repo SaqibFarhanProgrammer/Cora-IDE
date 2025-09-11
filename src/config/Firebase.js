@@ -10,7 +10,7 @@ const firebaseConfig = {
   messagingSenderId: "885227904806",
   appId: "1:885227904806:web:6157aee5ddf1b6de1fabe7",
   measurementId: "G-SKYWQQNV8D",
-  datbseURL: "https://cora-ide-default-rtdb.firebaseio.com/",
+  databaseURL: "https://cora-ide-default-rtdb.firebaseio.com/",
 };
 
 export const app = initializeApp(firebaseConfig);

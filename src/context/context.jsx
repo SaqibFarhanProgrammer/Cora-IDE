@@ -4,9 +4,11 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { signOut, signInWithPopup } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../config/Firebase";
 
 export const Context = createContext();
 
@@ -21,33 +23,31 @@ export const Provider = ({ children }) => {
   const [Newfileisopen, setNewfileisopen] = useState(false);
   const [isloginscreenopen, setisloginscreenopen] = useState(true);
 
-  // 🔑 Sidebar toggle state
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // userdata
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [tagline, setTagline] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+  // sidebar
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   function toggleSidebar() {
     setSidebarOpen((prev) => !prev);
   }
 
-  // zoom in function
   function funczoomin() {
     setzoomin((prev) => prev + 2);
   }
-
-  // zoom out function
   function funczoomout() {
     setzoomin((prev) => prev - 2);
   }
 
-  // output form console
   function outputformconsole() {
     const logs = [];
     const customcode = {
-      log: (...args) => {
-        logs.push(args.join(" "));
-      },
-      error: (...args) => {
-        logs.push("error " + args.join(" "));
-      },
+      log: (...args) => logs.push(args.join(" ")),
+      error: (...args) => logs.push("error " + args.join(" ")),
     };
     try {
       const func = new Function("console", compiledCode);
@@ -57,7 +57,6 @@ export const Provider = ({ children }) => {
     }
     setoutput(logs);
   }
-  // copy function
 
   function Copy() {
     navigator.clipboard.writeText(compiledCode);
@@ -68,18 +67,22 @@ export const Provider = ({ children }) => {
       setCopiednotificatio(false);
     }, 2000);
   }
-  // save function
 
-  // register user function
-  async function RegisterUser(email, password) {
+  async function RegisterUser(Email, Password) {
     try {
-      const user = await createUserWithEmailAndPassword(auth, email, password);
+      const user = await createUserWithEmailAndPassword(auth, Email, Password);
       if (user) {
+        await setDoc(doc(db, "users", user.user.uid), {
+          uid: user.user.uid,
+          name,
+          email: Email,
+          password: Password,
+          description,
+          tagline,
+        });
         navigate("/");
       }
-      console.log(user);
-
-      console.log(user);
+      return user;
     } catch (error) {
       console.log(error);
     }
@@ -93,7 +96,6 @@ export const Provider = ({ children }) => {
         password
       );
       navigate("/");
-
       console.log(signinuser);
     } catch (error) {
       console.log(error);
@@ -101,10 +103,23 @@ export const Provider = ({ children }) => {
   }
 
   async function createwithgoogle() {
-    const provider = new GoogleAuthProvider();
-    const user = await signInWithPopup(auth, provider);
-
-    console.log(user);
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      if (result.user) {
+        await setDoc(doc(db, "users", result.user.uid), {
+          uid: result.user.uid,
+          name: result.user.displayName,
+          email: result.user.email,
+          photoURL: result.user.photoURL || null,
+          tagline,
+          description,
+        });
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const value = {
@@ -127,14 +142,22 @@ export const Provider = ({ children }) => {
     setNewfileisopen,
     isloginscreenopen,
     setisloginscreenopen,
-
-    // 🔑 Sidebar states
     sidebarOpen,
     setSidebarOpen,
     toggleSidebar,
     RegisterUser,
     signUser,
     createwithgoogle,
+    name,
+    setName,
+    description,
+    setDescription,
+    tagline,
+    setTagline,
+    email,
+    setEmail,
+    password,
+    setPassword,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
