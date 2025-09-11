@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { auth } from "../config/Firebase";
 import {
   createUserWithEmailAndPassword,
@@ -7,7 +7,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../config/Firebase";
 
 export const Context = createContext();
@@ -22,6 +22,7 @@ export const Provider = ({ children }) => {
   const [copied, setcopied] = useState(false);
   const [Newfileisopen, setNewfileisopen] = useState(false);
   const [isloginscreenopen, setisloginscreenopen] = useState(true);
+  const [profiledata, setprofiledata] = useState([]);
 
   // userdata
   const [name, setName] = useState("");
@@ -72,6 +73,7 @@ export const Provider = ({ children }) => {
     try {
       const user = await createUserWithEmailAndPassword(auth, Email, Password);
       if (user) {
+        setisloginscreenopen(false);
         await setDoc(doc(db, "users", user.user.uid), {
           uid: user.user.uid,
           name,
@@ -97,6 +99,9 @@ export const Provider = ({ children }) => {
       );
       navigate("/");
       console.log(signinuser);
+      if (signinuser) {
+        setisloginscreenopen(false);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -107,6 +112,8 @@ export const Provider = ({ children }) => {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       if (result.user) {
+        setisloginscreenopen(false);
+
         await setDoc(doc(db, "users", result.user.uid), {
           uid: result.user.uid,
           name: result.user.displayName,
@@ -121,6 +128,33 @@ export const Provider = ({ children }) => {
       console.log(error);
     }
   }
+
+  function fetchdata() {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        try {
+          const docRef = doc(db, "users", user.uid);
+          const userDoc = await getDoc(docRef);
+
+          if (userDoc.exists()) {
+            setprofiledata(userDoc.data());
+            setisloginscreenopen(false);
+            console.log("User Data:", userDoc.data());
+          } else {
+            console.log("No user data found in Firestore");
+          }
+        } catch (err) {
+          console.error("Error fetching user data:", err);
+        }
+      } else {
+        console.log("No user logged in");
+      }
+    });
+  }
+
+  useEffect(() => {
+    fetchdata();
+  }, []);
 
   const value = {
     zoomin,
