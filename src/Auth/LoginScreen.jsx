@@ -6,6 +6,7 @@ import { Context } from "../context/context";
 
 export default function Loginscreen() {
   const [isSignup, setIsSignup] = useState(true);
+  const [profileImage, setProfileImage] = useState(null);
 
   const {
     RegisterUser,
@@ -20,6 +21,7 @@ export default function Loginscreen() {
     email,
     setEmail,
     password,
+    setprofileimage,
     setPassword,
   } = useContext(Context);
 
@@ -30,6 +32,18 @@ export default function Loginscreen() {
     } else {
       signUser(email, password);
     }
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = async () => {
+      const sring = reader.result;
+      setProfileImage(sring);
+      setprofileimage(sring);
+    };
+    reader.readAsDataURL(file);
   };
 
   return (
@@ -71,6 +85,29 @@ export default function Loginscreen() {
             <form onSubmit={handleSubmit} className="space-y-4">
               {isSignup && (
                 <>
+                  {/* Profile Image Upload */}
+                  <div className="flex flex-col items-center mb-4">
+                    <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-zinc-700">
+                      {profileImage ? (
+                        <img
+                          src={profileImage}
+                          alt="Profile"
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-xs text-zinc-400">
+                          No Image
+                        </div>
+                      )}
+                    </div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      className="mt-2 text-xs text-zinc-400"
+                    />
+                  </div>
+
                   <input
                     type="text"
                     placeholder="Full Name"

@@ -5,6 +5,8 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  signOut as firebaseSignOut,
+  signOut,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -21,10 +23,11 @@ export const Provider = ({ children }) => {
   const [Copiednotificatio, setCopiednotificatio] = useState(false);
   const [copied, setcopied] = useState(false);
   const [Newfileisopen, setNewfileisopen] = useState(false);
-  const [isloginscreenopen, setisloginscreenopen] = useState(true);
-  const [profiledata, setprofiledata] = useState([]);
+  const [isloginscreenopen, setisloginscreenopen] = useState(false);
+  const [profiledata, setprofiledata] = useState(null);
 
   // userdata
+  const [profileimage, setprofileimage] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [tagline, setTagline] = useState("");
@@ -72,10 +75,12 @@ export const Provider = ({ children }) => {
   async function RegisterUser(Email, Password) {
     try {
       const user = await createUserWithEmailAndPassword(auth, Email, Password);
+
       if (user) {
         setisloginscreenopen(false);
         await setDoc(doc(db, "users", user.user.uid), {
           uid: user.user.uid,
+          profileIMG: profileimage,
           name,
           email: Email,
           password: Password,
@@ -98,7 +103,6 @@ export const Provider = ({ children }) => {
         password
       );
       navigate("/");
-      console.log(signinuser);
       if (signinuser) {
         setisloginscreenopen(false);
       }
@@ -111,14 +115,17 @@ export const Provider = ({ children }) => {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
+      console.log(result.user.displayName);
+
       if (result.user) {
         setisloginscreenopen(false);
 
         await setDoc(doc(db, "users", result.user.uid), {
           uid: result.user.uid,
+
           name: result.user.displayName,
           email: result.user.email,
-          photoURL: result.user.photoURL || null,
+          photoURL: result.photoURL || null,
           tagline,
           description,
         });
@@ -139,15 +146,21 @@ export const Provider = ({ children }) => {
           if (userDoc.exists()) {
             setprofiledata(userDoc.data());
             setisloginscreenopen(false);
-            console.log("User Data:", userDoc.data());
+            setprofiledata(userDoc.data());
           } else {
             console.log("No user data found in Firestore");
+            setprofiledata(null); // reset
+            setisloginscreenopen(true);
           }
         } catch (err) {
           console.error("Error fetching user data:", err);
+          setprofiledata(null); // reset
+          setisloginscreenopen(true);
         }
       } else {
         console.log("No user logged in");
+        setprofiledata(null); // reset
+        setisloginscreenopen(true);
       }
     });
   }
@@ -155,6 +168,10 @@ export const Provider = ({ children }) => {
   useEffect(() => {
     fetchdata();
   }, []);
+
+  function signout() {
+    signOut(auth);
+  }
 
   const value = {
     zoomin,
@@ -192,6 +209,10 @@ export const Provider = ({ children }) => {
     setEmail,
     password,
     setPassword,
+    setprofileimage,
+    profiledata,
+    profileimage,
+    signout,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
