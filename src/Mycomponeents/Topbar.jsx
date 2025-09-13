@@ -25,10 +25,11 @@ const Topbar = () => {
     Copy,
     copied,
     Copiednotificatio,
+    setFileName,
+    setNewfileisopen,
   } = useContext(Context);
 
   // ✅ States
-  const [fileName, setFileName] = useState("untitled.js");
   const [code, setCode] = useState("// your code will come here...");
   const [msg, setMsg] = useState("");
 
@@ -41,16 +42,7 @@ const Topbar = () => {
 
     // MIME type guess based on extension
     const ext = fileName.split(".").pop().toLowerCase();
-    const mime =
-      ext === "json"
-        ? "application/json"
-        : ext === "html"
-        ? "text/html"
-        : ext === "css"
-        ? "text/css"
-        : ext === "js"
-        ? "text/javascript"
-        : "text/plain";
+    const mime = "js";
 
     downloadFile(fileName, code, mime);
     setMsg("✅ File download started — check your Downloads folder.");
@@ -79,22 +71,16 @@ const Topbar = () => {
           </div>
 
           {/* ✅ Language */}
-          <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-1.5 rounded-md">
+          <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
               alt=""
-              className="h-4 w-4"
+              className="h-3 w-3"
             />
             <span className="text-sm">Javascript</span>
           </div>
 
           {/* ✅ Filename input */}
-          <input
-            type="text"
-            value={fileName}
-            onChange={(e) => setFileName(e.target.value)}
-            className="bg-zinc-900 border border-zinc-700 w-25 px-2 py-[.5vw] rounded-md text-sm outline-none"
-          />
         </div>
 
         {/* ---------------- Right Side ---------------- */}
@@ -122,13 +108,19 @@ const Topbar = () => {
           </button>
 
           {/* ✅ Save Button */}
+
           <button
             onClick={handleSave}
             className="btn btn-xs topbarbtns bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white gap-2"
           >
+            <FaSave size={14} /> Download file
+          </button>
+          <button
+            onClick={() => setNewfileisopen(true)}
+            className="btn btn-xs topbarbtns bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white gap-2"
+          >
             <FaSave size={14} /> Save
           </button>
-
           <button
             onClick={outputformconsole}
             className="btn btn-xs topbarbtns bg-green-600 border-none text-white hover:bg-green-500 shadow-md gap-2"

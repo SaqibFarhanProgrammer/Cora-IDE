@@ -8,27 +8,16 @@ import {
 } from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
-import lenguagesicon from "../lenguagesname";
 import { IoMdClose } from "react-icons/io";
 import { Context } from "../context/context";
 
-import { useForm } from "react-hook-form";
-
 const Newfile = () => {
-  const [selectedLang, setSelectedLang] = useState(lenguagesicon[0]);
-  const { setNewfileisopen } = useContext(Context);
-  const { register, handleSubmit } = useForm();
-  const [newfiledata, setnewfiledata] = useState([]);
-
-  function handlenewfileform(values) {
-    const data = {
-      title: values.title,
-      extension: selectedLang.name,
-      extensionIcon: selectedLang.icon,
-    };
-
-    setnewfiledata((prev) => [...prev, data]);
-  }
+  const { setfilename, filename, setNewfileisopen } = useContext(Context);
+  const monacoLanguages = {
+    name: "JavaScript",
+    id: "javascript",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  };
 
   return (
     <div className="h-screen w-full backdrop-blur-[10px] fixed inset-0 z-20 flex justify-center items-center">
@@ -43,7 +32,7 @@ const Newfile = () => {
           />
         </CardHeader>
 
-        <form onSubmit={handleSubmit(handlenewfileform)}>
+        <form>
           <CardContent>
             <div className="flex flex-col gap-4">
               {/* File Name Input */}
@@ -52,9 +41,10 @@ const Newfile = () => {
                   File Name
                 </label>
                 <Input
-                  {...register("title", { required: "File name is required" })}
+                  onChange={(e) => setfilename(e.target.value)}
                   placeholder="Enter file name..."
                   className="bg-[#09090B] border-zinc-700 text-white"
+                  value={filename}
                 />
               </div>
 
@@ -69,31 +59,15 @@ const Newfile = () => {
                     className="btn btn-sm w-full flex justify-between bg-[#09090B] border border-zinc-600 text-zinc-200 hover:bg-zinc-700 hover:border-zinc-500 hover:text-white transition-all"
                   >
                     <span className="flex items-center gap-2">
-                      <img className="h-[2vh]" src={selectedLang.icon} alt="" />
-                      {selectedLang.name}
+                      <img
+                        className="h-[2vh]"
+                        src={monacoLanguages.icon}
+                        alt=""
+                      />
+                      {monacoLanguages.name}
                     </span>
-                    {selectedLang.ext}
+                    {monacoLanguages.id}
                   </label>
-
-                  <ul
-                    tabIndex={0}
-                    className="dropdown-content menu p-2 shadow bg-[#09090B] border border-zinc-700 rounded w-48 mt-1"
-                  >
-                    {lenguagesicon.map((lang, idx) => (
-                      <li key={idx}>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setSelectedLang(lang);
-                          }}
-                          className="flex items-center text-white gap-2 hover:bg-zinc-900 hover:text-white transition-all rounded px-2 py-1 w-full text-left"
-                        >
-                          <img className="h-[2vh]" src={lang.icon} alt="" />
-                          {lang.name}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </div>
             </div>

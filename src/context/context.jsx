@@ -25,6 +25,14 @@ export const Provider = ({ children }) => {
   const [Newfileisopen, setNewfileisopen] = useState(false);
   const [isloginscreenopen, setisloginscreenopen] = useState(false);
   const [profiledata, setprofiledata] = useState(null);
+  const [filename, setfilename] = useState("Untiteled");
+  const [newfiledata, setnewfiledata] = useState([
+    {
+      title: "app.js",
+      code: 'console.log("hello")',
+      extention: "js",
+    },
+  ]);
 
   // userdata
   const [profileimage, setprofileimage] = useState("");
@@ -45,6 +53,10 @@ export const Provider = ({ children }) => {
   }
   function funczoomout() {
     setzoomin((prev) => prev - 2);
+  }
+
+  function putdatainnewfiledata() {
+    setNewfileisopen(false);
   }
 
   function outputformconsole() {
@@ -213,6 +225,10 @@ export const Provider = ({ children }) => {
     profiledata,
     profileimage,
     signout,
+    newfiledata,
+    setnewfiledata,
+    setfilename,
+    filename,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

@@ -35,17 +35,6 @@ const SideNavigate = ({ isOpen, setIsOpen }) => {
           <IoCodeSlashOutline className="text-lg" />
           <p>Profile</p>
         </Link>
-
-        <div
-          onClick={() => {
-            setNewfileisopen(true);
-            setIsOpen(false);
-          }}
-          className="flex items-center gap-3 p-3 rounded-md hover:text-white text-[#d4d4d4] transition-colors cursor-pointer"
-        >
-          <GoPlus className="text-lg" />
-          <p>New File</p>
-        </div>
       </div>
 
       {/* Bottom Section */}
