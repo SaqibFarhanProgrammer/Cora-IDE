@@ -7,8 +7,7 @@ import { Context } from "../../context/context";
 import Loginscreen from "../../Auth/LoginScreen";
 
 const Mainprofile = () => {
-  const { SavefileData, isloginscreenopen, newfiledata, files } =
-    useContext(Context);
+  const { isloginscreenopen, files } = useContext(Context);
 
   return (
     <div className="p-1 h-[100vh]  w-[100%] my-auto  m-0 flex flex-col pt-16 justify-between  items-start">
