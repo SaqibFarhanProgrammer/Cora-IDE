@@ -7,7 +7,8 @@ import { Context } from "../../context/context";
 import Loginscreen from "../../Auth/LoginScreen";
 
 const Mainprofile = () => {
-  const { SavefileData, isloginscreenopen, newfiledata } = useContext(Context);
+  const { SavefileData, isloginscreenopen, newfiledata, files } =
+    useContext(Context);
 
   return (
     <div className="p-1 h-[100vh]  w-[100%] my-auto  m-0 flex flex-col pt-16 justify-between  items-start">
@@ -29,7 +30,18 @@ const Mainprofile = () => {
         grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
         gap-6 overflow-y-auto"
           style={{ maxHeight: "calc(100vh - 150px)" }}
-        ></div>
+        >
+          {files.map((data, index) => {
+            return (
+              <CodefileCard
+                key={index}
+                title={data.title}
+                code={data.code}
+                extention={data.extention}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

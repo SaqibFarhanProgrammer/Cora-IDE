@@ -272,6 +272,7 @@ export const Provider = ({ children }) => {
     setfilename,
     filename,
     putdatainnewfiledata,
+    files,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
