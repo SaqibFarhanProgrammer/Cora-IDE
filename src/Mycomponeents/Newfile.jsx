@@ -12,7 +12,8 @@ import { IoMdClose } from "react-icons/io";
 import { Context } from "../context/context";
 
 const Newfile = () => {
-  const { setfilename, filename, setNewfileisopen } = useContext(Context);
+  const { setfilename, filename, setNewfileisopen, putdatainnewfiledata } =
+    useContext(Context);
   const monacoLanguages = {
     name: "JavaScript",
     id: "javascript",
@@ -75,8 +76,8 @@ const Newfile = () => {
 
           <CardFooter className="flex justify-end">
             <Button
-              onClick={() => setNewfileisopen(false)}
-              type="submit"
+              type="button"
+              onClick={putdatainnewfiledata}
               className="bg-[#dedede] text-black mt-7"
             >
               Create File

@@ -1,40 +1,38 @@
-import { createContext, useEffect, useState } from "react";
-import { auth } from "../config/Firebase";
+import { createContext, useEffect, useRef, useState } from "react";
+import { auth, db } from "../config/Firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  signOut as firebaseSignOut,
   signOut,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { db } from "../config/Firebase";
+import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 
 export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const navigate = useNavigate();
+
+  // zoom states
   const [zoomin, setzoomin] = useState(14);
   const [zoomout, setzoomout] = useState(zoomin);
+
+  // editor states
   const [compiledCode, setcompiledCode] = useState("");
   const [output, setoutput] = useState([]);
   const [Copiednotificatio, setCopiednotificatio] = useState(false);
   const [copied, setcopied] = useState(false);
   const [Newfileisopen, setNewfileisopen] = useState(false);
+
+  // auth states
   const [isloginscreenopen, setisloginscreenopen] = useState(false);
   const [profiledata, setprofiledata] = useState(null);
   const [filename, setfilename] = useState("Untiteled");
-  const [newfiledata, setnewfiledata] = useState([
-    {
-      title: "app.js",
-      code: 'console.log("hello")',
-      extention: "js",
-    },
-  ]);
+  const [files, setfiles] = useState([]);
 
-  // userdata
+  // user profile states
   const [profileimage, setprofileimage] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -48,6 +46,7 @@ export const Provider = ({ children }) => {
     setSidebarOpen((prev) => !prev);
   }
 
+  // zoom
   function funczoomin() {
     setzoomin((prev) => prev + 2);
   }
@@ -55,10 +54,47 @@ export const Provider = ({ children }) => {
     setzoomin((prev) => prev - 2);
   }
 
-  function putdatainnewfiledata() {
+  // save new file in Firestore
+  async function putdatainnewfiledata() {
     setNewfileisopen(false);
+    if (profiledata) {
+      const userui = profiledata.uid;
+      const newfile = {
+        code: compiledCode || "No Code Here.....",
+        extension: "js",
+        title: filename,
+        createdAt: new Date().toISOString(),
+      };
+      try {
+        await updateDoc(doc(db, "users", userui), {
+          files: arrayUnion(newfile),
+        });
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
   }
 
+  async function getfilefromfirebase() {
+    if (profiledata?.uid) {
+      const userRef = doc(db, "users", profiledata.uid);
+      const snap = await getDoc(userRef); // pehle await yahan
+
+      if (snap.exists()) {
+        const data = snap.data();
+
+        console.log("Files Array:", data.files); // yaha files milega
+      } else {
+        console.log("No such user!");
+      }
+    }
+  }
+
+  useEffect(() => {
+    getfilefromfirebase();
+  }, []);
+
+  // run console code
   function outputformconsole() {
     const logs = [];
     const customcode = {
@@ -74,6 +110,7 @@ export const Provider = ({ children }) => {
     setoutput(logs);
   }
 
+  // copy code
   function Copy() {
     navigator.clipboard.writeText(compiledCode);
     setcopied(true);
@@ -84,6 +121,7 @@ export const Provider = ({ children }) => {
     }, 2000);
   }
 
+  // register user
   async function RegisterUser(Email, Password) {
     try {
       const user = await createUserWithEmailAndPassword(auth, Email, Password);
@@ -98,6 +136,13 @@ export const Provider = ({ children }) => {
           password: Password,
           description,
           tagline,
+          files: [
+            {
+              title: "untitled",
+              code: "console.log('hello')",
+              extension: "js",
+            },
+          ],
         });
         navigate("/");
       }
@@ -107,6 +152,7 @@ export const Provider = ({ children }) => {
     }
   }
 
+  // sign in
   async function signUser(email, password) {
     try {
       const signinuser = await signInWithEmailAndPassword(
@@ -123,24 +169,27 @@ export const Provider = ({ children }) => {
     }
   }
 
+  // google auth
   async function createwithgoogle() {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      console.log(result.user.displayName);
 
       if (result.user) {
         setisloginscreenopen(false);
 
-        await setDoc(doc(db, "users", result.user.uid), {
-          uid: result.user.uid,
-
-          name: result.user.displayName,
-          email: result.user.email,
-          photoURL: result.photoURL || null,
-          tagline,
-          description,
-        });
+        await setDoc(
+          doc(db, "users", result.user.uid),
+          {
+            uid: result.user.uid,
+            name: result.user.displayName,
+            email: result.user.email,
+            photoURL: result.photoURL || null,
+            tagline,
+            description,
+          },
+          { merge: true }
+        );
         navigate("/");
       }
     } catch (error) {
@@ -148,6 +197,7 @@ export const Provider = ({ children }) => {
     }
   }
 
+  // fetch user data
   function fetchdata() {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
@@ -158,20 +208,19 @@ export const Provider = ({ children }) => {
           if (userDoc.exists()) {
             setprofiledata(userDoc.data());
             setisloginscreenopen(false);
-            setprofiledata(userDoc.data());
           } else {
             console.log("No user data found in Firestore");
-            setprofiledata(null); // reset
+            setprofiledata(null);
             setisloginscreenopen(true);
           }
         } catch (err) {
           console.error("Error fetching user data:", err);
-          setprofiledata(null); // reset
+          setprofiledata(null);
           setisloginscreenopen(true);
         }
       } else {
         console.log("No user logged in");
-        setprofiledata(null); // reset
+        setprofiledata(null);
         setisloginscreenopen(true);
       }
     });
@@ -225,10 +274,9 @@ export const Provider = ({ children }) => {
     profiledata,
     profileimage,
     signout,
-    newfiledata,
-    setnewfiledata,
     setfilename,
     filename,
+    putdatainnewfiledata,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

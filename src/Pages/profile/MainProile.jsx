@@ -29,18 +29,7 @@ const Mainprofile = () => {
         grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
         gap-6 overflow-y-auto"
           style={{ maxHeight: "calc(100vh - 150px)" }}
-        >
-          {newfiledata.map((data, index) => {
-            return (
-              <CodefileCard
-                key={index}
-                title={data.title}
-                code={data.code}
-                extention={data.extention}
-              />
-            );
-          })}
-        </div>
+        ></div>
       </div>
     </div>
   );
