@@ -80,19 +80,14 @@ export const Provider = ({ children }) => {
       const userRef = doc(db, "users", profiledata.uid);
       const snap = await getDoc(userRef); // pehle await yahan
 
-      if (snap.exists()) {
-        const data = snap.data();
-
-        console.log("Files Array:", data.files); // yaha files milega
-      } else {
-        console.log("No such user!");
-      }
+      const data = snap.data();
+      setfiles(data.files);
     }
   }
 
   useEffect(() => {
     getfilefromfirebase();
-  }, []);
+  }, [profiledata]);
 
   // run console code
   function outputformconsole() {
