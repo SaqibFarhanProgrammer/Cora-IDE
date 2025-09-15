@@ -5,6 +5,7 @@ import Profile from "../profile/Profile";
 import { useContext } from "react";
 import { Context } from "../../context/context";
 import Loginscreen from "../../Auth/LoginScreen";
+import { FiFile } from "react-icons/fi";
 
 const Mainprofile = () => {
   const { isloginscreenopen, files } = useContext(Context);
@@ -23,24 +24,38 @@ const Mainprofile = () => {
       ) : (
         <Loginscreen />
       )}
+
       <div className="files">
-        <div
-          className="codes mx-auto   w-[88vw] px-4 pb-6 
+        {files ? (
+          <div
+            className="codes mx-auto   w-[88vw] px-4 pb-6 
         grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
         gap-6 overflow-y-auto"
-          style={{ maxHeight: "calc(100vh - 150px)" }}
-        >
-          {files.map((data, index) => {
-            return (
-              <CodefileCard
-                key={index}
-                title={data.title}
-                code={data.code}
-                extention={data.extention}
-              />
-            );
-          })}
-        </div>
+            style={{ maxHeight: "calc(100vh - 150px)" }}
+          >
+            {files.map((data, index) => {
+              return (
+                <CodefileCard
+                  key={index}
+                  title={data.title}
+                  code={data.code}
+                  extention={data.extention}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <div className="div  w-[95vw] mx-auto">
+            <div className="flex flex-col items-center justify-center py-20 text-center text-zinc-500">
+              <div className="w-16 h-16 flex items-center justify-center rounded-full bg-zinc-800 mb-4 shadow-md">
+                <FiFile size={28} />
+              </div>
+              <h2 className="text-lg font-medium tracking-wide">
+                No Saved Files Available
+              </h2>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

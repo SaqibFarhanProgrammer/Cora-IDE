@@ -13,15 +13,11 @@ const CodefileCard = ({ title, code, extention, key }) => {
       {/* File Info */}
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="font-semibold text-lg text-white">
-            {title + "." + extention}
-          </h3>
+          <h3 className="font-semibold text-lg text-white">{title}</h3>
           <p className="text-xs text-zinc-400">File</p>
         </div>
         <div className="flex gap-3 text-zinc-400">
-          <button className="hover:text-green-400 transition">
-            <FaEdit />
-          </button>
+          <button className="hover:text-green-400 transition"></button>
           <button className="hover:text-red-500 transition">
             <FaTrash />
           </button>

@@ -25,6 +25,7 @@ export const Provider = ({ children }) => {
   const [Copiednotificatio, setCopiednotificatio] = useState(false);
   const [copied, setcopied] = useState(false);
   const [Newfileisopen, setNewfileisopen] = useState(false);
+  const [searchfilter, setsearchfilter] = useState("");
 
   // auth states
   const [isloginscreenopen, setisloginscreenopen] = useState(false);
@@ -273,6 +274,9 @@ export const Provider = ({ children }) => {
     filename,
     putdatainnewfiledata,
     files,
+    setfiles,
+    searchfilter,
+    setsearchfilter,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
