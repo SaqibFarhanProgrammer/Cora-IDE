@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaCog, FaSignOutAlt } from "react-icons/fa";
 import { IoCodeSlashOutline } from "react-icons/io5";
 import { GoPlus } from "react-icons/go";
@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../context/context";
 
 const SideNavigate = ({ isOpen, setIsOpen }) => {
-  const { setNewfileisopen } = useContext(Context);
+  const { setNewfileisopen, profiledata } = useContext(Context);
 
   return (
     <div
@@ -16,8 +16,7 @@ const SideNavigate = ({ isOpen, setIsOpen }) => {
         isOpen ? "translate-x-0" : "-translate-x-full"
       } w-[60vw] sm:w-[40vw] md:w-[20vw] lg:w-[15vw]`}
     >
-      <SidebarProfie />
-
+      <img className="w-full" src={profiledata?.photoURL} alt="" />
       <div className="p-3 overflow-y-auto flex flex-col gap-2">
         <Link
           to="/"

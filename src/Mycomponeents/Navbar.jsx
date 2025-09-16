@@ -8,11 +8,12 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 import { RiCodeSSlashFill } from "react-icons/ri";
-import logo from "../assets/images/WhatsApp Image 2025-09-02 at 8.24.25 AM.jpeg";
 import { Context } from "../context/context";
+import { Link } from "lucide-react";
 
 const TopNavbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { profiledata } = useContext(Context);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -33,7 +34,8 @@ const TopNavbar = () => {
             onClick={toggleDropdown}
             className="flex items-center border-1 border-[#27272A] gap-2 px-3 py-2 rounded-md bg-zinc-900 text-zinc-300 hover:bg-zinc-800 transition-colors"
           >
-            <FaUserCircle className="text-xl" />
+            <img src={profiledata ? profiledata.profileIMG : null} alt="" />
+
             <FaCaretDown
               className={`transition-transform duration-200 ${
                 isDropdownOpen ? "rotate-180" : ""
@@ -43,27 +45,20 @@ const TopNavbar = () => {
 
           {isDropdownOpen && (
             <div className="absolute overflow-hidden right-0 mt-2 w-48 bg-zinc-900 rounded-md shadow-lg py-1 z-10">
-              <li
-                href="#"
+              <Link
+                to="/profile"
                 className="flex items-center gap-2 px-4 py-2 text-zinc-300 hover:bg-zinc-800"
               >
-                <FaUserCircle />
                 Profile
-              </li>
-              <li
-                href="#"
-                className="flex items-center gap-2 px-4 py-2 text-zinc-300 hover:bg-zinc-800"
-              >
-                <RiCodeSSlashFill />
-                Codes
-              </li>
-              <li
-                href="#"
+              </Link>
+
+              <Link
+                to="/settings"
                 className="flex items-center gap-2 px-4 py-2 text-zinc-300 hover:bg-zinc-800"
               >
                 <FaCog />
                 Settings
-              </li>
+              </Link>
               <li
                 href="#"
                 className="flex bg-[#291D21] items-center gap-2 px-4 py-2 text-red-300 hover:text-[#cf444b] "

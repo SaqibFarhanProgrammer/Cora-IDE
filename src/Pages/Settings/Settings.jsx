@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Card,
   CardHeader,
@@ -8,9 +8,11 @@ import {
 import { Button } from "../../components/ui/button";
 import { Switch } from "../../components/ui/switch";
 import { Sun, Moon, LogOut, Trash2, User } from "lucide-react";
+import { Context } from "../../context/context";
 
 export default function SettingsPage() {
   const [darkMode, setDarkMode] = React.useState(false);
+  const { setNewfileisopen, profiledata } = useContext(Context);
 
   return (
     <div className="h-[100%] w-full bg-[#9090B] flex justify-center items-center text-white">
@@ -26,7 +28,7 @@ export default function SettingsPage() {
           <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[">
             <div className="flex items-center gap-3">
               <img
-                src="https://i.pravatar.cc/60"
+                src={`${profiledata?.photoURL}`}
                 alt="Profile"
                 className="w-12 h-12 rounded-full border border-white/20"
               />
@@ -67,8 +69,6 @@ export default function SettingsPage() {
           </div>
         </CardContent>
       </Card>
-
-
     </div>
   );
 }
