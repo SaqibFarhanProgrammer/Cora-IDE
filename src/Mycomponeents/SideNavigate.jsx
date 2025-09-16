@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { FaCog, FaSignOutAlt } from "react-icons/fa";
 import { IoCodeSlashOutline } from "react-icons/io5";
 import { GoPlus } from "react-icons/go";
