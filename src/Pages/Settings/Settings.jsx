@@ -12,29 +12,35 @@ import { Context } from "../../context/context";
 
 export default function SettingsPage() {
   const [darkMode, setDarkMode] = React.useState(false);
-  const { setNewfileisopen, profiledata } = useContext(Context);
+  const { profiledata } = useContext(Context);
 
   return (
-    <div className="h-[100%] w-full bg-[#9090B] flex justify-center items-center text-white">
-      <Card className="w-full h-[100%] border border-white/10 bg-[#000000] shadow-xl">
-        <CardHeader>
+    <div className="h-[100%] w-full flex justify-center items-center bg-[#09090B] text-white">
+      <Card className="w-full h-[100%] border border-white/10 bg-[#000000] shadow-xl rounded-2xl">
+        <CardHeader className="border-b border-white/10 pb-4">
           <CardTitle className="text-2xl font-semibold flex items-center gap-2">
             <User className="w-6 h-6 text-white" /> Settings
           </CardTitle>
         </CardHeader>
 
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-6 pt-6">
           {/* Profile */}
-          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[">
-            <div className="flex items-center gap-3">
-              <img
-                src={`${profiledata?.photoURL}`}
-                alt="Profile"
-                className="w-12 h-12 rounded-full border border-white/20"
-              />
+          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[#111]">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-full overflow-hidden border border-white/20">
+                <img
+                  src={profiledata?.profileIMG}
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div>
-                <h3 className="font-medium text-white">John Doe</h3>
-                <p className="text-sm text-gray-400">johndoe@email.com</p>
+                <h3 className="font-medium text-white">
+                  {profiledata?.name || "John Doe"}
+                </h3>
+                <p className="text-sm text-gray-400">
+                  {profiledata?.email || "johndoe@email.com"}
+                </p>
               </div>
             </div>
             <Button
@@ -46,7 +52,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Theme Control */}
-          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[">
+          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[#111]">
             <span className="flex items-center gap-2 font-medium text-white">
               {darkMode ? (
                 <Moon className="w-5 h-5 text-white" />
@@ -59,7 +65,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Clear Files */}
-          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[">
+          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[#111]">
             <span className="flex items-center gap-2 font-medium text-white">
               <Trash2 className="w-5 h-5 text-white" /> Clear Files
             </span>

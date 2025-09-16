@@ -1,15 +1,7 @@
 import React, { useContext, useState } from "react";
-import {
-  FaPlay,
-  FaSave,
-  FaUserCircle,
-  FaCaretDown,
-  FaCog,
-  FaSignOutAlt,
-} from "react-icons/fa";
-import { RiCodeSSlashFill } from "react-icons/ri";
+import { FaCaretDown, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { Context } from "../context/context";
-import { Link } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const TopNavbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -20,26 +12,24 @@ const TopNavbar = () => {
   };
 
   return (
-    <div className="w-[100%] h-16  text-[#FAFAFA] flex items-center justify-between px-6 border-b border-[#27272A]">
-      {/* Left side: Logo and file details */}
+    <div className="w-full h-16 text-[#FAFAFA] flex items-center justify-between px-6 border-b border-[#27272A]">
+      {/* Left side: placeholder for logo or nav items */}
       <div className="flex items-center gap-6"></div>
 
-      {/* Right side: Action buttons and profile dropdown */}
+      {/* Right side */}
       <div className="flex items-center gap-4">
-        {/* Action Buttons */}
-
-        {/* Profile Dropdown */}
         <div className="relative">
           <button
             onClick={toggleDropdown}
-            className="flex items-center border-1 border-[#27272A] gap-2 px-3 py-2 rounded-md bg-zinc-900 text-zinc-300 hover:bg-zinc-800 transition-colors"
+            className="flex items-center gap-2 px-3 py-2 rounded-md bg-zinc-900 text-zinc-300 hover:bg-zinc-800 transition-colors border border-[#27272A]"
           >
-            <img
-              className="w-[2vw] obje"
-              src={profiledata ? profiledata.profileIMG : null}
-              alt=""
-            />
-
+            <div className="w-8 h-8 rounded-full overflow-hidden">
+              <img
+                className="w-full h-full object-cover"
+                src={profiledata?.profileIMG || "/default-avatar.png"}
+                alt="Profile"
+              />
+            </div>
             <FaCaretDown
               className={`transition-transform duration-200 ${
                 isDropdownOpen ? "rotate-180" : ""
@@ -48,28 +38,25 @@ const TopNavbar = () => {
           </button>
 
           {isDropdownOpen && (
-            <div className="absolute overflow-hidden right-0 mt-2 w-48 bg-zinc-900 rounded-md shadow-lg py-1 z-10">
+            <div className="absolute right-0 mt-2 w-48 bg-zinc-900 rounded-md shadow-lg py-1 z-10">
               <Link
                 to="/profile"
                 className="flex items-center gap-2 px-4 py-2 text-zinc-300 hover:bg-zinc-800"
               >
                 Profile
               </Link>
-
               <Link
                 to="/settings"
                 className="flex items-center gap-2 px-4 py-2 text-zinc-300 hover:bg-zinc-800"
               >
-                <FaCog />
-                Settings
+                <FaCog /> Settings
               </Link>
-              <li
-                href="#"
-                className="flex bg-[#291D21] items-center gap-2 px-4 py-2 text-red-300 hover:text-[#cf444b] "
+              <Link
+                to="/logout"
+                className="flex items-center gap-2 px-4 py-2 text-red-300 hover:text-[#cf444b]"
               >
-                <FaSignOutAlt />
-                Logout
-              </li>
+                <FaSignOutAlt /> Logout
+              </Link>
             </div>
           )}
         </div>
