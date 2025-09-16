@@ -1,4 +1,4 @@
-import React, { Suspense, useContext } from "react";
+import React, { Suspense } from "react";
 import Topbar from "./Topbar";
 import TopNavbar from "./Navbar";
 import { Context } from "../context/context";
