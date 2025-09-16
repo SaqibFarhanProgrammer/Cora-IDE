@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { Context } from "../../context/context";
 
-const CodefileCard = ({ title, code, extention, key }) => {
+const CodefileCard = ({ title, code, key }) => {
   return (
     <div
       key={key}
