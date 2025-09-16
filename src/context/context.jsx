@@ -41,6 +41,24 @@ export const Provider = ({ children }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // images
+  const images2 = [
+    "https://i.pinimg.com/736x/09/0b/bc/090bbcffd9c72bc9dbcc34506b7cdcc4.jpg",
+    "https://i.pinimg.com/736x/93/45/99/9345996e1e296767510032db258246c3.jpg",
+    "https://i.pinimg.com/736x/de/15/ed/de15edf52f6f585678a431cef555c276.jpg",
+    "https://i.pinimg.com/736x/f8/cb/da/f8cbdae7c4ceaba6d4184f9ec34f4935.jpg",
+    "https://i.pinimg.com/736x/ef/4f/98/ef4f982361420e1921bedac60c6598d4.jpg",
+    "https://i.pinimg.com/736x/0f/f2/75/0ff2756ca177662da9d0b31dc9d2296b.jpg",
+    "https://i.pinimg.com/736x/b7/73/27/b77327bb3e150b2d21e5a3a4acf2dbcb.jpg",
+    "https://i.pinimg.com/736x/93/83/77/938377275ba8cac595f0edf49c8c7ef6.jpg",
+    "https://i.pinimg.com/1200x/c0/9c/32/c09c3258c6fd06fd508aa3e65eca17c4.jpg",
+    "https://i.pinimg.com/736x/af/7b/1d/af7b1def0a0788d8d70de426fd61533f.jpg",
+    "https://i.pinimg.com/736x/74/30/00/743000d16443ec6a8967347c2577aeb8.jpg",
+    "https://i.pinimg.com/736x/d4/3c/92/d43c927fe42fd2fe08a794f04101e36c.jpg",
+  ];
+  const randomIndex = Math.floor(Math.random() * images2.length);
+  const randomImage = images2[randomIndex];
+
   // sidebar
   const [sidebarOpen, setSidebarOpen] = useState(false);
   function toggleSidebar() {
@@ -126,7 +144,7 @@ export const Provider = ({ children }) => {
         setisloginscreenopen(false);
         await setDoc(doc(db, "users", user.user.uid), {
           uid: user.user.uid,
-          profileIMG: profileimage,
+          profileIMG: profileimage || randomImage,
           name,
           email: Email,
           password: Password,
@@ -180,7 +198,7 @@ export const Provider = ({ children }) => {
             uid: result.user.uid,
             name: result.user.displayName,
             email: result.user.email,
-            photoURL: result.photoURL || null,
+            photoURL: result.photoURL || randomImage,
             tagline,
             description,
           },

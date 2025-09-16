@@ -16,7 +16,7 @@ const SideNavigate = ({ isOpen, setIsOpen }) => {
         isOpen ? "translate-x-0" : "-translate-x-full"
       } w-[60vw] sm:w-[40vw] md:w-[20vw] lg:w-[15vw]`}
     >
-      <img className="w-full" src={profiledata?.photoURL} alt="" />
+      <img className="" src={profiledata?.photoURL} alt="" />
       <div className="p-3 overflow-y-auto flex flex-col gap-2">
         <Link
           to="/"

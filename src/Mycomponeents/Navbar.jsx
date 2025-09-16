@@ -34,7 +34,11 @@ const TopNavbar = () => {
             onClick={toggleDropdown}
             className="flex items-center border-1 border-[#27272A] gap-2 px-3 py-2 rounded-md bg-zinc-900 text-zinc-300 hover:bg-zinc-800 transition-colors"
           >
-            <img src={profiledata ? profiledata.profileIMG : null} alt="" />
+            <img
+              className="w-[2vw] obje"
+              src={profiledata ? profiledata.profileIMG : null}
+              alt=""
+            />
 
             <FaCaretDown
               className={`transition-transform duration-200 ${
