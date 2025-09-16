@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../context/context";
 
 const SideNavigate = ({ isOpen, setIsOpen }) => {
-  const { setNewfileisopen, profiledata } = useContext(Context);
+  const { profiledata } = useContext(Context);
 
   return (
     <div
