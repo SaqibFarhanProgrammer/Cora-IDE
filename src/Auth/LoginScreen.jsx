@@ -3,7 +3,7 @@ import { Button } from "../components/ui/button";
 import { CardHeader, CardTitle } from "../components/ui/card";
 import { FcGoogle } from "react-icons/fc";
 import { Context } from "../context/context";
-import loginimg from "../assets/images/WhatsApp Image 2025-09-10 at 7.59.48 PM.jpeg";
+import loginimg from "../assets/images/PinDown.io_@jenmaguiree_1758250487.jpg";
 
 export default function Loginscreen() {
   const [isSignup, setIsSignup] = useState(true);
@@ -48,7 +48,7 @@ export default function Loginscreen() {
   };
 
   return (
-    <div className="h-[75%] mt-10 mx-auto w-[70vw] flex items-center justify-center px-3">
+    <div className="h-[72%] mt-10 mx-auto w-[70vw] flex items-center justify-center px-3">
       <div className="w-full bg-zinc-950 rounded-xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 border border-zinc-800">
         {/* Left */}
         <div className="hidden relative md:flex items-center justify-center bg-zinc-900">
@@ -171,7 +171,7 @@ export default function Loginscreen() {
               {isSignup ? "Already have an account?" : "Don’t have an account?"}{" "}
               <span
                 onClick={() => setIsSignup(!isSignup)}
-                className="text-zinc-200 cursor-pointer hover:underline"
+                className="text-zinc-00 cursor-pointer hover:underline"
               >
                 {isSignup ? "Login here" : "Sign up"}
               </span>
