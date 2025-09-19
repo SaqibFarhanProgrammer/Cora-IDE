@@ -48,9 +48,8 @@ export default function Loginscreen() {
   };
 
   return (
-    <div className="h-[72%] mt-10 mx-auto w-[70vw] flex items-center justify-center px-3">
+    <div className="h-[77%] mt-10 mx-auto w-[70vw] flex items-center justify-center px-3">
       <div className="w-full bg-zinc-950 rounded-xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 border border-zinc-800">
-        {/* Left */}
         <div className="hidden relative md:flex items-center justify-center bg-zinc-900">
           <img
             src={loginimg}
@@ -69,7 +68,6 @@ export default function Loginscreen() {
           </div>
         </div>
 
-        {/* Right */}
         <div className="p-6 md:p-8 text-white flex items-center justify-center">
           <div className="max-w-sm w-full">
             <CardHeader className="px-0 py-0 mb-4 text-center">
@@ -97,7 +95,7 @@ export default function Loginscreen() {
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-xs text-zinc-400">
-                          No Image
+                          Add Profile
                         </div>
                       )}
                     </div>
@@ -106,6 +104,7 @@ export default function Loginscreen() {
                       accept="image/*"
                       onChange={handleImageChange}
                       className="mt-2 text-xs text-zinc-400"
+                      placeholder="Add Profile Image"
                     />
                   </div>
 
@@ -156,7 +155,6 @@ export default function Loginscreen() {
               </Button>
             </form>
 
-            {/* Continue with Google */}
             <div className="mt-4">
               <Button
                 onClick={createwithgoogle}
@@ -166,7 +164,6 @@ export default function Loginscreen() {
               </Button>
             </div>
 
-            {/* Toggle Signup / Login */}
             <p className="text-xs text-center text-zinc-400 mt-3">
               {isSignup ? "Already have an account?" : "Don’t have an account?"}{" "}
               <span

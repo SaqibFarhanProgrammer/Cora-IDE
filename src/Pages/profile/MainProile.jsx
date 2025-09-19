@@ -15,10 +15,14 @@ const Mainprofile = () => {
   }, [files]);
 
   return (
-    <div className="p-1 h-[100vh]  w-[100%] my-auto  m-0 flex flex-col pt-16 justify-between  items-start">
+    <div
+      className={`p-1   w-[100%] my-auto  m-0 flex flex-col pt-16 justify-between  items-start ${
+        !isloginscreenopen ? "h-[100vh]" : "h-[90vh]"
+      }`}
+    >
       {!isloginscreenopen ? (
         <>
-          <div className="profile  mt-[-9vh]  w-[100%] h-[60vh] ">
+          <div className="profile  mt-[-9vh]  w-[100%] h-[60vh] overflow-hidden ">
             <Profile />
           </div>
           <div className="search mx-auto">
