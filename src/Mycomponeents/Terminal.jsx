@@ -5,7 +5,7 @@ const Terminal = () => {
   const { output } = useContext(Context);
 
   return (
-    <div className="w-[100%] h-[100%] flex flex-col  border-[#27272A]">
+    <div className="w-[100%] bg-[#0a0b0d] h-[100%] flex flex-col  border-[#27272A]">
       <div className=" p-3.5 text-sm text-zinc-400 font-mono flex items-center justify-between border-b border-[#27272A]">
         <span className="text-white ml-2">Output</span>
         <div className="flex gap-2 mr-2">

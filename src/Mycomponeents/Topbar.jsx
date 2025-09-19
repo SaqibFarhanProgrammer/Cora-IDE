@@ -19,7 +19,7 @@ const Topbar = () => {
   const [msg, setMsg] = useState("");
 
   return (
-    <div className="w-[55vw] text-white border-b border-[#27272A] shadow-sm px-4">
+    <div className="w-[55vw] text-white border-b bg-[#0a0b0d] border-[#27272A] shadow-sm px-4">
       <div
         className={`copied-notigication left-[45%] ${
           Copiednotificatio ? "top-[2%]" : "top-[-10%]"

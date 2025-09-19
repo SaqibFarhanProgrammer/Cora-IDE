@@ -15,8 +15,8 @@ export default function SettingsPage() {
   const { profiledata } = useContext(Context);
 
   return (
-    <div className="h-[100%] w-full flex justify-center items-center bg-[#09090B] text-white">
-      <Card className="w-full h-[100%] border border-white/10 bg-[#000000] shadow-xl rounded-2xl">
+    <div className="h-[100%] w-full flex justify-center items-center bg-[#0a0b0d] text-white">
+      <Card className="w-full h-[100%] border border-white/10 bg-[#0a0b0d] shadow-xl rounded-2xl">
         <CardHeader className="border-b border-white/10 pb-4">
           <CardTitle className="text-2xl font-semibold flex items-center gap-2">
             <User className="w-6 h-6 text-white" /> Settings
@@ -25,11 +25,11 @@ export default function SettingsPage() {
 
         <CardContent className="space-y-6 pt-6">
           {/* Profile */}
-          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[#111]">
+          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 ]">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 rounded-full overflow-hidden border border-white/20">
                 <img
-                  src={profiledata?.profileIMG}
+                  src={profiledata?.photoURL}
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
@@ -43,16 +43,16 @@ export default function SettingsPage() {
                 </p>
               </div>
             </div>
-            <Button
-              variant="outline"
-              className="border border-white text-white hover:bg-white hover:text-black"
+            <button
+              to="/logout"
+              className="flex items-center gap-2 px-4 py-2 text-red-300 hover:text-[#cf444b]"
             >
-              <LogOut className="w-4 h-4 mr-2" /> Logout
-            </Button>
+              Logout
+            </button>
           </div>
 
           {/* Theme Control */}
-          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[#111]">
+          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 ">
             <span className="flex items-center gap-2 font-medium text-white">
               {darkMode ? (
                 <Moon className="w-5 h-5 text-white" />
@@ -65,7 +65,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Clear Files */}
-          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-[#111]">
+          <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 ">
             <span className="flex items-center gap-2 font-medium text-white">
               <Trash2 className="w-5 h-5 text-white" /> Clear Files
             </span>

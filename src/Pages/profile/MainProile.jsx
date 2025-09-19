@@ -16,7 +16,7 @@ const Mainprofile = () => {
 
   return (
     <div
-      className={`p-1   w-[100%] my-auto  m-0 flex flex-col pt-16 justify-between  items-start ${
+      className={`p-1   w-[100%] my-auto bg-[#0a0b0d] m-0 flex flex-col pt-16 justify-between  items-start ${
         !isloginscreenopen ? "h-[100vh]" : "h-[90vh]"
       }`}
     >
