@@ -3,6 +3,7 @@ import { Button } from "../components/ui/button";
 import { CardHeader, CardTitle } from "../components/ui/card";
 import { FcGoogle } from "react-icons/fc";
 import { Context } from "../context/context";
+import loginimg from "../assets/images/WhatsApp Image 2025-09-10 at 7.59.48 PM.jpeg";
 
 export default function Loginscreen() {
   const [isSignup, setIsSignup] = useState(true);
@@ -52,7 +53,7 @@ export default function Loginscreen() {
         {/* Left */}
         <div className="hidden relative md:flex items-center justify-center bg-zinc-900">
           <img
-            src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?q=80&w=1200"
+            src={loginimg}
             alt="Background"
             className="w-full h-full object-cover absolute opacity-60"
           />
@@ -87,7 +88,7 @@ export default function Loginscreen() {
                 <>
                   {/* Profile Image Upload */}
                   <div className="flex flex-col items-center mb-4">
-                    <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-zinc-700">
+                    <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-zinc-700 cursor-pointer">
                       {profileImage ? (
                         <img
                           src={profileImage}
@@ -149,7 +150,7 @@ export default function Loginscreen() {
 
               <Button
                 type="submit"
-                className="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-md font-medium transition text-sm"
+                className="w-full bg-zinc-900 loginbtn text-white py-2 rounded-md font-medium transition text-sm"
               >
                 {isSignup ? "Sign Up" : "Login"}
               </Button>
@@ -159,7 +160,7 @@ export default function Loginscreen() {
             <div className="mt-4">
               <Button
                 onClick={createwithgoogle}
-                className="w-full flex items-center justify-center gap-2 bg-white text-black hover:bg-zinc-200 rounded-md py-2 text-sm font-medium"
+                className="loginwithgoogle w-full flex items-center justify-center gap-2 bg-white text-black hover:bg-zinc-200 rounded-md py-2 text-sm font-medium"
               >
                 <FcGoogle size={18} /> Continue with Google
               </Button>
@@ -170,7 +171,7 @@ export default function Loginscreen() {
               {isSignup ? "Already have an account?" : "Don’t have an account?"}{" "}
               <span
                 onClick={() => setIsSignup(!isSignup)}
-                className="text-indigo-400 cursor-pointer hover:underline"
+                className="text-zinc-200 cursor-pointer hover:underline"
               >
                 {isSignup ? "Login here" : "Sign up"}
               </span>

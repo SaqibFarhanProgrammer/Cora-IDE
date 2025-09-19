@@ -75,3 +75,7 @@ body {
 .bt {
   transition: 1s ease;
 }
+
+.loginbtn:hover {
+  background-image: linear-gradient(rgb(29, 29, 29), rgb(25, 25, 25));
+}
