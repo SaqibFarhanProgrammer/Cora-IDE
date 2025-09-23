@@ -19,7 +19,7 @@ const Profile = () => {
       {/* Profile Info */}
       <div className="relative px-6 pb-6 flex flex-col justify-center items-center">
         <img
-          src={profiledata?.photoURL}
+          src={profiledata?.profileIMG}
           alt="User Avatar"
           className="w-24 h-24 rounded-lg border-4 border-[#0d0d0f] shadow-md object-cover mt-[-2vw]"
         />

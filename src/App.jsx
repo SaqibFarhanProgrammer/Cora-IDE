@@ -12,7 +12,7 @@ import { HiMenuAlt4 } from "react-icons/hi";
 import "./Media.css";
 
 const App = () => {
-  const { Newfileisopen } = useContext(Context);
+  const { Newfileisopen, } = useContext(Context);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -50,7 +50,10 @@ const App = () => {
       </div>
 
       {/* New File Modal */}
-      {Newfileisopen && <Newfile />}
+      
+      {
+      
+      Newfileisopen && <Newfile />}
     </div>
   );
 };

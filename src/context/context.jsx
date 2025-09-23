@@ -144,7 +144,7 @@ export const Provider = ({ children }) => {
         setisloginscreenopen(false);
         await setDoc(doc(db, "users", user.user.uid), {
           uid: user.user.uid,
-          profileIMG: profileimage || randomImage,
+          profileIMG: profileimage ,
           name,
           email: Email,
           password: Password,
