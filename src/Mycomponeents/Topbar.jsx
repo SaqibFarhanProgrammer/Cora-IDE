@@ -30,10 +30,12 @@ const Topbar = () => {
       <div className="h-12 px-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="flex gap-2">
-            <div className=" w-3 h-3 bg-red-500 rounded-full"></div>
+            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
             <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
             <div className="w-3 h-3 bg-green-500 rounded-full"></div>
           </div>
+          <div className="options flex gap-2">
+
           <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
@@ -41,6 +43,25 @@ const Topbar = () => {
               className="h-3 w-3"
             />
             <span className="text-sm">Javascript</span>
+          </div>
+            <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                alt=""
+                className="h-3 w-3"
+              />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                alt=""
+                className="h-3 w-3"
+              />
+                     <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              alt=""
+              className="h-3 w-3"
+            />
+              <span className="text-sm">Web</span>
+            </div>
           </div>
         </div>
         <div className="flex items-center gap-2">

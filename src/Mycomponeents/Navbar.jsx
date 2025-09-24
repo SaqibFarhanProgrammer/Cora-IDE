@@ -26,7 +26,7 @@ const TopNavbar = () => {
             <div className="w-8 h-8 rounded-full overflow-hidden">
               <img
                 className="w-full h-full object-cover"
-                src={profiledata?.photoURL || "/default-avatar.png"}
+                src={profiledata?.profileIMG || "/default-avatar.png"}
                 alt="Profile"
               />
             </div>

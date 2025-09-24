@@ -9,7 +9,7 @@ const SidebarProfie = () => {
       <div className="flex  flex-col justify-between items-center cursor-pointer">
         <div className="profile-cion  h-[10vh] w-[6vw] flex items-center justify-center rounded-full ">
           <img
-            src={profiledata?.photoURL}
+            src={profiledata?.profileIMG}
             className="  h-[100%] w-[100%] object-cover mix-blend-screen rounded-full "
           />
         </div>

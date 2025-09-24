@@ -7,7 +7,6 @@ import loginimg from "../assets/images/PinDown.io_@jenmaguiree_1758250487.jpg";
 
 export default function Loginscreen() {
   const [isSignup, setIsSignup] = useState(true);
-  const [profileImage, setProfileImage] = useState(null);
 
   const {
     RegisterUser,
@@ -24,6 +23,7 @@ export default function Loginscreen() {
     password,
     setprofileimage,
     setPassword,
+    profileimage
   } = useContext(Context);
 
   const handleSubmit = (e) => {
@@ -41,7 +41,6 @@ export default function Loginscreen() {
     const reader = new FileReader();
     reader.onloadend = async () => {
       const sring = reader.result;
-      setProfileImage(sring);
       setprofileimage(sring);
     };
     reader.readAsDataURL(file);
@@ -87,9 +86,9 @@ export default function Loginscreen() {
                   {/* Profile Image Upload */}
                   <div className="flex flex-col items-center mb-4">
                     <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-zinc-700 cursor-pointer">
-                      {profileImage ? (
+                      {profileimage ? (
                         <img
-                          src={profileImage}
+                          src={profileimage}
                           alt="Profile"
                           className="w-full h-full object-cover"
                         />

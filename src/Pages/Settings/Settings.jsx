@@ -29,7 +29,7 @@ export default function SettingsPage() {
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 rounded-full overflow-hidden border border-white/20">
                 <img
-                  src={profiledata?.photoURL}
+                  src={profiledata?.profileIMG}
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
