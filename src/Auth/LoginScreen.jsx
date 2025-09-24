@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Button } from "../components/ui/button";
 import { CardHeader, CardTitle } from "../components/ui/card";
 import { FcGoogle } from "react-icons/fc";
+import "../App.css";
 import { Context } from "../context/context";
 import loginimg from "../assets/images/PinDown.io_@jenmaguiree_1758250487.jpg";
 
@@ -23,7 +24,7 @@ export default function Loginscreen() {
     password,
     setprofileimage,
     setPassword,
-    profileimage
+    profileimage,
   } = useContext(Context);
 
   const handleSubmit = (e) => {
@@ -49,20 +50,23 @@ export default function Loginscreen() {
   return (
     <div className="h-[77%] mt-10 mx-auto w-[70vw] flex items-center justify-center px-3">
       <div className="w-full bg-zinc-950 rounded-xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 border border-zinc-800">
-        <div className="hidden relative md:flex items-center justify-center bg-zinc-900">
+        <div className="loginform hidden relative md:flex items-center justify-center ">
+          {/* Background Image */}
           <img
             src={loginimg}
             alt="Background"
-            className="w-full h-full object-cover absolute opacity-60"
+            className="w-full h-full object-cover absolute loginform"
           />
-          <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-6 text-center">
-            <h2 className="text-2xl font-semibold text-white">
+
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 flex flex-col items-center justify-center p-8 text-center">
+            <h2 className="text-3xl font-bold text-white drop-shadow-lg">
               {isSignup ? "Welcome to Our App" : "Welcome Back"}
             </h2>
-            <p className="text-zinc-300 mt-2 text-sm max-w-xs">
+            <p className="text-zinc-300 justify-end mt-3 text-base max-w-sm leading-relaxed">
               {isSignup
-                ? "Sign up today and explore new possibilities."
-                : "Login to continue to your dashboard."}
+                ? "Sign up today and explore new possibilities with ease."
+                : "Login to continue to your personalized dashboard and tools."}
             </p>
           </div>
         </div>
@@ -84,8 +88,9 @@ export default function Loginscreen() {
               {isSignup && (
                 <>
                   {/* Profile Image Upload */}
-                  <div className="flex flex-col items-center mb-4">
-                    <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-zinc-700 cursor-pointer">
+                  <div className="flex flex-col items-center mb-6">
+                    {/* Profile Image Upload */}
+                    <label className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-zinc-700 cursor-pointer hover:border-zinc-400 transition group shadow-md">
                       {profileimage ? (
                         <img
                           src={profileimage}
@@ -93,18 +98,44 @@ export default function Loginscreen() {
                           className="w-full h-full object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-xs text-zinc-400">
-                          Add Profile
+                        <div className="w-full h-full flex flex-col items-center justify-center text-zinc-400 text-xs group-hover:text-zinc-400 transition">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6 mb-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 4v16m8-8H4"
+                            />
+                          </svg>
+                          Upload
                         </div>
                       )}
-                    </div>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                      className="mt-2 text-xs text-zinc-400"
-                      placeholder="Add Profile Image"
-                    />
+
+                      {/* Overlay on hover */}
+                      {profileimage && (
+                        <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-white text-xs opacity-0 group-hover:opacity-100 transition">
+                          Change
+                        </div>
+                      )}
+
+                      {/* Hidden File Input */}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        className="hidden"
+                      />
+                    </label>
+
+                    <p className="text-xs text-zinc-400 mt-2">
+                      Profile Picture
+                    </p>
                   </div>
 
                   <input

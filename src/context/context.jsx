@@ -74,7 +74,6 @@ export const Provider = ({ children }) => {
   function funczoomout() {
     setzoomin((prev) => prev - 2);
   }
-  console.log(profileimage);
   
 
   // save new file in Firestore

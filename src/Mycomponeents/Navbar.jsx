@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { FaCaretDown, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { Context } from "../context/context";
 import { Link } from "react-router-dom";
+import profileIcon from "../assets/images/images (8).jpg";
 
 const TopNavbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -23,7 +24,7 @@ setswitchcompiler
           className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-              alt=""
+              alt=""  
               className="h-3 w-3"
             />
             <span className="text-sm">Javascript</span>
@@ -62,7 +63,7 @@ setswitchcompiler
             <div className="w-8 h-8 rounded-full overflow-hidden">
               <img
                 className="w-full h-full object-cover"
-                src={profiledata?.profileIMG || "/default-avatar.png"}
+                src={profiledata?.profileIMG ? profiledata?.profileIMG :profileIcon}
                 alt="Profile"
               />
             </div>

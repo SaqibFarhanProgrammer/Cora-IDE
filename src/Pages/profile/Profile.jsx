@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/context";
-import icon6 from "../../assets/icons/profileicons (7).jpeg";
-
+  
 const Profile = () => {
   const { profiledata, signout } = useContext(Context);
 

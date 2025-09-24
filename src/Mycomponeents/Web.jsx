@@ -78,7 +78,7 @@ export default function CodePenWithMonaco() {
       </div>
 
       {/* Live Preview */}
-      <div className="border preview  resize overflow-hidden w-full h-[120vh] min-h-[200px] rounded bg-white">
+      <div className=" border  border-[#494949] preview  resize overflow-hidden w-full h-[120vh] min-h-[200px] rounded bg-white">
         <iframe
           srcDoc={srcDoc}
           sandbox="allow-scripts"

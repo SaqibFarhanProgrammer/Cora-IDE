@@ -14,6 +14,7 @@ body {
 .preview {
   background: transparent;
   scrollbar-width: none; /* Firefox */
+  filter: drop-shadow(0px 0px 4pro0px rgb(0, 0, 0));
 }
 
 .preview::-webkit-scrollbar {
@@ -80,6 +81,10 @@ body {
   );
 }
 
+.loginform{
+  mask-image: linear-gradient(black,white);
+}
+
 .bt {
   transition: 1s ease;
 }
@@ -87,3 +92,5 @@ body {
 .loginbtn:hover {
   background-image: linear-gradient(rgb(29, 29, 29), rgb(25, 25, 25));
 }
+
+
