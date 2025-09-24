@@ -11,6 +11,14 @@ body {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
+.preview {
+  background: transparent;
+  scrollbar-width: none; /* Firefox */
+}
+
+.preview::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
 
 .dropdown::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */

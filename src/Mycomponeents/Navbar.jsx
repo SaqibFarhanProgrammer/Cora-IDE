@@ -5,16 +5,52 @@ import { Link } from "react-router-dom";
 
 const TopNavbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { profiledata } = useContext(Context);
+  const { profiledata ,
+setswitchcompiler
+
+   } = useContext(Context);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
-    <div className="w-full h-16 text-[#FAFAFA] bg-[#0a0b0d] flex items-center justify-between px-6 border-b border-[#27272A]">
+    <div className="w-full h-16 text-[#FAFAFA] bg-[#0a0b0d] pl-15 flex items-center justify-between px-6 border-b border-[#27272A]">
       {/* Left side: placeholder for logo or nav items */}
-      <div className="flex items-center gap-6"></div>
+        <div className=" options  flex gap-2">
+          <div
+          onClick={()=>setswitchcompiler(true)}
+          className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              alt=""
+              className="h-3 w-3"
+            />
+            <span className="text-sm">Javascript</span>
+          </div>
+          <div
+          onClick={()=>setswitchcompiler(false)}
+          
+          className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+              alt=""
+              className="h-3 w-3"
+            />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+              alt=""
+              className="h-3 w-3"
+            />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              alt=""
+              className="h-3 w-3"
+            />
+            <span className="text-sm">Web</span>
+          </div>
+        </div>
+      <div className="flex justify-center items-center gap-6"></div>
 
       {/* Right side */}
       <div className="flex items-center gap-4">

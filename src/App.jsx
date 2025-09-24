@@ -16,7 +16,7 @@ const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex bg-black h-screen w-screen relative overflow-hidden">
+    <div className="flex bg-black h-screen w-screen relative ">
       {/* Sidebar Toggle Button */}
       <button
         onClick={() => setSidebarOpen((prev) => !prev)}

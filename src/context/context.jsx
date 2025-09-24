@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { tr } from "motion/react-client";
 
 export const Context = createContext();
 
@@ -26,6 +27,7 @@ export const Provider = ({ children }) => {
   const [copied, setcopied] = useState(false);
   const [Newfileisopen, setNewfileisopen] = useState(false);
   const [searchfilter, setsearchfilter] = useState("");
+  const [switchcompiler, setswitchcompiler] = useState(true)
 
   // auth states
   const [isloginscreenopen, setisloginscreenopen] = useState(false);
@@ -297,6 +299,8 @@ export const Provider = ({ children }) => {
     setfiles,
     searchfilter,
     setsearchfilter,
+    switchcompiler,
+    setswitchcompiler
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

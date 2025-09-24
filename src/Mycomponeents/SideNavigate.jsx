@@ -9,7 +9,7 @@ import { Context } from "../context/context";
 const SideNavigate = ({ isOpen, setIsOpen }) => {
   return (
     <div
-      className={`fixed top-0 left-0 h-screen bg-[#080808] text-white border-d4d4d4order-zinc-800 transition-transform duration-300 z-30
+      className={`fixed top-0 left-0 h-screen backdrop-blur-[10px] text-white border-d4d4d4order-zinc-800 transition-transform duration-300 z-30
       ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       } w-[60vw] sm:w-[40vw] md:w-[20vw] lg:w-[15vw]`}
