@@ -95,26 +95,37 @@ const Newfile = () => {
           </form>
         </Card>
       ) : (
-        // ❌ Agar login screen open nahi hai → Login message & button
-        <Card className="w-[30vw] bg-[#0A0A0A] border border-zinc-800 shadow-lg p-6 text-center">
-          <CardHeader>
-            <CardTitle className="text-white text-2xl font-bold">
+        <Card className="w-[28vw] bg-black border border-zinc-800 shadow-2xl rounded-2xl p-6 relative">
+          {/* Close Button */}
+          <IoMdClose
+            onClick={() => setNewfileisopen(false)}
+            className="absolute top-4 right-4 text-zinc-400 hover:text-white text-xl cursor-pointer transition-colors"
+          />
+
+          {/* Header */}
+          <CardHeader className="space-y-2 text-center">
+            <CardTitle className="text-white text-2xl font-semibold">
               Login Required
             </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-zinc-400 mb-6">
-              You must be logged in to create a new file.
+            <p className="text-zinc-400 text-sm">
+              Please log in to continue creating a new file.
             </p>
+          </CardHeader>
+
+          {/* Content */}
+          <CardContent className="mt-6 flex flex-col items-center gap-4">
             <Link
-            onClick={() => setNewfileisopen(false)}
-            to="/profile"
-              className="bg-white hover:bg-zinc-600 text-white px-6 py-2 rounded-lg shadow-md transition-all"
-       
+              onClick={() => setNewfileisopen(false)}
+              to="/profile"
+              className="group relative w-full text-center bg-white text-black 
+                 font-medium px-6 py-3 rounded-xl shadow-md
+                 transition-all hover:bg-[#cdcdcd] duration-300 h hover:text-[#000000]"
             >
-              Login Now
+              <span className="relative z-10 group-hover:tracking-wider transition-all duration-300">
+                Login Now
+              </span>
             </Link>
-          </CardContent>  
+          </CardContent>
         </Card>
       )}
     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Editor from "@monaco-editor/react";
-import { htmlcode , csscode } from "./semplecode";
+import { htmlcode, csscode } from "./semplecode";
 
 export default function CodePenWithMonaco() {
   const [html, setHtml] = useState(htmlcode);
@@ -47,6 +47,38 @@ export default function CodePenWithMonaco() {
   return (
     <div className="flex flex-col w-full  p-2 h-[145vh] b text-white">
       {/* Editors row */}
+      <div className="flex mb-2 gap-2 justify-between px-10 w-full  webtopheader">
+        <div className="html">
+          <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+              alt=""
+              className="h-3 w-3"
+            />
+            <span className="text-sm">HTML</span>
+          </div>{" "}
+        </div>
+        <div className="css">
+          <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+              alt=""
+              className="h-3 w-3"
+            />
+            <span className="text-sm">CSS</span>
+          </div>{" "}
+        </div>
+        <div className="js">
+          <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              alt=""
+              className="h-3 w-3"
+            />
+            <span className="text-sm">JAVASCRIPT</span>
+          </div>{" "}
+        </div>
+      </div>
       <div className="w-full h-[65vh] flex ">
         <Editor
           height="100%"
