@@ -112,4 +112,4 @@ You’re free to use, modify, and distribute with attribution.
 
 ### 💡 Author
 
-Developed by **Shahzaib Khan** ✨
+Developed by **Saqib Farhan** ✨
