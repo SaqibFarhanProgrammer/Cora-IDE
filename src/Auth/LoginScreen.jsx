@@ -25,12 +25,16 @@ export default function Loginscreen() {
     setprofileimage,
     setPassword,
     profileimage,
+    signinerrormessage,
   } = useContext(Context);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignup) {
-      RegisterUser(email, password);
+      const somthing = RegisterUser(email, password);
+      if (somthing) {
+        console.log(somthing);
+      }
     } else {
       signUser(email, password);
     }
@@ -47,8 +51,25 @@ export default function Loginscreen() {
     reader.readAsDataURL(file);
   };
 
+   function Copy() {
+    navigator.clipboard.writeText(compiledCode);
+    setcopied(true);
+    setCopiednotificatio(true);
+    setTimeout(() => {
+      setcopied(false);
+      setCopiednotificatio(false);
+    }, 2000);
+  }
+
   return (
     <div className="h-[77%] mt-10 mx-auto w-[70vw] flex items-center justify-center px-3">
+        <div
+              className={`copied-notigication left-[45%] ${
+                Copiednotificatio ? "top-[2%]" : "top-[-10%]"
+              } flex items-center fixed py-2 px-7 gap-2 bg-zinc-800 z-10 justify-between rounded-md transition-all duration-300`}
+            >
+              Copied <IoCheckmarkDoneCircle />
+            </div>
       <div className="w-full bg-zinc-950 rounded-xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 border border-zinc-800">
         <div className="loginform hidden relative md:flex items-center justify-center ">
           {/* Background Image */}
@@ -58,7 +79,6 @@ export default function Loginscreen() {
             className="w-full h-full object-cover absolute loginform"
           />
 
-          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 flex flex-col items-center justify-center p-8 text-center">
             <h2 className="text-3xl font-bold text-white drop-shadow-lg">
               {isSignup ? "Welcome to Our App" : "Welcome Back"}
@@ -169,6 +189,11 @@ export default function Loginscreen() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-3 py-2 bg-zinc-900 rounded-md text-sm outline-none border border-zinc-700"
               />
+              {
+                signinerrormessage ? 
+                <p className="text-[.8vw] text-center">{signinerrormessage}</p>
+                : null
+              }
               <input
                 type="password"
                 placeholder="Password"

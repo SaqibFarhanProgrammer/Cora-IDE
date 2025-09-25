@@ -34,6 +34,7 @@ export const Provider = ({ children }) => {
   const [profiledata, setprofiledata] = useState(null);
   const [filename, setfilename] = useState("Untiteled");
   const [files, setfiles] = useState([]);
+  const [signinerrormessage, setsigninerrormessage] = useState("")
 
   // user profile states
   const [profileimage, setprofileimage] = useState("");
@@ -142,7 +143,7 @@ export const Provider = ({ children }) => {
   async function RegisterUser(Email, Password) {
     try {
       const user = await createUserWithEmailAndPassword(auth, Email, Password);
-
+                
       if (user) {
         setisloginscreenopen(false);
         await setDoc(doc(db, "users", user.user.uid), {
@@ -165,9 +166,20 @@ export const Provider = ({ children }) => {
       }
       return user;
     } catch (error) {
-      console.log(error);
+      if (error.message === "Firebase: Error (auth/email-already-in-use).") {
+        setsigninerrormessage("Email already in use. Please use a different email.");
+      }
+      if (error.message === "Firebase: Password should be at least 6 characters (auth/weak-password).") {
+        setsigninerrormessage("Password should be at least 6 characters.");
+      }
+      if (error.message === "Firebase: Error (auth/invalid-email).") {  
+        setsigninerrormessage("Invalid email format. Please enter a valid email.");
+      }
+      return null;
     }
   }
+
+  
 
   // sign in
   async function signUser(email, password) {
@@ -299,7 +311,9 @@ export const Provider = ({ children }) => {
     searchfilter,
     setsearchfilter,
     switchcompiler,
-    setswitchcompiler
+    setswitchcompiler,
+    signinerrormessage,
+    setsigninerrormessage,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
