@@ -33,7 +33,7 @@ const Mainprofile = () => {
         <Loginscreen />
       )}
       {!isloginscreenopen ? (
-        <div className="file bg-blue-950 mx-auto p-2">
+        <div className="file  mx-auto p-2">
           {FileList ? (
             <div
               className="codes mx-auto   w-[88vw] px-4 pb-6 
