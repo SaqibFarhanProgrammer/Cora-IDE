@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Project Title
+=======
+# 🚀 Cora IDE 
+>>>>>>> d1258786e951d19410be45e119db8a384e837e86
 
 A professional project designed with clean formatting and modern structure.  
 This project demonstrates best practices in development and documentation.
