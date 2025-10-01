@@ -1,4 +1,4 @@
-# 🚀 Cora IDE (Koda Code Editor)
+# 🚀 Cora IDE 
 
 A modern **web-based code editor** built with **React + Vite**, designed for simplicity, flexibility, and performance.
 Cora IDE provides developers with a clean interface, authentication, and a powerful editor experience using **Monaco Editor**.
