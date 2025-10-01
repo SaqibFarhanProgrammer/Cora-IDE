@@ -17,12 +17,12 @@ const Mainprofile = () => {
   return (
     <div
       className={`p-1   w-[100%] my-auto bg-[#0a0b0d] m-0 flex flex-col pt-16 justify-between  items-start ${
-        !isloginscreenopen ? "h-[100vh]" : "h-[90vh]"
+        !isloginscreenopen ? "h-[110vh]" : "h-[90vh]"
       }`}
     >
       {!isloginscreenopen ? (
         <>
-          <div className="profile  mt-[-9vh]  w-[100%] h-[60vh] overflow-hidden ">
+          <div className="profile  mt-[-9vh]  w-[100%] h-[70vh] overflow-hidden ">
             <Profile />
           </div>
           <div className="search mx-auto">
@@ -33,7 +33,7 @@ const Mainprofile = () => {
         <Loginscreen />
       )}
       {!isloginscreenopen ? (
-        <div className="files">
+        <div className="file bg-blue-950 mx-auto p-2">
           {FileList ? (
             <div
               className="codes mx-auto   w-[88vw] px-4 pb-6 

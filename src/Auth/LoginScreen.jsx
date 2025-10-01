@@ -26,6 +26,7 @@ export default function Loginscreen() {
     setPassword,
     profileimage,
     signinerrormessage,
+    Copiednotification,
   } = useContext(Context);
 
   const handleSubmit = (e) => {
@@ -51,25 +52,8 @@ export default function Loginscreen() {
     reader.readAsDataURL(file);
   };
 
-   function Copy() {
-    navigator.clipboard.writeText(compiledCode);
-    setcopied(true);
-    setCopiednotificatio(true);
-    setTimeout(() => {
-      setcopied(false);
-      setCopiednotificatio(false);
-    }, 2000);
-  }
-
   return (
-    <div className="h-[77%] mt-10 mx-auto w-[70vw] flex items-center justify-center px-3">
-        <div
-              className={`copied-notigication left-[45%] ${
-                Copiednotificatio ? "top-[2%]" : "top-[-10%]"
-              } flex items-center fixed py-2 px-7 gap-2 bg-zinc-800 z-10 justify-between rounded-md transition-all duration-300`}
-            >
-              Copied <IoCheckmarkDoneCircle />
-            </div>
+    <div className="h-[77%] mt-10 mx-auto  w-[70vw] flex items-center justify-center px-3">
       <div className="w-full bg-zinc-950 rounded-xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 border border-zinc-800">
         <div className="loginform hidden relative md:flex items-center justify-center ">
           {/* Background Image */}
@@ -169,6 +153,7 @@ export default function Loginscreen() {
                     type="text"
                     placeholder="Description"
                     value={description}
+                    maxLength={200}
                     onChange={(e) => setDescription(e.target.value)}
                     className="w-full px-3 py-2 bg-zinc-900 rounded-md text-sm outline-none border border-zinc-700"
                   />
@@ -189,11 +174,9 @@ export default function Loginscreen() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-3 py-2 bg-zinc-900 rounded-md text-sm outline-none border border-zinc-700"
               />
-              {
-                signinerrormessage ? 
+              {signinerrormessage ? (
                 <p className="text-[.8vw] text-center">{signinerrormessage}</p>
-                : null
-              }
+              ) : null}
               <input
                 type="password"
                 placeholder="Password"

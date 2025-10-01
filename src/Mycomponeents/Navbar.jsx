@@ -18,7 +18,7 @@ const TopNavbar = () => {
       <div className=" options  flex gap-2">
         <div
           onClick={() => setswitchcompiler(true)}
-          className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md"
+          className="flex items-center cursor-pointer gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md"
         >
           <img
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
@@ -29,7 +29,7 @@ const TopNavbar = () => {
         </div>
         <div
           onClick={() => setswitchcompiler(false)}
-          className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md"
+          className="flex items-center cursor-pointer gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md"
         >
           <img
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
@@ -48,11 +48,16 @@ const TopNavbar = () => {
           />
           <span className="text-sm">Web</span>
         </div>
+        <Link
+        className="flex items-center cursor-pointer gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md"
+        to="/">
+        back To Code 
+        </Link>
       </div>
       <div className="flex justify-center items-center gap-6"></div>
 
       {/* Right side */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 ">
         <div className="relative">
           <button
             onClick={toggleDropdown}
@@ -77,7 +82,7 @@ const TopNavbar = () => {
           </button>
 
           {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-zinc-900 rounded-md shadow-lg py-1 z-10">
+            <div className="absolute dropdown-expand  right-0 mt-2 w-48 rounded-md shadow-lg py-1 z-10">
               <Link
                 to="/profile"
                 className="flex items-center gap-2 px-4 py-2 text-zinc-300 hover:bg-zinc-800"

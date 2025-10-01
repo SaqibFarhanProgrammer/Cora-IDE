@@ -1,36 +1,35 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/context";
-  
+
 const Profile = () => {
   const { profiledata, signout } = useContext(Context);
 
   return (
-    <div className="w-full h-[100%] flex flex-col justify-center items-center mx-auto text-white rounded-lg overflow-hidden">
+    <div className="w-full h-[100%]  flex flex-col justify-center items-center mx-auto text-white rounded-lg overflow-hidden">
       {/* Cover */}
-      <div
-        className="h-56 w-full bg-cover bg-center relative"
-        style={{
-          backgroundImage:
-            "url(https://i.pinimg.com/736x/7b/51/55/7b5155f9cbe20b84f0f4236cce3d78b4.jpg)",
-        }}
-      ></div>
-
+    
       {/* Profile Info */}
-      <div className="relative px-6 pb-6 flex flex-col justify-center items-center">
+      <div className="relative px-8  flex   h-[100%] mt-[] flex-col justify-center items-center rounded-xl shadow-xl  w-[100%] ">
         <img
           src={profiledata?.profileIMG}
           alt="User Avatar"
-          className="w-24 h-24 rounded-lg border-4 border-[#0d0d0f] shadow-md object-cover mt-[-2vw]"
+          className="w-28 h-28 rounded-xl border-4 border-[#0d0d0f] shadow-lg object-cover"
         />
-        <h2 className="text-2xl font-bold mt-3">{profiledata?.name}</h2>
-        <p className="text-zinc-400">{profiledata?.email}</p>
-        <p className="text-sm text-zinc-300 mt-2">{profiledata?.description}</p>
-        <p className="text-sm text-zinc-500">{profiledata?.tagline}</p>
+        <h2 className="text-2xl font-bold mt-4">{profiledata?.name}</h2>
+        <div className="flex flex-col b items-center w-[50%] mt-2">
+          <p className="text-zinc-400">{profiledata?.email}</p>
+          <p className="text-sm text-zinc-300 text-center mt-3 px-3">
+            {profiledata?.description}
+          </p>
+          <p className="text-sm text-zinc-500 italic mt-2">
+            {profiledata?.tagline}
+          </p>
+        </div>
 
         {/* Logout */}
         <button
           onClick={signout}
-          className="mt-6 flex bg-[#291D21] items-center gap-2 px-4 py-2 text-red-300 hover:text-[#e4767b]"
+          className="mt-6 flex items-center gap-2 px-6 py-2 rounded-lg bg-[#291D21] text-red-300 hover:text-[#e4767b] hover:bg-[#35262a] transition-all duration-300 shadow-md"
         >
           Logout
         </button>

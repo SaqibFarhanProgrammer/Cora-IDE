@@ -23,7 +23,7 @@ export const Provider = ({ children }) => {
   // editor states
   const [compiledCode, setcompiledCode] = useState("");
   const [output, setoutput] = useState([]);
-  const [Copiednotificatio, setCopiednotificatio] = useState(false);
+  const [Copiednotification, setCopiednotification] = useState(false);
   const [copied, setcopied] = useState(false);
   const [Newfileisopen, setNewfileisopen] = useState(false);
   const [searchfilter, setsearchfilter] = useState("");
@@ -132,10 +132,10 @@ export const Provider = ({ children }) => {
   function Copy() {
     navigator.clipboard.writeText(compiledCode);
     setcopied(true);
-    setCopiednotificatio(true);
+    setCopiednotification(true);
     setTimeout(() => {
       setcopied(false);
-      setCopiednotificatio(false);
+      setCopiednotification(false);
     }, 2000);
   }
 
@@ -277,8 +277,8 @@ export const Provider = ({ children }) => {
     Copy,
     copied,
     setcopied,
-    Copiednotificatio,
-    setCopiednotificatio,
+    Copiednotification,
+    setCopiednotification,
     Newfileisopen,
     setNewfileisopen,
     isloginscreenopen,

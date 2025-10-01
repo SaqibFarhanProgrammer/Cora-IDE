@@ -1,12 +1,13 @@
 import React from "react";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { Context } from "../../context/context";
+import { VscOpenPreview } from "react-icons/vsc";
 
 const CodefileCard = ({ title, code, key }) => {
   return (
     <div
       key={key}
-      className="bg-[#0d0d0f] p-5 border border-zinc-800 rounded-xl  
+      className="bg-[#0d0d0f] h-[10vh] p-5 border border-zinc-800 rounded-xl  
                  shadow-md hover:shadow-lg hover:border-zinc-600 
                  transition-all duration-200 w-full h-auto flex flex-col"
     >
@@ -17,7 +18,9 @@ const CodefileCard = ({ title, code, key }) => {
           <p className="text-xs text-zinc-400">File</p>
         </div>
         <div className="flex gap-3 text-zinc-400">
-          <button className="hover:text-green-400 transition"></button>
+          <button className="hover:text-green-400 transition">
+            <VscOpenPreview/>
+          </button>
           <button className="hover:text-red-500 transition">
             <FaTrash />
           </button>
@@ -25,7 +28,7 @@ const CodefileCard = ({ title, code, key }) => {
       </div>
 
       {/* Code Preview */}
-      <div className="bg-[#151516] codecard rounded-lg p-3 text-sm font-mono text-zinc-200">
+      <div className="bg-[#151516] h-[20vh] overflow-y-scroll codecard rounded-lg p-3 text-sm font-mono text-zinc-200">
         <pre className="whitespace-pre-wrap break-words">{code}</pre>
       </div>
     </div>

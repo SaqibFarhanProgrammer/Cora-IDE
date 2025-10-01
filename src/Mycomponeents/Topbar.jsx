@@ -12,7 +12,7 @@ const Topbar = () => {
     outputformconsole,
     Copy,
     copied,
-    Copiednotificatio,
+    Copiednotification,
     setNewfileisopen,
   } = useContext(Context);
 
@@ -21,8 +21,8 @@ const Topbar = () => {
   return (
     <div className="w-[55vw] text-white border-b bg-[#0a0b0d] border-[#27272A] shadow-sm px-4">
       <div
-        className={`copied-notigication left-[45%] ${
-          Copiednotificatio ? "top-[2%]" : "top-[-10%]"
+        className={`z-10 copied-notigication left-[45%] ${
+          Copiednotification ? "top-[2%]" : "top-[-10%]"
         } flex items-center fixed py-2 px-7 gap-2 bg-zinc-800 z-10 justify-between rounded-md transition-all duration-300`}
       >
         Copied <IoCheckmarkDoneCircle />
@@ -34,7 +34,6 @@ const Topbar = () => {
             <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
             <div className="w-3 h-3 bg-green-500 rounded-full"></div>
           </div>
-         
         </div>
         <div className="flex items-center gap-2">
           <button
