@@ -8,7 +8,7 @@ export default function CodePenWithMonaco() {
   const [html, setHtml] = useState(htmlcode);
   const [css, setCss] = useState(csscode);
   const [js, setJs] = useState(`function showAlert() {
-  alert("CORA IDE is your modern, web-based coding companion!");
+  alert("CORA IDE iss your modern, web-based coding companion!");
 }`);
   const [srcDoc, setSrcDoc] = useState("");
   const timeoutRef = useRef(null);
