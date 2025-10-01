@@ -11,12 +11,11 @@ const SearchBar = () => {
   function filter() {
     if (files) {
       const filterdfile = files.filter((file) => {
-        return searchfilter == file.title;
+        return (searchfilter === file.title);
       });
+      
 
       setfiles(filterdfile);
-
-      console.log(filterdfile);
     } else {
       console.log(files.title);
     }
@@ -29,7 +28,6 @@ const SearchBar = () => {
         <Input
           onChange={(e) => {
             setsearchfilter(e.target.value);
-            filter();
           }}
           value={searchfilter}
           id="search-input"
@@ -38,7 +36,12 @@ const SearchBar = () => {
           className="pl-9 pr-10 bg-[#151516] border border-zinc-700 text-white placeholder:text-zinc-500"
         />
       </div>
-      <Button className="bg-white  hover:bg-zinc-300 text-black px-6">
+      <Button
+        onClick={() => {
+          filter()
+        }}
+        className="bg-white  hover:bg-zinc-300 text-black px-6"
+      >
         Search
       </Button>
     </div>

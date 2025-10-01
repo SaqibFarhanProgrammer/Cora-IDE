@@ -40,9 +40,8 @@ const Code = () => {
   }, [monaco]);
 
   return (
-    <div className="w-[100%] h-[100%] flex flex-col ">
+    <div className="w-[100%] h-[100%] flex flex-col">
       <Topbar />
-
       <Editor
         onChange={(value) => setcompiledCode(value)}
         language="javascript"
@@ -52,7 +51,7 @@ const Code = () => {
         className="pt-[2px] mt-1"
         options={{
           fontSize: zoomin,
-          minimap: { enabled: false }, // optional: minimap off
+          minimap: { enabled: false }, // Minimap disabled for cleaner UI
         }}
       />
     </div>

@@ -12,33 +12,32 @@ import { HiMenuAlt4 } from "react-icons/hi";
 import "./Media.css";
 
 const App = () => {
-  const { Newfileisopen, } = useContext(Context);
+  const { Newfileisopen } = useContext(Context);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex bg-black h-screen w-screen relative ">
+    <div className="flex bg-black h-screen w-screen relative">
       {/* Sidebar Toggle Button */}
       <button
         onClick={() => setSidebarOpen((prev) => !prev)}
-        className="fixed z-50 text-2xl top-3 left-3  rounded-full p-2 text-white"
+        className="fixed z-50 text-2xl top-3 left-3 rounded-full p-2 text-white"
       >
         <HiMenuAlt4 />
       </button>
 
-      {/* Sidebar */}
+      {/* Lazy Loaded Sidebar */}
       <Suspense fallback={<p>Loading Sidebar...</p>}>
         <SideNavigate isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
       </Suspense>
 
-      {/* Right section */}
       <div className="flex-1 flex flex-col w-full h-full">
-        {/* Top Navbar */}
+        {/* Lazy Loaded Navbar */}
         <Suspense fallback={<p>Loading Navbar...</p>}>
           <TopNavbar />
         </Suspense>
 
-        {/* Routes */}
         <div className="flex-1 overflow-y-auto">
+          {/* Lazy Loaded Routes */}
           <Suspense fallback={<p>Loading Page...</p>}>
             <Routes>
               <Route path="/" element={<Main />} />
@@ -49,11 +48,7 @@ const App = () => {
         </div>
       </div>
 
-      {/* New File Modal */}
-      
-      {
-      
-      Newfileisopen && <Newfile />}
+      {Newfileisopen && <Newfile />}
     </div>
   );
 };

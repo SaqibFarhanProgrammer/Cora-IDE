@@ -12,10 +12,10 @@ const SideNavigate = ({ isOpen, setIsOpen }) => {
       ${isOpen ? "translate-x-0" : "-translate-x-full"} 
       w-[60vw] sm:w-[40vw] md:w-[20vw] lg:w-[15vw]`}
     >
-      {/* Profile Section */}
+      {/* User Profile */}
       <SidebarProfie />
 
-      {/* Nav Links */}
+      {/* Navigation Links */}
       <div className="p-3 overflow-y-auto flex flex-col gap-1 mix-blend-difference">
         <Link
           to="/"
@@ -36,7 +36,7 @@ const SideNavigate = ({ isOpen, setIsOpen }) => {
         </Link>
       </div>
 
-      {/* Bottom Section */}
+      {/* Settings & Logout */}
       <div className="p-3 border-t border-zinc-800 absolute bottom-0 w-full">
         <Link
           to="/settings"

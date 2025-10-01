@@ -10,6 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { tr } from "motion/react-client";
+import profileIcon from "..//assets/images/images (8).jpg";
 
 export const Context = createContext();
 
@@ -27,14 +28,14 @@ export const Provider = ({ children }) => {
   const [copied, setcopied] = useState(false);
   const [Newfileisopen, setNewfileisopen] = useState(false);
   const [searchfilter, setsearchfilter] = useState("");
-  const [switchcompiler, setswitchcompiler] = useState(true)
+  const [switchcompiler, setswitchcompiler] = useState(true);
 
   // auth states
   const [isloginscreenopen, setisloginscreenopen] = useState(false);
   const [profiledata, setprofiledata] = useState(null);
   const [filename, setfilename] = useState("Untiteled");
   const [files, setfiles] = useState([]);
-  const [signinerrormessage, setsigninerrormessage] = useState("")
+  const [signinerrormessage, setsigninerrormessage] = useState("");
 
   // user profile states
   const [profileimage, setprofileimage] = useState("");
@@ -75,7 +76,6 @@ export const Provider = ({ children }) => {
   function funczoomout() {
     setzoomin((prev) => prev - 2);
   }
-  
 
   // save new file in Firestore
   async function putdatainnewfiledata() {
@@ -83,6 +83,7 @@ export const Provider = ({ children }) => {
     if (profiledata) {
       const userui = profiledata.uid;
       const newfile = {
+        id: Date.now(),
         code: compiledCode || "No Code Here.....",
         extension: "js",
         title: filename,
@@ -143,12 +144,12 @@ export const Provider = ({ children }) => {
   async function RegisterUser(Email, Password) {
     try {
       const user = await createUserWithEmailAndPassword(auth, Email, Password);
-                
+
       if (user) {
         setisloginscreenopen(false);
         await setDoc(doc(db, "users", user.user.uid), {
           uid: user.user.uid,
-          profileIMG: profileimage ,
+          profileIMG: profileimage || randomImage || profileIcon,
           name,
           email: Email,
           password: Password,
@@ -167,19 +168,24 @@ export const Provider = ({ children }) => {
       return user;
     } catch (error) {
       if (error.message === "Firebase: Error (auth/email-already-in-use).") {
-        setsigninerrormessage("Email already in use. Please use a different email.");
+        setsigninerrormessage(
+          "Email already in use. Please use a different email."
+        );
       }
-      if (error.message === "Firebase: Password should be at least 6 characters (auth/weak-password).") {
+      if (
+        error.message ===
+        "Firebase: Password should be at least 6 characters (auth/weak-password)."
+      ) {
         setsigninerrormessage("Password should be at least 6 characters.");
       }
-      if (error.message === "Firebase: Error (auth/invalid-email).") {  
-        setsigninerrormessage("Invalid email format. Please enter a valid email.");
+      if (error.message === "Firebase: Error (auth/invalid-email).") {
+        setsigninerrormessage(
+          "Invalid email format. Please enter a valid email."
+        );
       }
       return null;
     }
   }
-
-  
 
   // sign in
   async function signUser(email, password) {
