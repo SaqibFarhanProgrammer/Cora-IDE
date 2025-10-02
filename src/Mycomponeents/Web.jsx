@@ -50,6 +50,7 @@ export default function CodePenWithMonaco() {
         <div className="html">
           <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md">
             <img
+            loading="lazy"
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
               alt=""
               className="h-3 w-3"
