@@ -57,7 +57,7 @@ const Topbar = () => {
           </button>
           <button
             onClick={() => setNewfileisopen(true)}
-            className="btn btn-xs topbarbtns bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white gap-2"
+            className="btn btn-xs py-2.4 topbarbtns bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white gap-2"
           >
             <FaSave size={14} /> Save
           </button>

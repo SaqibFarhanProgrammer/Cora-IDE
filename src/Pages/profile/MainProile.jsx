@@ -44,9 +44,7 @@ const Mainprofile = () => {
               gap-6 overflow-y-auto"
               style={{ maxHeight: "calc(100vh - 150px)" }}
             >
-              {fileslist.map((data, index) => (
-                <CodefileCard key={index} data={data} />
-              ))}
+              <CodefileCard />
             </div>
           ) : (
             <div className="div w-[95vw] mx-auto">
