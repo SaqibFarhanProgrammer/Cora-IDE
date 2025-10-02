@@ -17,13 +17,12 @@ const Mainprofile = () => {
   return (
     <div
       className={`p-1 w-[100%] my-auto bg-[#0a0b0d] m-0 flex flex-col pt-16 justify-between items-start ${
-        !isloginscreenopen ? "h-[110vh]" : "h-[90vh]"
+        !isloginscreenopen ? "h-auto" : "h-[90vh]"
       }`}
     >
-      {/* Profile + Search */}
       {!isloginscreenopen ? (
         <>
-          <div className="profile mt-[-9vh] w-[100%] h-[70vh] overflow-hidden">
+          <div className="profile  w-[100%] h-[50vh] overflow-hidden">
             <Profile />
           </div>
           <div className="search mx-auto">
