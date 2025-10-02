@@ -4,11 +4,14 @@ import { VscOpenPreview } from "react-icons/vsc";
 import { Context } from "../../context/context";
 
 const CodefileCard = () => {
-  const { files } = useContext(Context);
+  const { files, filterdfiles } = useContext(Context);
+
+  // agar filteredFiles exist hai to usko use karo, warna files
+  const listToRender = filterdfiles && filterdfiles.length > 0 ? filterdfiles : files;
 
   return (
     <>
-      {files.map((data, i) => (
+      {listToRender?.map((data, i) => (
         <div
           key={i}
           className="bg-[#0d0d0f] p-5 border border-zinc-800 rounded-xl shadow-md hover:shadow-lg hover:border-zinc-600 transition-all duration-200 w-full h-auto flex flex-col"

@@ -36,7 +36,7 @@ export const Provider = ({ children }) => {
   const [filename, setfilename] = useState("Untiteled");
   const [files, setfiles] = useState([]);
   const [signinerrormessage, setsigninerrormessage] = useState("");
-
+  const [filterdfiles, setfilterdfiles] = useState([])
   // user profile states
   const [profileimage, setprofileimage] = useState("");
   const [name, setName] = useState("");
@@ -44,6 +44,7 @@ export const Provider = ({ children }) => {
   const [tagline, setTagline] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
 
   // images
   const images2 = [
@@ -320,6 +321,8 @@ export const Provider = ({ children }) => {
     setswitchcompiler,
     signinerrormessage,
     setsigninerrormessage,
+    filterdfiles,
+    setfilterdfiles
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

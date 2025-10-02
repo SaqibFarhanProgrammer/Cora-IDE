@@ -5,7 +5,7 @@ import { Search, X } from "lucide-react";
 import { Context } from "../../context/context";
 
 const SearchBar = () => {
-  const { searchfilter, setsearchfilter, files, setfiles } =
+  const { searchfilter, setsearchfilter, files, setfiles ,setfilterdfiles } =
     useContext(Context);
 
   function filter() {
@@ -15,7 +15,7 @@ const SearchBar = () => {
       });
       
 
-      setfiles(filterdfile);
+      setfilterdfiles(filterdfile);
     } else {
       console.log(files.title);
     }
