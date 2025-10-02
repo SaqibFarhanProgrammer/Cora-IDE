@@ -10,6 +10,7 @@ const TopNavbar = React.lazy(() => import("./Mycomponeents/Navbar"));
 const Mainprofile = React.lazy(() => import("./Pages/profile/MainProile"));
 import { HiMenuAlt4 } from "react-icons/hi";
 import "./Media.css";
+import Learn from "./Pages/Learn/Learn";
 
 const App = () => {
   const { Newfileisopen } = useContext(Context);
@@ -42,6 +43,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/profile" element={<Mainprofile />} />
+              <Route path="/documentation" element={<Learn />} />
               <Route path="/settings" element={<Settings />} />
             </Routes>
           </Suspense>
