@@ -1,516 +1,407 @@
-import React, { useState } from "react";
-
-// Complete React component for a professional black-background
-// JavaScript documentation page with white text. It covers theory + code examples.
+import React from "react";
 
 export default function LearnJSGuide() {
-    const [active, setActive] = useState("intro");
+  const Chapter = ({ title, children }) => (
+    <section className="prose prose-invert max-w-none mb-12">
+      <h2 className="text-2xl sm:text-3xl font-bold mt-6 mb-4">{title}</h2>
+      <div className="text-base sm:text-lg leading-relaxed space-y-4">
+        {children}
+      </div>
+    </section>
+  );
 
-    const chapters = [
-        { id: "intro", title: "Introduction & Setup" },
-        { id: "basics", title: "Basics: Variables & Types" },
-        { id: "operators", title: "Operators" },
-        { id: "control", title: "Control Flow" },
-        { id: "functions", title: "Functions" },
-        { id: "scope", title: "Scope & Closures" },
-        { id: "objects", title: 'Objects, Arrays & "this"' },
-        { id: "classes", title: "Classes & OOP" },
-        { id: "dom", title: "DOM & Events" },
-        { id: "async", title: "Asynchronous JS" },
-        { id: "es6", title: "ES6+ Modern Features" },
-        { id: "modules", title: "Modules & Tooling" },
-        { id: "tips", title: "Best Practices & Tips" },
-    ];
+  const CodeBlock = ({ children }) => (
+    <pre className="bg-zinc-900/90 p-4 rounded mt-3 overflow-x-auto text-xs sm:text-sm font-mono border border-zinc-800">
+      <code className="whitespace-pre-wrap text-zinc-300">{children}</code>
+    </pre>
+  );
 
-    // Custom Chapter component for consistent styling
-    const Chapter = ({ id, children, title }) => (
-        <section id={id} className="prose prose-invert max-w-none">
-            <h2 className="text-2xl font-bold mt-6 mb-2">{title}</h2>
-            <div className="text-base leading-relaxed space-y-4">{children}</div>
-        </section>
-    );
+  return (
+    <div className="min-h-screen bg-black text-white p-4 sm:p-8">
+      <div className="max-w-5xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-center mb-10">
+          Complete JavaScript Guide
+        </h1>
 
-    // Styling for code blocks (Yellow text on dark background for highlighting)
-    const CodeBlock = ({ children }) => (
-        <pre className="bg-zinc-900/90 p-3 rounded mt-2 overflow-x-auto text-sm font-mono border border-zinc-800">
-            <code className="whitespace-pre-wrap text-zinc-300">{children}</code>
-        </pre>
-    );
-
-    return (
-        <div className="min-h-screen bg-black text-white p-6">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
-                {/* Sidebar Navigation */}
-                <aside className="md:col-span-1 sticky top-6 self-start">
-                    <div className="bg-[#0b0b0b] border border-gray-800 rounded-2xl p-4 shadow-lg">
-                        <h1 className="text-2xl font-extrabold text-zinc-300">
-                            Learn Javascript
-                        </h1>
-                        <p className="text-xs mt-1 text-gray-400">
-                            Complete theory & practical guide (Black Theme)
-                        </p>
-                        <nav className="mt-4 space-y-2">
-                            {chapters.map((c) => (
-                                <button
-                                    key={c.id}
-                                    onClick={() => setActive(c.id)}
-                                    className={`w-full text-left px-3 py-2 rounded-lg text-sm transition 
-                    ${active === c.id
-                                            ? "bg-teal-700/30 text-zinc-300 ring-1 ring-zinc-500/50 font-semibold"
-                                            : "text-gray-200 hover:bg-white/5"
-                                        }`}
-                                >   
-                                    {c.title}
-                                </button>
-                            ))}
-                        </nav>
-                    </div>
-                </aside>
-
-                {/* Content Area */}
-                <main className="md:col-span-3">
-                    <div className="bg-[#050505] border border-gray-900 rounded-2xl p-6 shadow-2xl">
-                        {/* 1. Introduction & Setup */}
-                        {active === "intro" && (
-                            <Chapter id="intro" title="Introduction & Setup">
-                                <p>
-                                    JavaScript is the most widely used programming language for
-                                    the web, adding interactivity, logic, and dynamic features to
-                                    static HTML and CSS. It powers everything from simple button
-                                    clicks to complex server-side applications (via Node.js).
-                                </p>
-                                <p>
-                                    Evolved significantly since 1995, modern JS supports features
-                                    like ES6 modules and `async/await`, establishing itself as a
-                                    professional and versatile language.
-                                </p>
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Environment Setup
-                                </h3>
-                                <p>
-                                    Run JS either in the browser (via <code>&lt;script&gt;</code>{" "}
-                                    tags) or on the server (via Node.js). Modern web apps use the
-                                    `type="module"` attribute for modularity.
-                                </p>
-                                <CodeBlock>{`<!doctype html>
+        {/* Chapter 1 */}
+        <Chapter title="Introduction & Setup">
+          <p>
+            JavaScript is the <strong>programming language of the web</strong>.
+            It allows us to make static HTML & CSS pages interactive. Without
+            JS, websites would be like digital posters — only text and images.
+            With JS, we can add logic, animations, games, and apps.
+          </p>
+          <p>
+            Every browser (Chrome, Firefox, Safari, Edge) has a built-in{" "}
+            <strong>JavaScript Engine</strong> (like Google’s V8). That’s why JS
+            runs directly in the browser without installation.
+          </p>
+          <CodeBlock>{`<!doctype html>
 <html>
+  <head>
+    <title>JS Example</title>
+  </head>
   <body>
-    <script src="app.js"></script>
-    <script type="module" src="main.js"></script>
+    <h1>Hello JavaScript</h1>
+    <script>
+      // This is JavaScript code inside HTML
+      console.log("Hello World");
+    </script>
   </body>
 </html>`}</CodeBlock>
-                            </Chapter>
-                        )}
+        </Chapter>
 
-                        {/* 2. Basics: Variables & Types */}
-                        {active === "basics" && (
-                            <Chapter id="basics" title="Basics: Variables & Types">
-                                <p>
-                                    Use **`const`** for values that are constant (preferred
-                                    default) and **`let`** for values that will be reassigned.
-                                    **Avoid `var`** due to its confusing scoping rules.
-                                </p>
-                                <p>
-                                    JS is dynamically typed. Main primitive types: **Number,
-                                    String, Boolean, Undefined, Null, Symbol**, and **BigInt**.
-                                </p>
-                                <CodeBlock>{`const name = 'Sara';        // String (Constant)
-let age = 30;             // Number (Mutable)
-let isActive = true;      // Boolean
-let position = null;      // Intentional absence of value
+        {/* Chapter 2 */}
+        <Chapter title="Variables & Data Types">
+          <p>
+            Variables are <strong>containers for storing values</strong>. In JS,
+            we use <code>var</code>, <code>let</code>, and <code>const</code>.
+          </p>
+          <ul className="list-disc pl-6">
+            <li>
+              <code>var</code> → Old, function-scoped (avoid using now)
+            </li>
+            <li>
+              <code>let</code> → Block-scoped, can be updated
+            </li>
+            <li>
+              <code>const</code> → Block-scoped, cannot be re-assigned
+            </li>
+          </ul>
+          <p>
+            Data Types in JS include: string, number, boolean, null, undefined,
+            object, array, function.
+          </p>
+          <CodeBlock>{`let name = "Shahzaib"; // string
+const age = 21;       // number
+var isActive = true;  // boolean
 
-age = 31; // OK: using 'let'
+let skills = ["JS", "HTML", "CSS"]; // array
+let user = { name: "Shahzaib", age: 21 }; // object
 
-// name = 'Max'; // ERROR: Cannot reassign 'const'`}</CodeBlock>
-                                <p>
-                                    <strong>Numbers</strong> handle both integers and floats. Use
-                                    **Template Literals** (backticks `` ` ``) for easy variable
-                                    embedding in strings.
-                                </p>
-                            </Chapter>
-                        )}
+console.log(name, age, isActive);
+console.log(skills[0]); // JS
+console.log(user.name); // Shahzaib`}</CodeBlock>
+        </Chapter>
 
-                        {/* 3. Operators */}
-                        {active === "operators" && (
-                            <Chapter id="operators" title="Operators">
-                                <p>
-                                    Operators perform actions on values. The most important rule
-                                    is the distinction in comparison operators.
-                                </p>
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Strict vs. Loose Equality
-                                </h3>
-                                <ul className="list-disc ml-5">
-                                    <li>
-                                        <code>==</code> (Loose): Checks only the value. It performs
-                                        **type coercion**, which can lead to bugs. **Avoid this.**
-                                    </li>
-                                    <li>
-                                        <code>===</code> (Strict): Checks both the **value AND the
-                                        type**. **Always prefer this for reliability.**
-                                    </li>
-                                </ul>
-                                <CodeBlock>{`// Comparison Operators
-console.log(10 == '10');  // true (10 is coerced to '10')
-console.log(10 === '10'); // false (Number vs. String)
-
-// Arithmetic and Logical Operators
-let x = 5 + 3;      // 8 (Addition)
-let remainder = 10 % 3; // 1 (Modulus/Remainder)
-let isTrue = (x > 5) && (remainder === 1); // true (AND)`}</CodeBlock>
-                            </Chapter>
-                        )}
-
-                        {/* 4. Control Flow */}
-                        {active === "control" && (
-                            <Chapter id="control" title="Control Flow">
-                                <p>
-                                    Control flow structures dictate the order of execution. This
-                                    is achieved using conditionals (`if/else`, `switch`) and loops
-                                    (`for`, `while`).
-                                </p>
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Conditional Logic
-                                </h3>
-                                <CodeBlock>{`let temperature = 25;
-
-if (temperature > 30) {
-    console.log("It's hot outside.");
-} else if (temperature > 20) {
-    console.log("It's pleasant.");
-} else {
-    console.log("It's cool.");
-}`}</CodeBlock>
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Repetition (Loops)
-                                </h3>
-                                <p>
-                                    A standard `for` loop is used when you know the number of
-                                    iterations beforehand.
-                                </p>
-                                <CodeBlock>{`// For Loop: i from 0 up to 4
-for (let i = 0; i < 5; i++) {
-    console.log("Counting: " + i);
-}`}</CodeBlock>
-                            </Chapter>
-                        )}
-
-                        {/* 5. Functions */}
-                        {active === "functions" && (
-                            <Chapter id="functions" title="Functions">
-                                <p>
-                                    Functions are the core units of reuse in JavaScript. They
-                                    package a specific task, take inputs (parameters), and return
-                                    outputs.
-                                </p>
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Arrow Functions (Modern Syntax)
-                                </h3>
-                                <p>
-                  Arrow functions (`=>`) provide a concise syntax, especially
-                                    for simple, one-line operations. They also have a unique way
-                                    of handling the `this` keyword.
-                                </p>
-                                <CodeBlock>{`// Traditional Function Declaration
-function calculateArea(width, height) {
-    return width * height;
+        {/* Chapter 3 */}
+        <Chapter title="Functions">
+          <p>
+            A <strong>function</strong> is a reusable block of code. It can take
+            input (parameters) and return an output. Functions help us avoid
+            repeating code.
+          </p>
+          <CodeBlock>{`// Normal Function
+function greet(name) {
+  return "Hello, " + name;
 }
 
-// Modern Arrow Function (Implicit return for one line)
-const multiply = (x, y) => x * y;
+// Arrow Function (short form)
+const greetArrow = (name) => "Hi, " + name;
 
-console.log(calculateArea(10, 5)); // 50
-console.log(multiply(2, 4));      // 8`}</CodeBlock>
-                            </Chapter>
-                        )}
+console.log(greet("Shahzaib")); // Hello, Shahzaib
+console.log(greetArrow("Maaz")); // Hi, Maaz`}</CodeBlock>
+        </Chapter>
 
-                        {/* 6. Scope & Closures */}
-                        {active === "scope" && (
-                            <Chapter id="scope" title="Scope & Closures (Crucial Theory)">
-                                <h3 className="font-semibold text-lg mt-4">Theory: Scope</h3>
-                                <p>
-                                    <strong>Scope</strong> governs variable visibility.
-                                    `let`/`const` are **Block Scoped** (confined to `{ }`), while
-                                    `var` is Function Scoped. Block scoping helps prevent naming
-                                    conflicts and accidental modification of variables.
-                                </p>
-                                <CodeBlock>{`function exampleScope() {
-    const functionVar = "I am local to the function"; 
-
-    if (true) {
-        let blockVar = "I am local to the block";
-        console.log(blockVar); // Accessible
-    }
-    // console.log(blockVar); // ERROR: blockVar is not defined here
-    console.log(functionVar); // Accessible
-}`}</CodeBlock>
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Theory: Closures 🔒
-                                </h3>
-                                <p>
-                                    A **closure** is when a function retains access to its parent
-                                    function's scope *even after* the parent function has finished
-                                    executing. This allows for data privacy and state management.
-                                </p>
-                                <CodeBlock>{`function createCounter() {
-    let count = 0; // This variable is 'closed over'
-
-    return function increment() {
-        count = count + 1; // The inner function remembers 'count'
-        return count;
-    };
+        {/* Chapter 4 */}
+        <Chapter title="Scope & Closures">
+          <p>
+            <strong>Scope</strong> defines where a variable can be accessed.
+            <ul className="list-disc pl-6">
+              <li>
+                <strong>Global Scope</strong> → Available everywhere
+              </li>
+              <li>
+                <strong>Function Scope</strong> → Available inside a function
+              </li>
+              <li>
+                <strong>Block Scope</strong> → Available only inside {`{}`}, if
+                declared with <code>let</code> or <code>const</code>
+              </li>
+            </ul>
+          </p>
+          <p>
+            A <strong>Closure</strong> happens when a function remembers
+            variables from its outer function, even after that function has
+            finished. Closures are used for data privacy and state management.
+          </p>
+          <CodeBlock>{`function outer() {
+  let count = 0; // private variable
+  function inner() {
+    count++;
+    return count;
+  }
+  return inner;
 }
 
-const counterA = createCounter();
-console.log(counterA()); // 1
-console.log(counterA()); // 2 (State is preserved)`}</CodeBlock>
-                            </Chapter>
-                        )}
+const counter = outer();
+console.log(counter()); // 1
+console.log(counter()); // 2
+// count is hidden, only accessible via inner()`}</CodeBlock>
+        </Chapter>
 
-                        {/* 7. Objects, Arrays & 'this' */}
-                        {active === "objects" && (
-                            <Chapter id="objects" title="Objects, Arrays & 'this'">
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Objects and Arrays (Data Structures)
-                                </h3>
-                                <p>
-                                    An **Object** groups related data (properties) and actions
-                                    (methods) using key-value pairs. An **Array** is an ordered
-                                    list of values accessed by index.
-                                </p>
-                                <CodeBlock>{`const player = {
-    x: 100,
-    health: 90,
-    color: 'white',
-    // Method
-    move: function() { this.x += 10; } 
+        {/* Chapter 5 */}
+        <Chapter title="Objects & This Keyword">
+          <p>
+            Objects are collections of <strong>key-value pairs</strong>. They
+            can also hold functions (called methods).
+          </p>
+          <p>
+            The <code>this</code> keyword refers to the context. Inside an
+            object method, <code>this</code> means the object itself.
+          </p>
+          <CodeBlock>{`const user = {
+  name: "Shahzaib",
+  greet: function () {
+    console.log("Hi, " + this.name);
+  },
 };
 
-const scores = [10, 20, 30]; // Array
+user.greet(); // Hi, Shahzaib`}</CodeBlock>
+        </Chapter>
 
-player.move();
-console.log(player.x); // 110 (Accessing a property)`}</CodeBlock>
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Theory: The `this` Keyword
-                                </h3>
-                                <p>
-                                    The value of **`this`** depends on *how* a function is called.
-                                    When a function is called as an object's method, `this` refers
-                                    to that object.
-                                </p>
-                                <CodeBlock>{`const game = {
-    lives: 3,
-    // Regular Method: 'this' refers to 'game'
-    getLivesMethod: function() {
-        return this.lives;
-    }
-};
-
-console.log(game.getLivesMethod()); // Output: 3 (Correctly uses 'game.lives')`}</CodeBlock>
-                            </Chapter>
-                        )}
-
-                        {/* 8. Classes & OOP */}
-                        {active === "classes" && (
-                            <Chapter
-                                id="classes"
-                                title="Classes & Object-Oriented Programming (OOP)"
-                            >
-                                <p>
-                                    The **`class`** syntax provides a clear, structure for
-                                    creating object blueprints, supporting **Encapsulation** and
-                                    **Inheritance**.
-                                </p>
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Classes and Inheritance
-                                </h3>
-                                <p>
-                                    Use the `extends` keyword to create a child class that
-                                    inherits properties and methods from a parent class. The
-                                    `super()` call is necessary to initialize the parent's
-                                    properties.
-                                </p>
-                                <CodeBlock>{`// Parent Class (Base Blueprint)
-class GameObject {
-    constructor(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-    }
+        {/* Chapter 6 */}
+        <Chapter title="Classes & OOP">
+          <p>
+            JavaScript is prototype-based, but ES6 introduced{" "}
+            <strong>classes</strong> to make OOP easier. A class is a blueprint
+            for objects.
+          </p>
+          <CodeBlock>{`class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  speak() {
+    console.log(this.name + " makes a sound.");
+  }
 }
 
-// Child Class using 'extends'
-class Player extends GameObject {
-    constructor(x, y, color, speed) {
-        super(x, y, color); // Initialize parent properties
-        this.speed = speed;
-    }
+class Dog extends Animal {
+  speak() {
+    console.log(this.name + " barks.");
+  }
 }
 
-const player1 = new Player(10, 20, 'yellow', 5);
-console.log(player1.color); // Output: 'yellow'`}</CodeBlock>
-                            </Chapter>
-                        )}
+const dog = new Dog("Rex");
+dog.speak(); // Rex barks.`}</CodeBlock>
+        </Chapter>
 
-                        {/* 9. DOM & Events */}
-                        {active === "dom" && (
-                            <Chapter id="dom" title="DOM & Events">
-                                <p>
-                                    The **Document Object Model (DOM)** is the API that allows
-                                    JavaScript to interact with, modify, and update the structure,
-                                    style, and content of a web page.
-                                </p>
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Selecting and Manipulating Elements
-                                </h3>
-                                <p>
-                                    We use selector methods like `querySelector` and
-                                    `getElementById` to find elements, then attach **event
-                                    listeners** to respond to user actions like clicks or key
-                                    presses.
-                                </p>
-                                <CodeBlock>{`const button = document.getElementById('myButton');
+        {/* Chapter 7 */}
+        <Chapter title="Asynchronous JavaScript">
+          <p>
+            JavaScript is <strong>single-threaded</strong>. To avoid blocking
+            the main thread, it uses asynchronous operations like callbacks,
+            promises, and async/await.
+          </p>
+          <CodeBlock>{`console.log("Start");
 
-// Attach an event listener
-button.addEventListener('click', () => {
-    console.log('Button clicked!');
-    button.textContent = 'I was clicked!'; // Change content
-    button.style.backgroundColor = 'teal'; // Change style
-});`}</CodeBlock>
-                            </Chapter>
-                        )}
-
-                        {/* 10. Asynchronous JS */}
-                        {active === "async" && (
-                            <Chapter id="async" title="Asynchronous JS (The Event Loop)">
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Theory: Single-Threaded & Asynchronous
-                                </h3>
-                                <p>
-                                    JS runs on a single thread. To handle long operations (like
-                                    data fetching or timers) without freezing the browser, it uses
-                                    the **Event Loop** to manage **Asynchronous** tasks outside
-                                    the main execution stack.
-                                </p>
-                                <CodeBlock>{`console.log("1. Sync Start");
-
-// Async Web API call (offloaded)
 setTimeout(() => {
-    console.log("3. Async Callback (Runs later)");
-}, 0); 
+  console.log("Async Task Done");
+}, 1000);
 
-console.log("2. Sync End");
+console.log("End");
+// Output: Start → End → Async Task Done`}</CodeBlock>
+          <p>
+            Modern way: <strong>Promises</strong> and{" "}
+            <strong>Async/Await</strong> make async code easier.
+          </p>
+          <CodeBlock>{`// Using Promises
+fetch("https://jsonplaceholder.typicode.com/todos/1")
+  .then(res => res.json())
+  .then(data => console.log(data));
 
-/* Output Order: 1, 2, 3 */`}</CodeBlock>
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Promises and Async/Await
-                                </h3>
-                                <p>
-                                    **Promises** (`.then()`, `.catch()`) are objects representing
-                                    the eventual completion (or failure) of an asynchronous
-                                    operation. **Async/Await** is modern syntax built on Promises,
-                                    allowing asynchronous code to be written in a cleaner,
-                                    synchronous-looking style.
-                                </p>
-                            </Chapter>
-                        )}
+// Using Async/Await
+async function getData() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  const data = await res.json();
+  console.log(data);
+}
+getData();`}</CodeBlock>
+        </Chapter>
 
-                        {/* 11. ES6+ Modern Features */}
-                        {active === "es6" && (
-                            <Chapter id="es6" title="ES6+ Modern Features">
-                                <p>
-                                    ES6 (ECMAScript 2015) introduced key features that define
-                                    modern JavaScript development.
-                                </p>
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Destructuring and Spread/Rest
-                                </h3>
-                                <ul className="list-disc ml-5">
-                                    <li>
-                                        **Destructuring:** Easily unpack values from arrays or
-                                        properties from objects into distinct variables.
-                                    </li>
-                                    <li>
-                                        **Spread (`...`):** Expands an iterable (like an array) into
-                                        its individual elements.
-                                    </li>
-                                </ul>
-                                <CodeBlock>{`const user = { id: 101, email: 'dev@guide.com' };
-// Object Destructuring
-const { id, email } = user;
-console.log(id); // 101
+        {/* Chapter 8 */}
+        <Chapter title="ES6+ Modern Features">
+          <p>
+            Modern JS introduced many new features: template literals,
+            destructuring, spread/rest operators, default parameters, and
+            modules.
+          </p>
+          <CodeBlock>{`const person = { name: "Shahzaib", age: 21 };
+const { name, age } = person;
 
-const arr1 = [1, 2];
-const arr2 = [...arr1, 3, 4]; // Spread
-console.log(arr2); // [1, 2, 3, 4]`}</CodeBlock>
-                            </Chapter>
-                        )}
+console.log(\`My name is \${name}, I am \${age}\`); // My name is Shahzaib, I am 21`}</CodeBlock>
+        </Chapter>
+        {/* ================== HTML Section ================== */}
+        <Chapter title="HTML Basics">
+          <p>
+            HTML (HyperText Markup Language) webpage ki structure banata hai. Ye{" "}
+            <strong>tags</strong> use karta hai jaise <code>&lt;h1&gt;</code>,{" "}
+            <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code>.
+          </p>
+          <CodeBlock>{`<!DOCTYPE html>
+<html>
+  <head><title>My Page</title></head>
+  <body>
+    <h1>Hello World</h1>
+    <p>This is a paragraph.</p>
+    <a href="https://google.com">Visit Google</a>
+  </body>
+</html>`}</CodeBlock>
+        </Chapter>
 
-                        {/* 12. Modules & Tooling */}
-                        {active === "modules" && (
-                            <Chapter id="modules" title="Modules & Tooling">
-                                <p>
-                                    ES6 **Modules** (`import`/`export`) are the standard way to
-                                    organize code into reusable, encapsulated files, preventing
-                                    global variable conflicts.
-                                </p>
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Professional Tooling
-                                </h3>
-                                <p>
-                                    Modern development relies on tooling to handle code conversion
-                                    and packaging:
-                                </p>
-                                <ul className="list-disc ml-5">
-                                    <li>
-                                        **Babel:** **Transpiles** (converts) modern ES6+ code into
-                                        older JavaScript versions for wider browser compatibility.
-                                    </li>
-                                    <li>
-                                        **Webpack/Vite:** **Bundlers** that package all your JS,
-                                        CSS, and assets into a few optimized files for production
-                                        deployment.
-                                    </li>
-                                </ul>
-                            </Chapter>
-                        )}
+        <Chapter title="HTML Forms & Inputs">
+          <p>
+            Forms user input lene ke liye use hote hain. Important tags:{" "}
+            <code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>,{" "}
+            <code>&lt;textarea&gt;</code>, <code>&lt;select&gt;</code>.
+          </p>
+          <CodeBlock>{`<form>
+  <label>Name:</label>
+  <input type="text" placeholder="Enter name" />
 
-                        {/* 13. Best Practices & Tips */}
-                        {active === "tips" && (
-                            <Chapter id="tips" title="Best Practices & Tips">
-                                <h3 className="font-semibold text-lg mt-4">
-                                    Writing Clean, Professional Code
-                                </h3>
-                                <ul className="list-disc ml-5">
-                                    <li>
-                                        **Principle of Least Privilege:** Use **`const`** as the
-                                        default variable declaration. Only use **`let`** when you
-                                        absolutely must reassign the value.
-                                    </li>
-                                    <li>
-                                        **Type Safety:** Always use **`===`** and **`!==`** to
-                                        compare values and types, avoiding type coercion bugs.
-                                    </li>
-                                    <li>
-                                        **Immutability:** Avoid changing data structures directly;
-                                        use array methods like `map()` and `filter()` to return new
-                                        copies instead.
-                                    </li>
-                                    <li>
-                                        **Documentation:** Use meaningful names and add comments (or
-                                        JSDoc) for complex functions.
-                                    </li>
-                                </ul>
-                            </Chapter>
-                        )}
+  <label>Email:</label>
+  <input type="email" placeholder="Enter email" />
 
-                        <div className="mt-6 text-xs text-gray-500 border-t border-gray-800 pt-4">
-                            This guide is optimized for readability on a dark theme and serves
-                            as a detailed reference for core JavaScript concepts.
-                        </div>
-                    </div>
-                </main>
-            </div>
-        </div>
-    );
+  <label>Message:</label>
+  <textarea></textarea>
+
+  <button type="submit">Submit</button>
+</form>`}</CodeBlock>
+        </Chapter>
+
+        <Chapter title="HTML Tables & Media">
+          <p>
+            <strong>Table</strong> data ko organize karne ke liye aur
+            <strong>media tags</strong> images/videos embed karne ke liye use
+            hote hain.
+          </p>
+          <CodeBlock>{`<table border="1">
+  <tr><th>Name</th><th>Age</th></tr>
+  <tr><td>Ali</td><td>20</td></tr>
+</table>
+
+<img src="photo.jpg" alt="Sample" width="200"/>
+<video controls width="300">
+  <source src="video.mp4" type="video/mp4" />
+</video>`}</CodeBlock>
+        </Chapter>
+
+        {/* ================== CSS Section ================== */}
+        <Chapter title="CSS Basics">
+          <p>
+            CSS styling ke liye hota hai. 3 types hote hain: Inline, Internal,
+            External.
+          </p>
+          <CodeBlock>{`body {
+  background-color: #222;
+  color: white;
+  font-family: Arial;
+}
+h1 { color: yellow; }
+p { font-size: 18px; }`}</CodeBlock>
+        </Chapter>
+
+        <Chapter title="CSS Box Model & Selectors">
+          <p>
+            Har element ek box hota hai:{" "}
+            <strong>margin, border, padding, content</strong>.
+          </p>
+          <CodeBlock>{`div {
+  border: 2px solid red;
+  margin: 10px;
+  padding: 15px;
+}`}</CodeBlock>
+        </Chapter>
+
+        <Chapter title="Flexbox & Grid Layout">
+          <p>Modern layout ke liye Flexbox aur Grid use hote hain.</p>
+          <CodeBlock>{`/* Flexbox */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}`}</CodeBlock>
+        </Chapter>
+
+        <Chapter title="Responsive Design">
+          <p>
+            Responsive design banane ke liye <strong>media queries</strong> use
+            karte hain.
+          </p>
+          <CodeBlock>{`@media (max-width: 600px) {
+  body {
+    background: lightblue;
+  }
+}`}</CodeBlock>
+        </Chapter>
+
+        {/* ================== JavaScript DOM Section ================== */}
+        <Chapter title="JavaScript DOM Manipulation">
+          <p>
+            DOM (Document Object Model) page ko tree structure ke roop me
+            dikhata hai. JS se hum elements ko{" "}
+            <strong>select, modify, add, remove</strong> kar sakte hain.
+          </p>
+          <CodeBlock>{`<h1 id="title">Hello</h1>
+<button onclick="changeText()">Click</button>
+
+<script>
+  function changeText() {
+    const h1 = document.getElementById("title");
+    h1.textContent = "Text Changed!";
+    h1.style.color = "red";
+  }
+</script>`}</CodeBlock>
+        </Chapter>
+
+        <Chapter title="DOM Events Handling">
+          <p>
+            Events user actions hote hain jaise click, input, keypress. JS me
+            hum <code>addEventListener()</code> use karte hain.
+          </p>
+          <CodeBlock>{`<input id="name" placeholder="Type something..." />
+<p id="output"></p>
+
+<script>
+  const input = document.getElementById("name");
+  const output = document.getElementById("output");
+
+  input.addEventListener("input", function() {
+    output.textContent = "You typed: " + input.value;
+  });
+</script>`}</CodeBlock>
+        </Chapter>
+
+        <Chapter title="Form Validation Example">
+          <p>JS se hum form submit hone se pehle validate kar sakte hain.</p>
+          <CodeBlock>{`<form onsubmit="return validateForm()">
+  <input id="email" type="email" placeholder="Enter email" />
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  function validateForm() {
+    const email = document.getElementById("email").value;
+    if(email === "") {
+      alert("Email is required!");
+      return false;
+    }
+    return true;
+  }
+</script>`}</CodeBlock>
+        </Chapter>
+
+        <footer className="text-center text-gray-500 text-sm border-t border-gray-800 pt-6 mt-10">
+          © {new Date().getFullYear()} Complete JavaScript Guide – Dark Theme
+        </footer>
+      </div>
+    </div>
+  );
 }

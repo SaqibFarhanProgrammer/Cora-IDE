@@ -1,76 +1,73 @@
-import React, { useContext, useState } from "react";
-import { FaCaretDown, FaCog, FaSignOutAlt } from "react-icons/fa";
-import { Context } from "../context/context";
-import { Link } from "react-router-dom";
-import profileIcon from "../assets/images/images (8).jpg";
+  import React, { useContext, useState } from "react";
+  import { FaCaretDown } from "react-icons/fa";
+  import { Context } from "../context/context";
+  import { Link } from "react-router-dom";
+  import profileIcon from "../assets/images/images (8).jpg";
 
-const TopNavbar = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { profiledata, setswitchcompiler, signout } = useContext(Context);
+  const TopNavbar = () => {
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const { profiledata, setswitchcompiler, signout } = useContext(Context);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+    const toggleDropdown = () => {
+      setIsDropdownOpen(!isDropdownOpen);
+    };
 
-  return (
-    <div className="w-full h-16 text-[#FAFAFA] bg-[#0a0b0d] pl-15 flex items-center justify-between px-6 border-b border-[#27272A]">
-      {/* Left side: placeholder for logo or nav items */}
-      <div className=" options  flex gap-2">
-        <div
-          onClick={() => setswitchcompiler(true)}
-          className="flex items-center cursor-pointer gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-            alt=""
-            className="h-3 w-3"
-          />
-          <span className="text-sm">Javascript</span>
+    return (
+      <div className="w-full h-16 bg-[#0a0b0d] text-[#FAFAFA] border-b border-[#27272A] flex items-center justify-between px-4 sm:px-6">
+        {/* Left Buttons */}
+        <div className="flex items-center max-[521px]:hidden px-8 gap-2 sm:gap-3 flex-wrap">
+          <button
+            onClick={() => setswitchcompiler(true)}
+            className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-1.5 rounded-md text-xs sm:text-sm hover:bg-zinc-800 transition"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              alt="JS"
+              className="h-4 w-4"
+            />
+            <span>Javascript</span>
+          </button>
+
+          <button
+            onClick={() => setswitchcompiler(false)}
+            className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-1.5 rounded-md text-xs sm:text-sm hover:bg-zinc-800 transition"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+              alt="HTML"
+              className="h-4 w-4"
+            />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+              alt="CSS"
+              className="h-4 w-4"
+            />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              alt="JS"
+              className="h-4 w-4"
+            />
+            <span>Web</span>
+          </button>
+
+          <Link
+            to="/"
+            className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 py-1.5 rounded-md text-xs sm:text-sm hover:bg-zinc-800 transition"
+          >
+            Back To Code
+          </Link>
         </div>
-        <div
-          onClick={() => setswitchcompiler(false)}
-          className="flex items-center cursor-pointer gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-            alt=""
-            className="h-3 w-3"
-          />
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-            alt=""
-            className="h-3 w-3"
-          />
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-            alt=""
-            className="h-3 w-3"
-          />
-          <span className="text-sm">Web</span>
-        </div>
-        <Link
-        className="flex items-center cursor-pointer gap-2 bg-zinc-900 border border-zinc-700 px-3 py-[.2vw] rounded-md"
-        to="/">
-        back To Code 
-        </Link>
-      </div>
-      <div className="flex justify-center items-center gap-6"></div>
 
-      {/* Right side */}
-      <div className="flex items-center gap-4 ">
-        <div className="relative">
+        {/* Right Profile Dropdown */}
+        <div className="absolute right-2 ">
           <button
             onClick={toggleDropdown}
-            className="flex items-center gap-2 px-3 py-2 rounded-md bg-zinc-900 text-zinc-300 hover:bg-zinc-800 transition-colors border border-[#27272A]"
+            className="flex items-center gap-2 px-2 sm:px-3 py-2 rounded-md bg-zinc-900 border border-zinc-700 text-zinc-300 hover:bg-zinc-800 transition"
           >
             <div className="w-8 h-8 rounded-full overflow-hidden">
               <img
                 className="w-full h-full object-cover"
-                src={
-                  profiledata?.profileIMG
-                    ? profiledata?.profileIMG
-                    : profileIcon
-                }
+                src={profiledata?.profileIMG || profileIcon}
                 alt="Profile"
               />
             </div>
@@ -82,32 +79,30 @@ const TopNavbar = () => {
           </button>
 
           {isDropdownOpen && (
-            <div className="absolute dropdown-expand  right-0 mt-2 w-48 rounded-md shadow-lg py-1 z-10">
+            <div className="absolute right-0 mt-2 w-44 sm:w-48 backdrop-blur-2xl border border-zinc-700 rounded-md shadow-lg py-1 z-20">
               <Link
                 to="/profile"
-                className="flex items-center gap-2 px-4 py-2 text-zinc-300 hover:bg-zinc-800"
+                className="block px-4 py-2 text-zinc-300 hover:bg-zinc-800 transition"
               >
                 Profile
               </Link>
               <Link
                 to="/settings"
-                className="flex items-center gap-2 px-4 py-2 text-zinc-300 hover:bg-zinc-800"
+                className="block px-4 py-2 text-zinc-300 hover:bg-zinc-800 transition"
               >
                 Settings
               </Link>
-              <Link
-                to=""
+              <button
                 onClick={signout}
-                className="flex items-center gap-2 px-4 py-2 text-red-300 hover:text-[#cf444b]"
+                className="w-full text-left px-4 py-2 text-red-400 hover:bg-red-500/10 transition"
               >
                 Logout
-              </Link>
+              </button>
             </div>
           )}
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
-export default TopNavbar;
+  export default TopNavbar;

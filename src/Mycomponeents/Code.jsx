@@ -40,20 +40,28 @@ const Code = () => {
   }, [monaco]);
 
   return (
-    <div className="w-[100%] h-[100%] flex flex-col">
-      <Topbar />
-      <Editor
-        onChange={(value) => setcompiledCode(value)}
-        language="javascript"
-        defaultValue={compiledCode}
-        theme="zincDark"
-        height="100%"
-        className="pt-[2px] mt-1"
-        options={{
-          fontSize: zoomin,
-          minimap: { enabled: false }, // Minimap disabled for cleaner UI
-        }}
-      />
+    <div className="w-full h-full flex flex-col border-r border-[#3f3f3f]">
+      {/* Topbar always at top */}
+      <div className="shrink-0">
+        <Topbar />
+      </div>
+
+      {/* Editor takes remaining space */}
+      <div className="flex-1 min-h-0">
+        <Editor
+          onChange={(value) => setcompiledCode(value)}
+          language="javascript"
+          value={compiledCode}
+          theme="zincDark"
+          options={{
+            fontSize: zoomin,
+            minimap: { enabled: false },
+            scrollBeyondLastLine: false,
+            automaticLayout: true, // auto resize editor on window resize
+          }}
+          className="w-full h-full"
+        />
+      </div>
     </div>
   );
 };
