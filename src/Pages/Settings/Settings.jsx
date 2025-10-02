@@ -48,7 +48,7 @@ export default function SettingsPage() {
             <button
             onClick={signout}
               to="/logout"
-              className="flex items-center gap-2 px-4 py-2 text-red-300 hover:text-[#cf444b]"
+              className="flex items-center gap-2 px-2 py-2 text-red-300 hover:text-[#cf444b]"
             >
               Logout
             </button>
@@ -81,7 +81,7 @@ export default function SettingsPage() {
         {/* Footer / About */}
         <div className="mt-auto border-t border-white/10 p-6  ] rounded-b-2xl text-center">
           <h3 className="text-lg font-semibold text-white mb-2">
-            About Cora IDE
+             Cora IDE
           </h3>
           <p className="text-sm text-gray-400 leading-relaxed max-w-xl mx-auto mb-4">
             Cora IDE is a modern, web-based code editor built for simplicity and
@@ -90,7 +90,7 @@ export default function SettingsPage() {
             a minimal UI, Cora IDE is completely free to use.
           </p>
 
-          <span className="block text-xs text-gray-500 mb-3">
+          <span className="block text-xs mb-2 text-gray-500 pt-8">
             Developed by <span className="font-medium text-white">Saqib Farhan</span>
           </span>
 

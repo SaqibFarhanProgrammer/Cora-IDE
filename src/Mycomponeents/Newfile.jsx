@@ -28,10 +28,10 @@ const Newfile = () => {
   };
 
   return (
-    <div className="h-screen w-full backdrop-blur-[10px] fixed inset-0 z-20 flex justify-center items-center">
+    <div className="h-screen w-full   backdrop-blur-[10px] fixed inset-0 z-20 flex justify-center items-center">
       {!isloginscreenopen ? (
         // ✅ Agar login screen open hai → New File Card
-        <Card className="w-[40vw] bg-[#0A0A0A] border border-zinc-800 shadow-xl">
+        <Card className="w-[40vw] max-[520px]:w-[90%] max-[750px]:w-[60%] bg-[#0A0A0A]  border border-zinc-800 shadow-xl">
           <CardHeader className="flex justify-between">
             <CardTitle className="text-white text-2xl font-bold">
               Create New File
