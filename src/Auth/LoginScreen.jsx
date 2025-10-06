@@ -63,14 +63,7 @@ export default function Loginscreen() {
           />
 
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 flex flex-col items-center justify-center p-8 text-center">
-            <h2 className="text-3xl font  -bold text-white drop-shadow-lg">
-              {isSignup ? "Welcome to Our App" : "Welcome Back"}
-            </h2>
-            <p className="text-zinc-300 justify-end mt-3 text-base max-w-sm leading-relaxed">
-              {isSignup
-                ? "Sign up today and explore new possibilities with ease."
-                : "Login to continue to your personalized dashboard and tools."}
-            </p>
+     
           </div>
         </div>
 

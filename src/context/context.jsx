@@ -1,5 +1,4 @@
-// this is a context api yahan per saari states manage hongi 
-
+// this is a context api yahan per saari states manage hongi
 
 import { createContext, useEffect, useRef, useState } from "react";
 import { auth, db } from "../config/Firebase";
@@ -228,7 +227,9 @@ export const Provider = ({ children }) => {
             uid: result.user.uid,
             name: result.user.displayName,
             email: result.user.email,
-            profileIMG: result.photoURL || randomImage,
+            profileIMG: result.user.photoURL
+              ? result.user.photoURL
+              : randomImage,
             tagline,
             description,
           },
