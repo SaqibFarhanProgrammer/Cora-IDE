@@ -1,27 +1,8 @@
-<<<<<<< HEAD
-# Project Title
-=======
-# 🚀 Cora IDE 
->>>>>>> d1258786e951d19410be45e119db8a384e837e86
-
-A professional project designed with clean formatting and modern structure.  
-This project demonstrates best practices in development and documentation.
-
 ---
 
-## 📌 Overview
-This project was created to maintain a professional standard similar to corporate-level documentation.  
-It highlights clean code practices, structured formatting, and attention to detail.
+Would you like me to:
 
----
+- Automatically open the repository and extract the exact `scripts` block from `package.json` and insert the precise commands into the README?  
+- Or generate sample screenshots / badges (SVG) and a short demo GIF template?
 
-## ✨ Features
-- Professional formatting
-- Corporate-style documentation
-- Clean typography and spacing
-- Easy to understand structure
-
----
-
-## 👨‍💻 Developed By
-**Saqib Farha**
+Pick one and I’ll produce it immediately.6
