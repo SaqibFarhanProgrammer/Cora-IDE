@@ -74,10 +74,10 @@ export const Provider = ({ children }) => {
 
   // zoom
   function funczoomin() {
-    setzoomin((prev) => prev + 2);
+    setzoomin((prev) => prev + 3);
   }
   function funczoomout() {
-    setzoomin((prev) => prev - 2);
+    setzoomin((prev) => prev - 3);
   }
 
   async function putdatainnewfiledata() {
