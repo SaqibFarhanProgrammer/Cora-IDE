@@ -228,7 +228,7 @@ export const Provider = ({ children }) => {
             uid: result.user.uid,
             name: result.user.displayName,
             email: result.user.email,
-            photoURL: result.photoURL || randomImage,
+            profileIMG: result.photoURL || randomImage,
             tagline,
             description,
           },
