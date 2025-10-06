@@ -11,6 +11,7 @@ const Mainprofile = React.lazy(() => import("./Pages/profile/MainProile"));
 import { HiMenuAlt4 } from "react-icons/hi";
 import "./Media.css";
 import Learn from "./Pages/Learn/Learn";
+import Notfound from "./Notfound";
 
 const App = () => {
   const { Newfileisopen } = useContext(Context);
@@ -18,7 +19,6 @@ const App = () => {
 
   return (
     <div className="flex bg-black h-screen w-screen relative">
-      {/* Sidebar Toggle Button */}
       <button
         onClick={() => setSidebarOpen((prev) => !prev)}
         className="fixed z-50 text-2xl top-3 left-3 rounded-full p-2 text-white"
@@ -26,25 +26,23 @@ const App = () => {
         <HiMenuAlt4 />
       </button>
 
-      {/* Lazy Loaded Sidebar */}
       <Suspense fallback={<p>Loading Sidebar...</p>}>
         <SideNavigate isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
       </Suspense>
 
       <div className="flex-1 flex flex-col w-full h-full">
-        {/* Lazy Loaded Navbar */}
         <Suspense fallback={<p>Loading Navbar...</p>}>
           <TopNavbar />
         </Suspense>
 
         <div className="flex-1 overflow-y-auto">
-          {/* Lazy Loaded Routes */}
           <Suspense fallback={<p>Loading Page...</p>}>
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/profile" element={<Mainprofile />} />
               <Route path="/documentation" element={<Learn />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="*" element={<Notfound />} />
             </Routes>
           </Suspense>
         </div>

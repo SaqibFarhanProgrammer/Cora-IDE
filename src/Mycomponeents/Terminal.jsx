@@ -6,7 +6,6 @@ const Terminal = () => {
 
   return (
     <div className="w-full h-full bg-[#0a0b0d] flex flex-col border-t border-[#27272A]">
-      {/* Header */}
       <div className="p-3 text-xs sm:text-sm text-zinc-400 font-mono flex items-center justify-between border-b border-[#27272A]">
         <span className="text-white ml-2">Output</span>
         <div className="flex gap-2 mr-2">
@@ -16,7 +15,6 @@ const Terminal = () => {
         </div>
       </div>
 
-      {/* Body */}
       <div className="flex-1 overflow-y-auto p-3 sm:p-4 text-sm sm:text-base lg:text-lg text-zinc-300 font-mono">
         {output.length === 0 ? (
           <div className="text-zinc-500 italic">No output yet...</div>

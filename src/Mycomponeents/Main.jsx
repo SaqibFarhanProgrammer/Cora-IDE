@@ -12,12 +12,13 @@ const Main = () => {
       {switchcompiler ? (
         <Suspense
           fallback={
-            <div className="flex justify-center items-center w-full h-full text-zinc-400">
-              Loading Code Editor...
+            <div className="flex w-[100%] h-[100%] justify-center text-center text-2xl items-center  text-zinc-400">
+            <h1>
+                Loading Code Editor...
+            </h1>
             </div>
           }
         >
-          {/* Code + Terminal Responsive Layout */}
           <div className="flex flex-col md:flex-row w-full h-full">
             <div className="flex-1 min-h-[50%] md:min-h-0 border-r border-[#27272A]">
               <Code />
@@ -30,6 +31,7 @@ const Main = () => {
       ) : (
         <Web />
       )}
+      
     </div>
   );
 };

@@ -68,11 +68,16 @@ body {
 }
 
 .loginbtn:hover {
-  background-image: linear-gradient(rgb(29, 29, 29), rgb(25, 25, 25));
 }
 
 
 
 .dropdown-expand{
   backdrop-filter: blur(20px);
+}
+
+.notfound{
+  background-image: linear-gradient( to top, black, white);
+  background-clip: text;
+  color: transparent;
 }

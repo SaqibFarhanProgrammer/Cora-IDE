@@ -33,7 +33,6 @@ const Mainprofile = () => {
         <Loginscreen />
       )}
 
-      {/* Files List */}
       {!isloginscreenopen ? (
         <div className="file mx-auto p-2">
           {fileslist && fileslist.length > 0 ? (
@@ -57,8 +56,11 @@ const Mainprofile = () => {
               </div>
             </div>
           )}
+          
         </div>
+        
       ) : null}
+      
     </div>
   );
 };

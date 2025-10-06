@@ -1,3 +1,6 @@
+// this is a context api yahan per saari states manage hongi 
+
+
 import { createContext, useEffect, useRef, useState } from "react";
 import { auth, db } from "../config/Firebase";
 import {
@@ -11,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { tr } from "motion/react-client";
 import profileIcon from "..//assets/images/images (8).jpg";
+import { useCallback } from "react";
 
 export const Context = createContext();
 
@@ -36,7 +40,7 @@ export const Provider = ({ children }) => {
   const [filename, setfilename] = useState("Untiteled");
   const [files, setfiles] = useState([]);
   const [signinerrormessage, setsigninerrormessage] = useState("");
-  const [filterdfiles, setfilterdfiles] = useState([])
+  const [filterdfiles, setfilterdfiles] = useState([]);
   // user profile states
   const [profileimage, setprofileimage] = useState("");
   const [name, setName] = useState("");
@@ -44,7 +48,6 @@ export const Provider = ({ children }) => {
   const [tagline, setTagline] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
 
   // images
   const images2 = [
@@ -78,27 +81,32 @@ export const Provider = ({ children }) => {
     setzoomin((prev) => prev - 2);
   }
 
-  // save new file in Firestore
   async function putdatainnewfiledata() {
     setNewfileisopen(false);
-    if (profiledata) {
-      const userui = profiledata.uid;
-      const newfile = {
-        id: Date.now(),
-        code: compiledCode || "No Code Here.....",
-        extension: "js",
-        title: filename,
-        createdAt: new Date().toISOString(),
-      };
-      try {
-        await updateDoc(doc(db, "users", userui), {
-          files: arrayUnion(newfile),
-        });
-      } catch (error) {
-        console.log(error.message);
+    if (compiledCode === "") {
+      return;
+    } else {
+      if (profiledata) {
+        const userui = profiledata.uid;
+        const newfile = {
+          id: Date.now(),
+          code: compiledCode || "No Code Here.....",
+          extension: "js",
+          title: filename,
+          createdAt: new Date().toISOString(),
+        };
+        try {
+          await updateDoc(doc(db, "users", userui), {
+            files: arrayUnion(newfile),
+          });
+        } catch (error) {
+          console.log(error.message);
+        }
       }
     }
   }
+
+  // save new file in Firestore
 
   async function getfilefromfirebase() {
     if (profiledata?.uid) {
@@ -322,7 +330,7 @@ export const Provider = ({ children }) => {
     signinerrormessage,
     setsigninerrormessage,
     filterdfiles,
-    setfilterdfiles
+    setfilterdfiles,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

@@ -56,7 +56,6 @@ export default function Loginscreen() {
     <div className="h-[77%] mt-10 mx-auto  w-[70vw] flex items-center justify-center px-3">
       <div className="w-full bg-zinc-950 rounded-xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 border border-zinc-800">
         <div className="loginform hidden relative md:flex items-center justify-center ">
-          {/* Background Image */}
           <img
             src={loginimg}
             alt="Background"
@@ -64,7 +63,7 @@ export default function Loginscreen() {
           />
 
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 flex flex-col items-center justify-center p-8 text-center">
-            <h2 className="text-3xl font-bold text-white drop-shadow-lg">
+            <h2 className="text-3xl font  -bold text-white drop-shadow-lg">
               {isSignup ? "Welcome to Our App" : "Welcome Back"}
             </h2>
             <p className="text-zinc-300 justify-end mt-3 text-base max-w-sm leading-relaxed">
@@ -91,10 +90,9 @@ export default function Loginscreen() {
             <form onSubmit={handleSubmit} className="space-y-4">
               {isSignup && (
                 <>
-                  {/* Profile Image Upload */}
                   <div className="flex flex-col items-center mb-6">
                     {/* Profile Image Upload */}
-                    <label className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-zinc-700 cursor-pointer hover:border-zinc-400 transition group shadow-md">
+                    <label className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-zinc-700 cursor-pointer hover:border-purple-400 transition group shadow-md">
                       {profileimage ? (
                         <img
                           src={profileimage}
@@ -121,14 +119,12 @@ export default function Loginscreen() {
                         </div>
                       )}
 
-                      {/* Overlay on hover */}
                       {profileimage && (
                         <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-white text-xs opacity-0 group-hover:opacity-100 transition">
                           Change
                         </div>
                       )}
 
-                      {/* Hidden File Input */}
                       <input
                         type="file"
                         accept="image/*"
@@ -187,7 +183,7 @@ export default function Loginscreen() {
 
               <Button
                 type="submit"
-                className="w-full bg-zinc-900 loginbtn text-white py-2 rounded-md font-medium transition text-sm"
+                className="w-full bg-purple-900 loginbtn text-white py-2 rounded-md font-medium transition text-sm"
               >
                 {isSignup ? "Sign Up" : "Login"}
               </Button>
@@ -206,7 +202,7 @@ export default function Loginscreen() {
               {isSignup ? "Already have an account?" : "Don’t have an account?"}{" "}
               <span
                 onClick={() => setIsSignup(!isSignup)}
-                className="text-zinc-00 cursor-pointer hover:underline"
+                className="text-zinc-300 cursor-pointer hover:underline"
               >
                 {isSignup ? "Login here" : "Sign up"}
               </span>

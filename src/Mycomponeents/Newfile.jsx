@@ -30,7 +30,6 @@ const Newfile = () => {
   return (
     <div className="h-screen w-full   backdrop-blur-[10px] fixed inset-0 z-20 flex justify-center items-center">
       {!isloginscreenopen ? (
-        // ✅ Agar login screen open hai → New File Card
         <Card className="w-[40vw] max-[520px]:w-[90%] max-[750px]:w-[60%] bg-[#0A0A0A]  border border-zinc-800 shadow-xl">
           <CardHeader className="flex justify-between">
             <CardTitle className="text-white text-2xl font-bold">
@@ -45,7 +44,6 @@ const Newfile = () => {
           <form>
             <CardContent>
               <div className="flex flex-col gap-4">
-                {/* File Name Input */}
                 <div>
                   <label className="text-sm text-zinc-300 mb-1 block">
                     File Name
@@ -58,7 +56,6 @@ const Newfile = () => {
                   />
                 </div>
 
-                {/* Dropdown for file extension */}
                 <div>
                   <label className="text-sm text-zinc-300 mb-2 block">
                     Extension
@@ -96,13 +93,11 @@ const Newfile = () => {
         </Card>
       ) : (
         <Card className="w-[28vw] bg-black border border-zinc-800 shadow-2xl rounded-2xl p-6 relative">
-          {/* Close Button */}
           <IoMdClose
             onClick={() => setNewfileisopen(false)}
             className="absolute top-4 right-4 text-zinc-400 hover:text-white text-xl cursor-pointer transition-colors"
           />
 
-          {/* Header */}
           <CardHeader className="space-y-2 text-center">
             <CardTitle className="text-white text-2xl font-semibold">
               Login Required
@@ -112,7 +107,6 @@ const Newfile = () => {
             </p>
           </CardHeader>
 
-          {/* Content */}
           <CardContent className="mt-6 flex flex-col items-center gap-4">
             <Link
               onClick={() => setNewfileisopen(false)}

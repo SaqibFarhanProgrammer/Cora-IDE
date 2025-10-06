@@ -6,7 +6,6 @@ const Profile = () => {
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center mx-auto text-white rounded-lg overflow-hidden px-4 sm:px-6 md:px-8">
-      {/* Profile Info */}
       <div className="relative px-4 sm:px-6 md:px-8 flex h-full mt-4 flex-col justify-center items-center rounded-xl shadow-xl w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">
         <img
           src={profiledata?.profileIMG}
@@ -28,7 +27,6 @@ const Profile = () => {
           </p>
         </div>
 
-        {/* Logout */}
         <button
           onClick={signout}
           className="mt-6 flex items-center gap-2 px-4 sm:px-6 py-2 rounded-lg bg-[#291D21] text-red-300 hover:text-[#e4767b] hover:bg-[#35262a] transition-all duration-300 shadow-md text-sm sm:text-base md:text-lg"
@@ -41,4 +39,3 @@ const Profile = () => {
 };
 
 export default Profile;
-s

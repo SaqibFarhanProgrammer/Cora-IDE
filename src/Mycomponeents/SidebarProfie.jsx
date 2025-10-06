@@ -13,15 +13,17 @@ const SidebarProfie = () => {
           to="/profile"
           className="
             profile-cion 
-            w-20 h-20            /* default (mobile) */
-            sm:w-24 sm:h-24      /* tablets */
+            w-15 h-15           /* default (mobile) */
+            sm:w-20 sm:h-20      /* tablets */
             md:w-28 md:h-28      /* medium screens */
-            lg:w-32 lg:h-32      /* large screens */
+            lg:w-25 lg:h-25     /* large screens */
             flex items-center justify-center rounded-full
           "
         >
           <img
-            src={profiledata?.profileIMG ? profiledata?.profileIMG : profileIcon}
+            src={
+              profiledata?.profileIMG ? profiledata?.profileIMG : profileIcon
+            }
             className="w-full h-full object-cover rounded-full"
             alt="Profile"
           />

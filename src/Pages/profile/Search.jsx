@@ -21,7 +21,6 @@ const SearchBar = () => {
 
   return (
     <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-2xl mx-auto mt-20 mb-8">
-      {/* Input Field */}
       <div className="relative w-full sm:flex-1">
         <Search className="absolute left-3 top-2.5 h-4 w-4 text-zinc-400" />
         <Input
@@ -36,7 +35,6 @@ const SearchBar = () => {
         />
       </div>
 
-      {/* Button */}
       <Button
         onClick={filter}
         className="bg-white hover:bg-zinc-300 text-black w-full sm:w-auto px-6"

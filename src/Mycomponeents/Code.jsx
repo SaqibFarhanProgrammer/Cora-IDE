@@ -46,8 +46,8 @@ const Code = () => {
         <Topbar />
       </div>
 
-      {/* Editor takes remaining space */}
       <div className="flex-1 min-h-0">
+        
         <Editor
           onChange={(value) => setcompiledCode(value)}
           language="javascript"

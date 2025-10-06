@@ -12,29 +12,30 @@ import profileIcon from "../../assets/images/images (8).jpg";
 import { User, Moon, Sun, Trash2, Github, Linkedin } from "lucide-react";
 
 export default function SettingsPage() {
+  console.log("renderprofile");
+
   const [darkMode, setDarkMode] = React.useState(false);
   const { profiledata, signout } = useContext(Context);
 
   return (
     <div className="min-h-screen w-full flex justify-center items-center bg-[#0a0b0d] text-white p-4">
       <Card className="w-full   border border-white/10 bg-[#0a0b0d] shadow-xl rounded-2xl flex flex-col">
-        
-        {/* Header */}
         <CardHeader className="border-b border-white/10 pb-4">
           <CardTitle className="text-2xl font-semibold flex items-center gap-2">
             <User className="w-6 h-6 text-white" /> Settings
           </CardTitle>
         </CardHeader>
 
-        {/* Content */}
         <CardContent className="space-y-6 pt-6 flex-1">
-          
-          {/* Profile */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 rounded-xl border border-white/10">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 rounded-full overflow-hidden border border-white/20">
                 <img
-                  src={profiledata?.profileIMG ? profiledata?.profileIMG : profileIcon}
+                  src={
+                    profiledata?.profileIMG
+                      ? profiledata?.profileIMG
+                      : profileIcon
+                  }
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
@@ -56,31 +57,28 @@ export default function SettingsPage() {
             </button>
           </div>
 
-          {/* Theme Control */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 rounded-xl border border-white/10">
             <span className="flex items-center gap-2 font-medium text-white">
               {darkMode ? (
                 <Moon className="w-5 h-5 text-white" />
               ) : (
-                <Sun className="w-5 h-5 text-white" />
+                <Sun className="w-5 h-5 text-white via-gray-950" />
               )}
               Theme Mode
             </span>
             <Switch checked={darkMode} onCheckedChange={setDarkMode} />
           </div>
 
-          {/* Clear Files */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 rounded-xl border border-white/10">
             <span className="flex items-center gap-2 font-medium text-white">
               <Trash2 className="w-5 h-5 text-white" /> Clear Files
             </span>
-            <Button className="border border-white text-white bg-transparent hover:bg-white hover:text-black transition">
+            <Button className="border border-purple-500 text-white bg-transparent hover:bg-purple-500 hover:text-black transition">
               Clear
             </Button>
           </div>
         </CardContent>
 
-        {/* Footer */}
         <div className="mt-auto border-t border-white/10 p-6 rounded-b-2xl text-center">
           <h3 className="text-lg font-semibold text-white mb-2">Cora IDE</h3>
           <p className="text-sm text-gray-400 leading-relaxed max-w-xl mx-auto mb-4">
