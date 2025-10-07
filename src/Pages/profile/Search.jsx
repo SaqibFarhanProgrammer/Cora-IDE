@@ -3,6 +3,7 @@ import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
 import { Search } from "lucide-react";
 import { Context } from "../../context/context";
+import { IoReload } from "react-icons/io5";
 
 const SearchBar = () => {
   const { searchfilter, setsearchfilter, files, setfiles, setfilterdfiles } =
@@ -40,6 +41,13 @@ const SearchBar = () => {
         className="bg-white hover:bg-zinc-300 text-black w-full sm:w-auto px-6"
       >
         Search
+      </Button>
+      <Button
+        onClick={()=>window.location.reload()}
+        className="bg-white hover:bg-zinc-300 text-black w-full sm:w-auto px-6"
+      >
+        <IoReload />
+
       </Button>
     </div>
   );

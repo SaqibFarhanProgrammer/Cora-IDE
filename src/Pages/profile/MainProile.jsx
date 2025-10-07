@@ -47,9 +47,7 @@ const Mainprofile = () => {
                 scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-zinc-900"
                 style={{ maxHeight: "calc(100vh - 220px)" }}
               >
-                {fileslist.map((file, index) => (
-                  <CodefileCard key={index} file={file} />
-                ))}
+                <CodefileCard />
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center py-20 text-center text-zinc-500">
@@ -58,7 +56,7 @@ const Mainprofile = () => {
                 </div>
                 <h2 className="text-lg font-medium tracking-wide">
                   No Saved Files Available
-                </h2>
+                </h2>s
                 <p className="text-sm text-zinc-600 mt-2">
                   Create or save files to view them here.
                 </p>

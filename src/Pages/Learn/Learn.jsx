@@ -387,7 +387,7 @@ p { font-size: 18px; }`}</CodeBlock>
 </form>
 
 <script>
-  function validateForm() {
+  function validateForm() { 
     const email = document.getElementById("email").value;
     if(email === "") {
       alert("Email is required!");
