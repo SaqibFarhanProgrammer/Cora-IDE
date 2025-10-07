@@ -106,7 +106,10 @@ const TopNavbar = () => {
             ) : (
               <Link to="/profile">
                 <button
-                  onClick={signout}
+                  onClick={() => {
+                    signout();
+                    window.location.reload();
+                  }}
                   className="w-full text-left px-4 py-2 text-purple-400 hover:bg-purple-500/10 transition"
                 >
                   Login

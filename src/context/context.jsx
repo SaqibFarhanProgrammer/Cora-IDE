@@ -220,6 +220,9 @@ export const Provider = ({ children }) => {
 
       if (result.user) {
         setisloginscreenopen(false);
+        console.log("hi");
+
+        console.log(result.user.photoURL);
 
         await setDoc(
           doc(db, "users", result.user.uid),
@@ -227,9 +230,7 @@ export const Provider = ({ children }) => {
             uid: result.user.uid,
             name: result.user.displayName,
             email: result.user.email,
-            profileIMG: result.user.photoURL
-              ? result.user.photoURL
-              : randomImage,
+            profileIMG: result.user.photoURL,
             tagline,
             description,
           },

@@ -26,16 +26,12 @@ export default function Loginscreen() {
     setPassword,
     profileimage,
     signinerrormessage,
-    Copiednotification,
   } = useContext(Context);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignup) {
-      const somthing = RegisterUser(email, password);
-      if (somthing) {
-        console.log(somthing);
-      }
+      RegisterUser(email, password);
     } else {
       signUser(email, password);
     }
@@ -62,9 +58,7 @@ export default function Loginscreen() {
             className="w-full h-full object-cover absolute loginform"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 flex flex-col items-center justify-center p-8 text-center">
-     
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 flex flex-col items-center justify-center p-8 text-center"></div>
         </div>
 
         <div className="p-6 md:p-8 text-white flex items-center justify-center">
@@ -164,7 +158,9 @@ export default function Loginscreen() {
                 className="w-full px-3 py-2 bg-zinc-900 rounded-md text-sm outline-none border border-zinc-700"
               />
               {signinerrormessage ? (
-                <p className="text-[.8vw] text-center">{signinerrormessage}</p>
+                <p className="text-[.8vw] text-[#ff9595] text-center">
+                  {signinerrormessage}
+                </p>
               ) : null}
               <input
                 type="password"
