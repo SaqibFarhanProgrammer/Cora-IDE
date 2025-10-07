@@ -38,7 +38,7 @@ export const Provider = ({ children }) => {
   const [profiledata, setprofiledata] = useState(null);
   const [filename, setfilename] = useState("Untiteled");
   const [files, setfiles] = useState([]);
-  const [signinerrormessage, setsigninerrormessage] = useState("");
+  const [autherrormessage, setautherrormessage] = useState("");
   const [filterdfiles, setfilterdfiles] = useState([]);
   // user profile states
   const [profileimage, setprofileimage] = useState("");
@@ -176,7 +176,7 @@ export const Provider = ({ children }) => {
       return user;
     } catch (error) {
       if (error.message === "Firebase: Error (auth/email-already-in-use).") {
-        setsigninerrormessage(
+        setautherrormessage(
           "Email already in use. Please use a different email."
         );
       }
@@ -184,10 +184,10 @@ export const Provider = ({ children }) => {
         error.message ===
         "Firebase: Password should be at least 6 characters (auth/weak-password)."
       ) {
-        setsigninerrormessage("Password should be at least 6 characters.");
+        setautherrormessage("Password should be at least 6 characters.");
       }
       if (error.message === "Firebase: Error (auth/invalid-email).") {
-        setsigninerrormessage(
+        setautherrormessage(
           "Invalid email format. Please enter a valid email."
         );
       }
@@ -209,6 +209,11 @@ export const Provider = ({ children }) => {
       }
     } catch (error) {
       console.log(error);
+      if (error.code === "auth/invalid-credential") {
+        setautherrormessage("Invalid credentials. Please try again.");
+      } else {
+        setautherrormessage("Something went wrong. Please try again later.");
+      }
     }
   }
 
@@ -222,7 +227,6 @@ export const Provider = ({ children }) => {
         setisloginscreenopen(false);
         console.log("hi");
 
-        console.log(result.user.photoURL);
 
         await setDoc(
           doc(db, "users", result.user.uid),
@@ -329,8 +333,8 @@ export const Provider = ({ children }) => {
     setsearchfilter,
     switchcompiler,
     setswitchcompiler,
-    signinerrormessage,
-    setsigninerrormessage,
+    autherrormessage,
+    setautherrormessage,
     filterdfiles,
     setfilterdfiles,
   };

@@ -25,15 +25,19 @@ export default function Loginscreen() {
     setprofileimage,
     setPassword,
     profileimage,
-    signinerrormessage,
+    autherrormessage,
   } = useContext(Context);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignup) {
       RegisterUser(email, password);
+      setEmail("");
+      setPassword("");
     } else {
       signUser(email, password);
+      setEmail("");
+      setPassword("");
     }
   };
 
@@ -157,9 +161,13 @@ export default function Loginscreen() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-3 py-2 bg-zinc-900 rounded-md text-sm outline-none border border-zinc-700"
               />
-              {signinerrormessage ? (
-                <p className="text-[.8vw] text-[#ff9595] text-center">
-                  {signinerrormessage}
+              {autherrormessage ? (
+                <p
+                  className="text-center text-red-400 font-medium 
+  text-[3vw] sm:text-[2vw] md:text-[1vw] lg:text-[0.9vw] 
+  mt-1 leading-tight"
+                >
+                  {autherrormessage}
                 </p>
               ) : null}
               <input
