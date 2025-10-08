@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
-import { FaCog, FaSignOutAlt } from "react-icons/fa";
+import { FaCog, FaSignOutAlt, FaTimes } from "react-icons/fa";
+import { MdOutlineClose } from "react-icons/md";
+
 import { IoCodeSlashOutline } from "react-icons/io5";
 import { CiLogin } from "react-icons/ci";
 import { Link } from "react-router-dom";
@@ -13,8 +15,17 @@ const SideNavigate = ({ isOpen, setIsOpen }) => {
     <div
       className={`fixed top-0 left-0 h-screen backdrop-blur-[80px] text-white border-r border-zinc-800 transition-transform duration-300 z-50 
       ${isOpen ? "translate-x-0" : "-translate-x-full"} 
-      w-[80vw] sm:w-[60vw] md:w-[30vw] lg:w-[20vw] xl:w-[15vw] flex flex-col justify-between`}
+      w-[80vw] sm:w-[60vw] md:w-[30vw] lg:w-[20vw] xl:w-[15vw] flex flex-col justify-between bg-[#0a0b0d]/95`}
     >
+      <div className=" px-4 py-3">
+        <button
+          onClick={() => setIsOpen(false)}
+          className=" hover:text-white transition"
+        >
+          <MdOutlineClose className="text-2xl " />
+        </button>
+      </div>
+
       <div className="flex-1 overflow-y-auto">
         <SidebarProfie />
 

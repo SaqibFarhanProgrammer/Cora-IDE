@@ -78,7 +78,11 @@ export default function CodePenWithMonaco() {
 
       {/* Editor Section */}
       <div className="w-full flex flex-col md:flex-row gap-4 transition-all">
-        <Suspense fallback={<div className="text-center w-full">Loading Editors...</div>}>
+        <Suspense
+          fallback={
+            <div className="text-center w-full">Loading Editors...</div>
+          }
+        >
           {/* HTML */}
           <div
             className={`flex-1 rounded-md border border-[#27272A] overflow-hidden shadow-lg transition-all ${
