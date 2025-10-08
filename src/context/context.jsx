@@ -104,23 +104,22 @@ export const Provider = ({ children }) => {
       }
     }
   }
-
+  
   // save new file in Firestore
-
   async function getfilefromfirebase() {
     if (profiledata?.uid) {
       const userRef = doc(db, "users", profiledata.uid);
       const snap = await getDoc(userRef); // pehle await yahan
-
+      
       const data = snap.data();
       setfiles(data.files);
     }
   }
-
+  
   useEffect(() => {
     getfilefromfirebase();
   }, [profiledata]);
-
+  
   // run console code
   function outputformconsole() {
     const logs = [];
@@ -136,7 +135,7 @@ export const Provider = ({ children }) => {
     }
     setoutput(logs);
   }
-
+  
   // copy code
   function Copy() {
     navigator.clipboard.writeText(compiledCode);
@@ -147,12 +146,12 @@ export const Provider = ({ children }) => {
       setCopiednotification(false);
     }, 2000);
   }
-
+  
   // register user
   async function RegisterUser(Email, Password) {
     try {
       const user = await createUserWithEmailAndPassword(auth, Email, Password);
-
+      
       if (user) {
         setisloginscreenopen(false);
         await setDoc(doc(db, "users", user.user.uid), {
@@ -194,7 +193,7 @@ export const Provider = ({ children }) => {
       return null;
     }
   }
-
+  
   // sign in
   async function signUser(email, password) {
     try {
@@ -216,18 +215,16 @@ export const Provider = ({ children }) => {
       }
     }
   }
-
+  
   // google auth
   async function createwithgoogle() {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-
+      
       if (result.user) {
         setisloginscreenopen(false);
-        console.log("hi");
-
-
+        
         await setDoc(
           doc(db, "users", result.user.uid),
           {

@@ -145,7 +145,7 @@ export default function CodePenWithMonaco() {
       </div>
 
       {/* Live Preview */}
-      <div className="border border-[#2b2b2b] rounded-lg mt-6 overflow-hidden bg-white shadow-lg">
+      <div className="border  border-[#2b2b2b] rounded-lg mt-6 overflow-hidden bg-white shadow-lg">
         <div className="bg-[#18181B] text-zinc-300 text-sm px-4 py-2 border-b border-[#27272A] flex justify-between items-center">
           <span>Live Preview</span>
           <span className="text-[10px] sm:text-xs opacity-70">

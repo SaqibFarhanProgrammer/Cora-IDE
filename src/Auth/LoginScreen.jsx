@@ -193,9 +193,9 @@ export default function Loginscreen() {
             <div className="mt-4">
               <Button
                 onClick={createwithgoogle}
-                className="loginwithgoogle w-full flex items-center justify-center gap-2 bg-white text-black hover:bg-zinc-200 rounded-md py-2 text-sm font-medium"
+                className="loginwithgoogle w-full flex items-center justify-center gap-2 bg-zinc-700 text-white hover:bg-zinc-800 rounded-md py-2 text-sm font-medium"
               >
-                <FcGoogle size={18} /> Continue with Google
+                <FcGoogle className="" size={18} /> Continue with Google
               </Button>
             </div>
 

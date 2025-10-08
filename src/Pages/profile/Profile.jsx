@@ -1,17 +1,15 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/context";
-
+import profileicon from "../../assets/images/images (7).jpg";
 const Profile = () => {
   const { profiledata, signout } = useContext(Context);
-  
+
   return (
     <div className="w-full flex justify-center items-center py-10 text-white">
       <div className=" rounded-2xl  p-8 w-[90%] max-w-2xl flex flex-col items-center text-center transition-all duration-300 hover:shadow-zinc-900/50">
-        
-        {/* Profile Image */}
         <div className="relative">
           <img
-            src={profiledata?.profileIMG}
+            src={profiledata ? profiledata.profileIMG : profileicon}
             alt="User Avatar"
             className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl border-4 border-[#19191c] shadow-lg object-cover hover:scale-105 transition-transform duration-300"
           />
