@@ -20,7 +20,7 @@ export default function SettingsPage() {
       <div className="min-h-screen w-full flex justify-center items-center bg-[#0a0b0d] text-white p-4">
         <Card className="w-full   border border-white/10 bg-[#0a0b0d] shadow-xl rounded-2xl flex flex-col">
           <CardHeader className="border-b border-white/10 pb-4">
-            <CardTitle className="text-2xl font-semibold flex items-center gap-2">
+            <CardTitle className="text-2xl text-white font-semibold flex items-center gap-2">
               <User className="w-6 h-6 text-white" /> Settings
             </CardTitle>
           </CardHeader>
