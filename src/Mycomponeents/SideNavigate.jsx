@@ -11,7 +11,7 @@ const SideNavigate = ({ isOpen, setIsOpen }) => {
 
   return (
     <div
-      className={`fixed top-0 left-0 h-screen backdrop-blur-[20px] text-white border-r border-zinc-800 transition-transform duration-300 z-50 
+      className={`fixed top-0 left-0 h-screen backdrop-blur-[80px] text-white border-r border-zinc-800 transition-transform duration-300 z-50 
       ${isOpen ? "translate-x-0" : "-translate-x-full"} 
       w-[80vw] sm:w-[60vw] md:w-[30vw] lg:w-[20vw] xl:w-[15vw] flex flex-col justify-between`}
     >
