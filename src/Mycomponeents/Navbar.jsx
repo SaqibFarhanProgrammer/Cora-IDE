@@ -12,6 +12,7 @@ const TopNavbar = () => {
     signout,
     setisloginscreenopen,
     isloginscreenopen,
+    Theme
   } = useContext(Context);
 
   const toggleDropdown = () => {

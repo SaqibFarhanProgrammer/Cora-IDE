@@ -52,25 +52,13 @@ export default function SettingsPage() {
               </button>
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 rounded-xl border border-white/10">
-              <span className="flex items-center gap-2 font-medium text-white">
-                {Theme ? (
-                  <Moon className="w-5 h-5 text-white" />
-                ) : (
-                  <Sun className="w-5 h-5 text-white via-gray-950" />
-                )}
-                Theme Mode
-              </span>
-              <Button onClick={() => setTheme(!Theme)}>
-                {Theme ? "dark" : "Light"}
-              </Button>
-            </div>
+         
 
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 rounded-xl border border-white/10">
               <span className="flex items-center gap-2 font-medium text-white">
                 <Trash2 className="w-5 h-5 text-white" /> Clear Files
               </span>
-              <Button className="border border-zinc-500 text-white bg-transparent hover:bg-zinc-500  transition">
+              <Button className="border border-zinc-500 text-white bg-transparent hover:bg-zinc-500 hover:text-whi transition">
                 Clear
               </Button>
             </div>

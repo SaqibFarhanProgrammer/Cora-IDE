@@ -32,7 +32,7 @@ export const Provider = ({ children }) => {
   const [Newfileisopen, setNewfileisopen] = useState(false);
   const [searchfilter, setsearchfilter] = useState("");
   const [switchcompiler, setswitchcompiler] = useState(true);
-  const [Theme, setTheme] = useState(false);
+  const [Theme, setTheme] = useState(true);
 
   // auth states
   const [isloginscreenopen, setisloginscreenopen] = useState(false);
@@ -335,8 +335,7 @@ export const Provider = ({ children }) => {
     setautherrormessage,
     filterdfiles,
     setfilterdfiles,
-    Theme,
-    setTheme,
+ 
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
