@@ -16,8 +16,8 @@ export default function SettingsPage() {
 
   if (navigator.onLine) {
     return (
-      <div className="min-h-screen w-full flex justify-center items-center bg-[#0a0b0d] text-white px-3 py-6 sm:px-6">
-        <Card className="w-full max-w-3xl border border-white/10 bg-[#0a0b0d] shadow-xl rounded-2xl flex flex-col">
+      <div className="h-screen w-[100%] flex justify-center items-center bg-[#0a0b0d] text-white px-3 py-6 sm:px-6">
+        <Card className="w-[100%] border border-white/10 bg-[#0a0b0d] shadow-xl rounded-2xl flex flex-col">
           <CardHeader className="border-b border-white/10 pb-4 px-4 sm:px-6">
             <CardTitle className="text-xl sm:text-2xl text-white font-semibold flex items-center gap-2">
               <User className="w-5 h-5 sm:w-6 sm:h-6 text-white" /> Settings
