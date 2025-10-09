@@ -92,11 +92,7 @@ const Newfile = () => {
             <CardFooter className="flex justify-end">
               <Button
                 type="button"
-                onMouseEnter={
-                  ()=>{
-                    
-                  }
-                }
+             
                 onClick={() => {
                   if (compiledCode === "") {
                     return;
@@ -104,7 +100,11 @@ const Newfile = () => {
                     putdatainnewfiledata();
                   }
                 }}
-                className="bg-[#dedede] text-black mt-6 hover:bg-[#cfcfcf] transition-all"
+className={`text-black mt-6 transition-all 
+    ${compiledCode === "" 
+      ? "bg-[#bfbfbf] hover:bg-[#a8a8a8]"  // dark when empty
+      : "bg-[#dedede] hover:bg-[#cfcfcf]" // normal
+    }`}
               >
                 Create File
               </Button>
