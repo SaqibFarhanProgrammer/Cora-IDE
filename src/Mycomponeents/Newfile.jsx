@@ -18,6 +18,7 @@ const Newfile = () => {
     filename,
     setNewfileisopen,
     putdatainnewfiledata,
+    compiledCode,
     isloginscreenopen,
   } = useContext(Context);
 
@@ -57,6 +58,9 @@ const Newfile = () => {
                   value={filename}
                 />
               </div>
+              {compiledCode === "" ? (
+                <p className="text-[1vw] text-red-500">Code Edittor Is Empty</p>
+              ) : null}
 
               {/* File Extension */}
               <div>
@@ -88,7 +92,18 @@ const Newfile = () => {
             <CardFooter className="flex justify-end">
               <Button
                 type="button"
-                onClick={putdatainnewfiledata}
+                onMouseEnter={
+                  ()=>{
+                    
+                  }
+                }
+                onClick={() => {
+                  if (compiledCode === "") {
+                    return;
+                  } else {
+                    putdatainnewfiledata();
+                  }
+                }}
                 className="bg-[#dedede] text-black mt-6 hover:bg-[#cfcfcf] transition-all"
               >
                 Create File
