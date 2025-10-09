@@ -29,81 +29,73 @@ const Newfile = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-20 flex justify-center items-center bg-black/50 backdrop-blur-[10px] p-4">
+    <div className="fixed inset-0 z-20 flex justify-center items-center bg-black/50 backdrop-blur-md p-3">
       {!isloginscreenopen ? (
-        <Card className="w-[40vw] max-xl:w-[50vw] max-lg:w-[60vw] max-md:w-[80vw] max-sm:w-[95vw] bg-[#0A0A0A] border border-zinc-800 shadow-xl rounded-2xl transition-all duration-300">
-          {/* Header */}
-          <CardHeader className="flex justify-between items-center">
-            <CardTitle className="text-white text-xl sm:text-2xl font-bold">
+        <Card className="w-[28vw] max-xl:w-[35vw] max-lg:w-[45vw] max-md:w-[60vw] max-sm:w-[90vw] bg-[#0B0B0B] border border-zinc-800 shadow-2xl rounded-2xl transition-all duration-300 p-4">
+          <CardHeader className="flex justify-between items-center pb-2">
+            <CardTitle className="text-white text-lg sm:text-xl font-semibold tracking-tight">
               Create New File
             </CardTitle>
             <IoMdClose
               onClick={() => setNewfileisopen(false)}
-              className="text-white text-2xl cursor-pointer hover:text-zinc-400 transition-colors"
+              className="text-zinc-300 text-lg sm:text-xl cursor-pointer hover:text-white transition-colors"
             />
           </CardHeader>
 
-          {/* Form */}
           <form>
-            <CardContent className="flex flex-col gap-5">
-              {/* File Name */}
+            <CardContent className="flex flex-col gap-4 sm:gap-5">
               <div>
-                <label className="text-sm text-zinc-300 mb-1 block">
+                <label className="text-xs text-zinc-400 mb-1 block">
                   File Name
                 </label>
                 <Input
                   onChange={(e) => setfilename(e.target.value)}
                   placeholder="Enter file name..."
-                  className="bg-[#09090B] border-zinc-700 text-white placeholder:text-zinc-500"
+                  className="bg-[#09090B] border-zinc-700 text-white text-sm placeholder:text-zinc-500 focus:border-zinc-500 transition-all"
                   value={filename}
                 />
               </div>
-              {compiledCode === "" ? (
-                <p className="text-[1vw] text-red-500">Code Edittor Is Empty</p>
-              ) : null}
 
-              {/* File Extension */}
+              {compiledCode === "" && (
+                <p className="text-[3.5vw] sm:text-[0.8vw] text-red-500 font-medium">
+                  Code Editor Is Empty
+                </p>
+              )}
+
               <div>
-                <label className="text-sm text-zinc-300 mb-2 block">
+                <label className="text-xs text-zinc-400 mb-2 block">
                   Extension
                 </label>
-                <div className="dropdown w-full">
-                  <label
-                    tabIndex={0}
-                    className="btn btn-sm w-full flex justify-between bg-[#09090B] border border-zinc-600 text-zinc-200 hover:bg-zinc-700 hover:border-zinc-500 hover:text-white transition-all"
-                  >
-                    <span className="flex items-center gap-2 text-sm sm:text-base">
+                <div className="w-full">
+                  <div className="flex justify-between items-center bg-[#09090B] border border-zinc-700 text-zinc-300 hover:border-zinc-500 transition-all rounded-lg px-3 py-2 text-xs sm:text-sm">
+                    <span className="flex items-center gap-2">
                       <img
-                        className="h-[2vh] w-[2vh] object-contain"
+                        className="h-4 w-4 object-contain"
                         src={monacoLanguages.icon}
                         alt="lang"
                       />
                       {monacoLanguages.name}
                     </span>
-                    <span className="text-xs sm:text-sm">
+                    <span className="text-zinc-500 text-xs">
                       {monacoLanguages.id}
                     </span>
-                  </label>
+                  </div>
                 </div>
               </div>
             </CardContent>
 
-            {/* Footer */}
-            <CardFooter className="flex justify-end">
+            <CardFooter className="flex justify-end pt-2">
               <Button
                 type="button"
-             
                 onClick={() => {
-                  if (compiledCode === "") {
-                    return;
-                  } else {
-                    putdatainnewfiledata();
-                  }
+                  if (compiledCode === "") return;
+                  putdatainnewfiledata();
                 }}
-className={`text-black mt-6 transition-all 
-    ${compiledCode === "" 
-      ? "bg-[#bfbfbf] hover:bg-[#a8a8a8]"  // dark when empty
-      : "bg-[#dedede] hover:bg-[#cfcfcf]" // normal
+                className={`text-black text-xs sm:text-sm font-medium rounded-lg px-4 py-2 transition-all shadow-md
+    ${
+      compiledCode === ""
+        ? "bg-[#bfbfbf] hover:bg-[#a8a8a8]"
+        : "bg-[#e5e5e5] hover:bg-[#cfcfcf]"
     }`}
               >
                 Create File
@@ -112,35 +104,32 @@ className={`text-black mt-6 transition-all
           </form>
         </Card>
       ) : (
-        // LOGIN REQUIRED CARD
-        <Card className="w-[30vw] max-xl:w-[40vw] max-lg:w-[50vw] max-md:w-[70vw] max-sm:w-[90vw] bg-black border border-zinc-800 shadow-2xl rounded-2xl p-6 relative transition-all duration-300">
-          <IoMdClose
-            onClick={() => setNewfileisopen(false)}
-            className="absolute top-4 right-4 text-zinc-400 hover:text-white text-xl cursor-pointer transition-colors"
-          />
-
-          <CardHeader className="space-y-2 text-center">
-            <CardTitle className="text-white text-xl sm:text-2xl font-semibold">
+        <Card className="w-[28vw] max-xl:w-[35vw] max-lg:w-[45vw] max-md:w-[60vw] max-sm:w-[90vw] bg-[#0B0B0B] border border-zinc-800 shadow-2xl rounded-2xl transition-all duration-300 p-5">
+          <CardHeader className="flex justify-between items-center pb-2">
+            <CardTitle className="text-white text-lg sm:text-xl font-semibold tracking-tight">
               Login Required
             </CardTitle>
-            <p className="text-zinc-400 text-sm sm:text-base">
-              Please log in to continue creating a new file.
-            </p>
+            <IoMdClose
+              onClick={() => setNewfileisopen(false)}
+              className="text-zinc-300 text-lg sm:text-xl cursor-pointer hover:text-white transition-colors"
+            />
           </CardHeader>
 
-          <CardContent className="mt-6 flex flex-col items-center gap-4">
+          <CardContent className="flex flex-col items-center gap-3 text-center">
+            <p className="text-zinc-400 text-xs sm:text-sm">
+              Please log in to continue creating a new file.
+            </p>
+          </CardContent>
+
+          <CardFooter className="flex justify-center pt-2">
             <Link
               onClick={() => setNewfileisopen(false)}
               to="/profile"
-              className="group relative w-full text-center bg-white text-black 
-                 font-medium px-6 py-3 rounded-xl shadow-md
-                 transition-all hover:bg-[#cdcdcd] duration-300 hover:text-[#000000]"
+              className="w-full text-center bg-[#e5e5e5] text-black text-xs sm:text-sm font-medium px-4 py-2 rounded-lg shadow-md hover:bg-[#cfcfcf] transition-all"
             >
-              <span className="relative z-10 group-hover:tracking-wider transition-all duration-300">
-                Login Now
-              </span>
+              Login Now
             </Link>
-          </CardContent>
+          </CardFooter>
         </Card>
       )}
     </div>
