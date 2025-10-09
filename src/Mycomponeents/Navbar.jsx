@@ -20,41 +20,46 @@ const TopNavbar = () => {
     <div className="w-full h-16 bg-[#0a0b0d] text-[#FAFAFA] border-b border-[#27272A] flex items-center justify-between px-3 sm:px-6">
       {/* Left Buttons */}
       <div className="flex items-center max-[521px]:ml-10 ml-8 gap-2 sm:gap-3 flex-wrap">
-        <button
-          onClick={() => setswitchcompiler(true)}
-          className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 sm:px-4 py-1.5 rounded-md hover:bg-zinc-800 transition-all"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-            alt="JS"
-            className="h-5 w-5 sm:h-6 sm:w-6"
-          />
-          <span className="hidden sm:inline text-xs sm:text-sm">Javascript</span>
-        </button>
-
-        <button
-          onClick={() => setswitchcompiler(false)}
-          className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 sm:px-4 py-1.5 rounded-md hover:bg-zinc-800 transition-all"
-        >
-          <div className="flex items-center gap-1">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-              alt="HTML"
-              className="h-5 w-5 sm:h-6 sm:w-6"
-            />
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-              alt="CSS"
-              className="h-5 w-5 sm:h-6 sm:w-6"
-            />
+        <Link to="/">
+          <button
+            onClick={() => setswitchcompiler(true)}
+            className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 sm:px-4 py-1.5 rounded-md hover:bg-zinc-800 transition-all"
+          >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
               alt="JS"
               className="h-5 w-5 sm:h-6 sm:w-6"
             />
-          </div>
-          <span className="hidden sm:inline text-xs sm:text-sm">Web</span>
-        </button>
+            <span className="hidden sm:inline text-xs sm:text-sm">
+              Javascript
+            </span>
+          </button>
+        </Link>
+        <Link to="/">
+          <button
+            onClick={() => setswitchcompiler(false)}
+            className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 sm:px-4 py-1.5 rounded-md hover:bg-zinc-800 transition-all"
+          >
+            <div className="flex items-center gap-1">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                alt="HTML"
+                className="h-5 w-5 sm:h-6 sm:w-6"
+              />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                alt="CSS"
+                className="h-5 w-5 sm:h-6 sm:w-6"
+              />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                alt="JS"
+                className="h-5 w-5 sm:h-6 sm:w-6"
+              />
+            </div>
+            <span className="hidden sm:inline text-xs sm:text-sm">Web</span>
+          </button>
+        </Link>
 
         <Link
           to="/"
@@ -107,9 +112,7 @@ const TopNavbar = () => {
               </button>
             ) : (
               <Link to="/profile">
-                <button
-                  className="w-full text-left px-4 py-2 text-purple-400 hover:bg-purple-500/10 transition"
-                >
+                <button className="w-full text-left px-4 py-2 text-purple-400 hover:bg-purple-500/10 transition">
                   Login
                 </button>
               </Link>
