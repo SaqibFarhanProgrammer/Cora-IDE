@@ -23,12 +23,12 @@ const TopNavbar = () => {
         <Link to="/">
           <button
             onClick={() => setswitchcompiler(true)}
-            className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 sm:px-4 py-1.5 rounded-md hover:bg-zinc-800 transition-all"
+            className="flex items-center gap-2 bg-zinc-900 border border-zinc-700 px-3 sm:px-4 py-2 rounded-md hover:bg-zinc-800 transition-all"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
               alt="JS"
-              className="h-5 w-5 sm:h-6 sm:w-6"
+              className="h-5 w-5 sm:h-5 sm:w-6"
             />
             <span className="hidden sm:inline text-xs sm:text-sm">
               Javascript
@@ -54,7 +54,7 @@ const TopNavbar = () => {
               <img
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
                 alt="JS"
-                className="h-5 w-5 sm:h-6 sm:w-6"
+                className="h-5 w-5 sm:h-5 sm:w-6"
               />
             </div>
             <span className="hidden sm:inline text-xs sm:text-sm">Web</span>
