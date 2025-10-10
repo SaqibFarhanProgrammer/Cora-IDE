@@ -101,7 +101,7 @@ export default function SettingsPage() {
     );
   } else {
     return (
-      <div className="w-full h-screen bg-[#0a0b0d] flex flex-col items-center justify-center text-zinc-400 px-4 py-10">
+      <div className="w-full h-[100%] bg-[#0a0b0d] flex flex-col items-center justify-center text-zinc-400 px-4 py-10">
         <div className="flex flex-col items-center gap-3 text-center max-w-xs sm:max-w-sm md:max-w-md">
           <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-zinc-900 flex items-center justify-center shadow-lg border border-zinc-800">
             <FiWifiOff size={38} className="text-red-400 animate-pulse" />
