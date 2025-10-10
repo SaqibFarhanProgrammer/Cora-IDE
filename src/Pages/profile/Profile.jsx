@@ -3,8 +3,6 @@ import { Context } from "../../context/context";
 import profileicon from "../../assets/images/images (7).jpg";
 const Profile = () => {
   const { profiledata, signout } = useContext(Context);
- 
-  
 
   return (
     <div className="w-full flex justify-center items-center py-10 text-white">

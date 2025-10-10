@@ -61,41 +61,63 @@ export default function SettingsPage() {
             </div>
           </CardContent>
 
-          <div className="mt-auto border-t border-white/10 p-6 rounded-b-2xl text-center">
-            <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
-              Cora IDE
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-xl mx-auto mb-4 px-2">
-              Cora IDE is a modern, web-based code editor built for simplicity
-              and speed. It supports JavaScript programming with an integrated
-              HTML, CSS, and JS compiler. Featuring authentication, profile
-              system, and a minimal UI, Cora IDE is completely free to use.
-            </p>
+         <div className="mt-auto border-t border-white/10 px-6 py-10 rounded-b-2xl bg-[#0b0c0e]/60 backdrop-blur-md">
+  <div className="max-w-3xl mx-auto text-center space-y-6">
+    <h3 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight">
+      Cora IDE
+    </h3>
 
-            <span className="block text-xs mb-2 text-gray-500 pt-6">
-              Developed by{" "}
-              <span className="font-medium text-white">Saqib Farhan</span>
-            </span>
+    <p className="text-[14px] sm:text-[15px] leading-relaxed text-gray-400 font-light tracking-wide">
+      <span className="text-gray-300 font-medium">Cora IDE</span> is a modern
+      web-based code editor designed with simplicity and speed in mind.  
+      Built to enhance your workflow, it integrates{" "}
+      <span className="text-white/90">HTML, CSS</span> and{" "}
+      <span className="text-white/90">JavaScript</span> compilation directly in
+      your browser — providing an elegant environment for writing, testing, and
+      sharing your code.  
+      With its clean interface, authentication system, and profile support,
+      <span className="text-white/90 font-medium"> Cora IDE</span> is built for
+      creators who value design and performance.
+    </p>
+  </div>
 
-            <div className="flex flex-wrap justify-center gap-6 mt-3">
-              <a
-                href="https://github.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 text-gray-400 hover:text-white text-xs sm:text-sm"
-              >
-                <Github className="w-4 h-4" /> GitHub
-              </a>
-              <a
-                href="https://linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 text-gray-400 hover:text-white text-xs sm:text-sm"
-              >
-                <Linkedin className="w-4 h-4" /> LinkedIn
-              </a>
-            </div>
-          </div>
+  <div className="flex flex-col sm:flex-row items-center justify-between gap-5 mt-10 border-t border-white/10 pt-5 text-center sm:text-left">
+    <span className="text-xs sm:text-sm text-gray-500">
+      © {new Date().getFullYear()}{" "}
+      <span className="font-medium text-white">Cora IDE</span>. All rights
+      reserved.
+    </span>
+
+    <div className="flex justify-center sm:justify-end gap-5">
+      <a
+        href="https://github.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-1 text-gray-400 hover:text-white text-xs sm:text-sm transition-colors"
+      >
+        <Github className="w-4 h-4" /> GitHub
+      </a>
+      <a
+        href="https://linkedin.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-1 text-gray-400 hover:text-white text-xs sm:text-sm transition-colors"
+      >
+        <Linkedin className="w-4 h-4" /> LinkedIn
+      </a>
+    </div>
+  </div>
+
+  <div className="mt-5 text-center">
+    <span className="block text-xs text-gray-500">
+      Developed by{" "}
+      <span className="font-medium text-white hover:text-gray-300 transition-colors">
+        Saqib Farhan
+      </span>
+    </span>
+  </div>
+</div>
+
         </Card>
       </div>
     );
