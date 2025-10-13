@@ -11,9 +11,7 @@ import {
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
-import { tr } from "motion/react-client";
 import profileIcon from "..//assets/images/images (8).jpg";
-import { useCallback } from "react";
 
 export const Context = createContext();
 
@@ -32,7 +30,6 @@ export const Provider = ({ children }) => {
   const [Newfileisopen, setNewfileisopen] = useState(false);
   const [searchfilter, setsearchfilter] = useState("");
   const [switchcompiler, setswitchcompiler] = useState(true);
-  const [Theme, setTheme] = useState(true);
 
   // auth states
   const [isloginscreenopen, setisloginscreenopen] = useState(false);
@@ -89,7 +86,7 @@ export const Provider = ({ children }) => {
       if (profiledata) {
         const userui = profiledata.uid;
         const newfile = {
-          id: Math.floor(Math.random() * 10000),
+          id: Math.floor(Math.random() * 10000).toString(),
           code: compiledCode || "No Code Here.....",
           extension: "js",
           title: filename,

@@ -2,22 +2,29 @@ import React, { useContext } from "react";
 import { FaTrash } from "react-icons/fa";
 import { VscOpenPreview } from "react-icons/vsc";
 import { Context } from "../../context/context";
-import { deleteDoc, doc } from "firebase/firestore";
+import { doc } from "firebase/firestore";
 import { db } from "../../config/Firebase";
+import { updateDoc, arrayRemove } from "firebase/firestore";
 
 const CodefileCard = () => {
-  const { files, filterdfiles } = useContext(Context);
+  const { files, filterdfiles, profiledata } = useContext(Context);
 
-  // agar filteredFiles exist hai to usko use karo, warna files
   const listToRender =
     filterdfiles && filterdfiles.length > 0 ? filterdfiles : files;
 
-  async function deletefile(isdelete) {
-    let filterdfile = files.filter((data) => data.id === isdelete);
-    await deleteDoc(doc(db,filterdfile.id))
+  async function deletefile(file) {
+    try {
+      const userDoc = doc(db, "users", profiledata?.uid); 
+      await updateDoc(userDoc, {
+        files: arrayRemove(file),
+      });
+      console.log("File deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting file:", error);
+    }
   }
 
-  return (    
+  return (
     <>
       {listToRender?.map((data, i) => (
         <div
@@ -36,7 +43,10 @@ const CodefileCard = () => {
                 <VscOpenPreview />
               </button>
               <button
-                onClick={() => deletefile(files[i].id)}
+                onClick={() => {
+                  deletefile(data);
+                  window.location.reload();
+                }}
                 className="hover:text-red-500 transition"
               >
                 <FaTrash />
