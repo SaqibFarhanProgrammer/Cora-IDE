@@ -5,9 +5,11 @@ import { Context } from "../../context/context";
 import { doc } from "firebase/firestore";
 import { db } from "../../config/Firebase";
 import { updateDoc, arrayRemove } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const CodefileCard = () => {
-  const { files, filterdfiles, profiledata } = useContext(Context);
+const navigate = useNavigate();
+  const { files, filterdfiles, profiledata ,setcompiledCode } = useContext(Context);
 
   const listToRender =
     filterdfiles && filterdfiles.length > 0 ? filterdfiles : files;
@@ -24,6 +26,15 @@ const CodefileCard = () => {
     }
   }
 
+
+
+  function viewincode(data) {
+    console.log(data.code);
+    setcompiledCode(data.code
+    )
+    navigate("/")
+  }
+
   return (
     <>
       {listToRender?.map((data, i) => (
@@ -38,7 +49,9 @@ const CodefileCard = () => {
               <p className="text-xs text-zinc-400">File</p>
             </div>
             <div className="flex gap-3 text-zinc-400">
-              <button className="hover:text-green-400 transition flex gap-2 items-center">
+              <button onClick={()=>{
+                viewincode(data)
+              }} className="hover:text-green-400 transition flex gap-2 items-center">
                 view in code
                 <VscOpenPreview />
               </button>
