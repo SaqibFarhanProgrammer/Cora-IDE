@@ -117,7 +117,7 @@ export default function SettingsPage() {
     </span>
   </div>
 </div>
-
+      
         </Card>
       </div>
     );

@@ -89,7 +89,7 @@ export const Provider = ({ children }) => {
       if (profiledata) {
         const userui = profiledata.uid;
         const newfile = {
-          id: Date.now(),
+          id: Math.floor(Math.random() * 10000),
           code: compiledCode || "No Code Here.....",
           extension: "js",
           title: filename,
