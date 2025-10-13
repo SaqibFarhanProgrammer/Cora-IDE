@@ -157,9 +157,7 @@ export default function Loginscreen() {
                 placeholder="Email"
                 value={email}
                 onChange={(e) =>
-                  setTimeout(() => {
-                    setEmail(e.target.value);
-                  }, 500)
+                    setEmail(e.target.value)
                 }
                 className="w-full px-3 py-2 bg-zinc-900 rounded-md text-sm outline-none border border-zinc-700 max-md:py-1.5"
               />
