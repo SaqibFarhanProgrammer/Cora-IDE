@@ -1,21 +1,19 @@
-// src/config/Firebase.js
-
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
-  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  apiKey: "AIzaSyAU9nGkdu3hDmMOTBHNaxtQUI-6C4dUSxQ",
+  authDomain: "cora-ide.firebaseapp.com",
+  projectId: "cora-ide",
+  storageBucket: "cora-ide.firebasestorage.app",
+  messagingSenderId: "885227904806",
+  appId: "1:885227904806:web:6157aee5ddf1b6de1fabe7",
+  measurementId: "G-SKYWQQNV8D",
+  databaseURL: "https://cora-ide-default-rtdb.firebaseio.com/",
 };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+ isko env file ke mejn dalke import akrlo
