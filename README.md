@@ -1,41 +1,65 @@
-# 🧠 CORA IDE
+# 🧠 CORA IDE: Your Browser-Based Development Environment
 
-**CORA IDE** is a modern, web-based **Integrated Development Environment (IDE)** built for developers who value speed, simplicity, and flexibility.  
-It combines a powerful code editor, real-time preview, and seamless file management — all inside your browser.
+**CORA IDE** is a modern, fast, and feature-rich web-based **Integrated Development Environment (IDE)**. It gives developers a powerful platform to write, manage, and test code snippets and small projects directly in their browser.
 
----
-
-## 🚀 Overview
-
-CORA IDE delivers a full-stack coding experience powered by **React**, **Vite**, and **Firebase**.  
-It offers an intuitive UI and a high-performance editing environment using **Monaco Editor** (the same editor that powers VS Code).
-
-Whether you're experimenting with code snippets, managing small projects, or learning to code — CORA IDE gives you the tools to do it all in one place.
+By combining a sleek editor with file management, real-time preview, and secure user accounts, CORA IDE provides a complete and intuitive coding experience.
 
 ---
 
-## 🧩 Key Features
+## 🚀 Key Features
 
-### 💻 Frontend & UI
-- **Framework:** Built with [React](https://react.dev/) and [Vite](https://vitejs.dev/) for lightning-fast development.  
-- **Code Editor:** Uses [@monaco-editor/react](https://github.com/suren-atoyan/monaco-react) for syntax highlighting, autocompletion, and IntelliSense.  
-- **UI Components:** Custom components styled with **Tailwind CSS** and **Radix/Shadcn UI** for a clean, modern interface.  
-- **Layout:** A persistent **Sidebar**, **Topbar**, and dedicated pages for the main IDE, profile, documentation, and settings.
+### 💻 Core IDE Functionality
+
+* **Powerful Code Editor:** Built on the **Monaco Editor** (the same technology powering VS Code) for syntax highlighting, advanced autocompletion, and IntelliSense.
+* **Multi-Language Support:** Supports a variety of programming languages (as configured in `src/lenguagesname.js`).
+* **Real-time Preview:** Includes a built-in web preview (`<Web.jsx>`) for instant visualization of code output.
+* **Code Management:** Easily create, save, and manage your code files (`<Newfile.jsx>`, `<CodefileCard.jsx>`).
+* **Integrated Terminal:** A dedicated terminal component (`<Terminal.jsx>`) for running code (assumed functionality).
+
+### 🌐 Technology Stack
+
+* **Frontend:** Built with **React** and **Vite** for a high-performance, snappy user interface.
+* **Styling & UI:** Uses **Tailwind CSS**, **Radix UI**, and **Shadcn UI** components for a clean and professional dark-mode design.
+* **State Management:** Global application state, including user and file status, is handled efficiently using the **React Context API** (`src/context/context.jsx`).
+* **Authentication & Data:** Secure user login, signup, and data persistence are managed via **Firebase** (`src/config/Firebase.js`).
+
+### 🔒 User & Navigation
+
+* **Secure Authentication:** Users can register and log in via email/password or **Google** integration (`src/Auth/LoginScreen.jsx`).
+* **User Profiles:** Dedicated pages for user profile management (`src/Pages/profile/Profile.jsx`) and code file display.
+* **Intuitive Navigation:** Features a consistent **Sidebar** (`<SideNavigate.jsx>`) and **Topbar** (`<Topbar.jsx>`) for easy access to the main IDE, documentation (`src/Pages/Learn/Learn.jsx`), and application settings (`src/Pages/Settings/Settings.jsx`).
 
 ---
 
-### 🔐 User Authentication
-- **Firebase Integration:** Handles user authentication (Login/Signup) and stores user-related data securely.  
-- **Context Management:** Global app state managed with **React Context API** — tracks authentication, user sessions, and file states.
+## 🛠️ Getting Started
 
----
+### Prerequisites
 
-### 🧠 IDE Core Functionality
-- **Code Editing:** Full-featured editor supporting multiple programming languages (`languagesname.js`).  
-- **File Management:** Create, view, and manage code files easily through the integrated file system (`Newfile.jsx`, `CodefileCard.jsx`).  
-- **Terminal & Web Preview:** Built-in **terminal** and **live preview** for testing and running code in real-time.  
-- **Persistent Sessions:** User projects remain accessible across sessions.
+Before running this project, you'll need:
 
----
+* **Node.js** (and npm or yarn)
+* **Firebase Project:** A configured Firebase project for authentication and database services. You will need to add your credentials to `src/config/Firebase.js`.
 
-## 🗂️ Folder Structure
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [Your-Repo-URL]
+    cd [Your-Project-Folder]
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+### Running the Project
+
+Run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
