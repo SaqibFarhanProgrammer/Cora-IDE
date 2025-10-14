@@ -2,31 +2,35 @@ import React, { useContext, useState, useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
 import { VscOpenPreview } from "react-icons/vsc";
 import { Context } from "../../context/context";
-import { doc, updateDoc, arrayRemove } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../config/Firebase";
 import { useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css';
+import "react-loading-skeleton/dist/skeleton.css";
 
 const CodefileCard = () => {
   const navigate = useNavigate();
-  const { files, filterdfiles, profiledata, setcompiledCode } = useContext(Context);
+  const { files,  setfiles, filterdfiles, profiledata, setcompiledCode } =
+    useContext(Context);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 500); // 500ms skeleton
+    const timer = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(timer);
   }, []);
 
-  const listToRender = filterdfiles && filterdfiles.length > 0 ? filterdfiles : files;
+  const listToRender =
+    filterdfiles && filterdfiles.length > 0 ? filterdfiles : files;
   const skeletonColor = "#1f1e1e";
 
   async function deletefile(file) {
     try {
-      const userDoc = doc(db, "users", profiledata?.uid); 
-      await updateDoc(userDoc, {
-        files: arrayRemove(file),
-      });
+      const userDoc = doc(db, "users", profiledata?.uid);
+
+      // Get the latest files from Firestore first (optional)
+      const updatedFiles = files.filter((f) => f.title !== file.title);
+
+      await updateDoc(userDoc, { files: updatedFiles });
       console.log("File deleted successfully!");
     } catch (error) {
       console.error("Error deleting file:", error);
@@ -45,13 +49,14 @@ const CodefileCard = () => {
           key={i}
           className="bg-[#0d0d0f] p-5 border border-zinc-800 rounded-xl shadow-md hover:shadow-lg hover:border-zinc-600 transition-all duration-200 w-full h-auto flex flex-col"
         >
-          {/* File Info */}
           <div className="flex items-center justify-between mb-4">
             <div>
               {loading ? (
                 <Skeleton width={120} height={20} baseColor={skeletonColor} />
               ) : (
-                <h3 className="font-semibold text-lg text-white">{data.title}</h3>
+                <h3 className="font-semibold text-lg text-white">
+                  {data.title}
+                </h3>
               )}
               {loading ? (
                 <Skeleton width={50} height={14} baseColor={skeletonColor} />
@@ -73,7 +78,9 @@ const CodefileCard = () => {
                   <button
                     onClick={() => {
                       deletefile(data);
-                      window.location.reload();
+                      setfiles((prev) =>
+                        prev.filter((f) => f.title !== data.title)
+                      );
                     }}
                     className="hover:text-red-500 transition"
                   >
