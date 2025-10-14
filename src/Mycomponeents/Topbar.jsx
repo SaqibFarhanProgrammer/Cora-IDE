@@ -1,18 +1,32 @@
 import React, { useContext, useState, useEffect } from "react";
 import { FaPlay, FaSave } from "react-icons/fa";
-import { MdContentCopy, MdOutlineFileDownload, MdOutlineClose } from "react-icons/md";
+import {
+  MdContentCopy,
+  MdOutlineFileDownload,
+  MdOutlineClose,
+} from "react-icons/md";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { Context } from "../context/context";
 import { Input } from "@base-ui-components/react";
 import Skeleton from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css';
+import "react-loading-skeleton/dist/skeleton.css";
+import logo from "../assets/images/WhatsApp Image 2025-09-02 at 8.24.25 AM.jpeg";
 
 const Topbar = () => {
   const [selectfilename, setselectfilename] = useState("Untitled.js");
   const [selectfileisopen, setselectfileisopen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const { funczoomin, funczoomout, outputformconsole, Copy, copied, Copiednotification, setNewfileisopen, compiledCode } = useContext(Context);
+  const {
+    funczoomin,
+    funczoomout,
+    outputformconsole,
+    Copy,
+    copied,
+    Copiednotification,
+    setNewfileisopen,
+    compiledCode,
+  } = useContext(Context);
   const [msg] = useState("");
 
   useEffect(() => {
@@ -21,7 +35,9 @@ const Topbar = () => {
   }, []);
 
   function download(filename) {
-    const blob = new Blob([compiledCode], { type: "text/javascript;charset=utf-8" });
+    const blob = new Blob([compiledCode], {
+      type: "text/javascript;charset=utf-8",
+    });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -35,10 +51,27 @@ const Topbar = () => {
   const buttons = [
     { label: "Zoom-Out", icon: <FiMinus size={14} />, action: funczoomout },
     { label: "Zoom-In", icon: <FiPlus size={14} />, action: funczoomin },
-    { label: copied ? "Copied" : "Copy", icon: <MdContentCopy size={14} />, action: Copy },
-    { label: "Download File", icon: <MdOutlineFileDownload size={14} />, action: () => setselectfileisopen(true) },
-    { label: "Save", icon: <FaSave size={14} />, action: () => setNewfileisopen(true) },
-    { label: "Run", icon: <FaPlay size={14} />, action: outputformconsole, gradient: true },
+    {
+      label: copied ? "Copied" : "Copy",
+      icon: <MdContentCopy size={14} />,
+      action: Copy,
+    },
+    {
+      label: "Download File",
+      icon: <MdOutlineFileDownload size={14} />,
+      action: () => setselectfileisopen(true),
+    },
+    {
+      label: "Save",
+      icon: <FaSave size={14} />,
+      action: () => setNewfileisopen(true),
+    },
+    {
+      label: "Run",
+      icon: <FaPlay size={14} />,
+      action: outputformconsole,
+      gradient: true,
+    },
   ];
 
   return (
@@ -50,7 +83,9 @@ const Topbar = () => {
             className="absolute top-4 right-4 text-white text-3xl cursor-pointer"
           />
           {compiledCode === "" ? (
-            <p className="text-gray-500 italic text-center">No code available at the moment.</p>
+            <p className="text-gray-500 italic text-center">
+              No code available at the moment.
+            </p>
           ) : (
             <div className="bg-black p-6 rounded-2xl shadow-xl w-full max-w-sm flex flex-col gap-4 text-white">
               <Input
@@ -59,7 +94,7 @@ const Topbar = () => {
                 value={selectfilename}
                 onChange={(e) => setselectfilename(e.target.value)}
               />
-              <button 
+              <button
                 onClick={() => download(selectfilename)}
                 className="bg-white text-black py-2 rounded hover:bg-gray-200 transition"
               >
@@ -70,15 +105,21 @@ const Topbar = () => {
         </div>
       )}
 
-      <div className={`fixed left-1/2 -translate-x-1/2 flex items-center gap-2 py-2 px-4 bg-zinc-800 rounded-md transition-all duration-300 z-10 ${Copiednotification ? "top-2" : "-top-10"}`}>
+      <div
+        className={`fixed left-1/2 -translate-x-1/2 flex items-center gap-2 py-2 px-4 bg-zinc-800 rounded-md transition-all duration-300 z-10 ${
+          Copiednotification ? "top-2" : "-top-10"
+        }`}
+      >
         Copied <IoCheckmarkDoneCircle />
       </div>
 
-      <div className="h-12 flex items-center justify-between flex-wrap gap-2">
-        <div className="flex gap-2">
-          <span className="w-3 h-3 bg-red-500 rounded-full"></span>
-          <span className="w-3 h-3 bg-yellow-400 rounded-full"></span>
-          <span className="w-3 h-3 bg-green-500 rounded-full"></span>
+      <div className="h-12 flex  items-center justify-between flex-wrap gap-2">
+        <div className="flex gap-2 ">
+          <img
+            src={logo}
+            className="h-[6vh] e mix-blend-screen w-auto ml-2"
+            alt=""
+          />
         </div>
 
         <nav className="flex flex-wrap gap-2">
