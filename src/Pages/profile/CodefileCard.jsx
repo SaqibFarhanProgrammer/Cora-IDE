@@ -1,18 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
 import { VscOpenPreview } from "react-icons/vsc";
 import { Context } from "../../context/context";
-import { doc } from "firebase/firestore";
+import { doc, updateDoc, arrayRemove } from "firebase/firestore";
 import { db } from "../../config/Firebase";
-import { updateDoc, arrayRemove } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const CodefileCard = () => {
-const navigate = useNavigate();
-  const { files, filterdfiles, profiledata ,setcompiledCode } = useContext(Context);
+  const navigate = useNavigate();
+  const { files, filterdfiles, profiledata, setcompiledCode } = useContext(Context);
+  const [loading, setLoading] = useState(true);
 
-  const listToRender =
-    filterdfiles && filterdfiles.length > 0 ? filterdfiles : files;
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 500); // 500ms skeleton
+    return () => clearTimeout(timer);
+  }, []);
+
+  const listToRender = filterdfiles && filterdfiles.length > 0 ? filterdfiles : files;
+  const skeletonColor = "#1f1e1e";
 
   async function deletefile(file) {
     try {
@@ -26,13 +33,9 @@ const navigate = useNavigate();
     }
   }
 
-
-
   function viewincode(data) {
-    console.log(data.code);
-    setcompiledCode(data.code
-    )
-    navigate("/")
+    setcompiledCode(data.code);
+    navigate("/");
   }
 
   return (
@@ -45,30 +48,48 @@ const navigate = useNavigate();
           {/* File Info */}
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="font-semibold text-lg text-white">{data.title}</h3>
-              <p className="text-xs text-zinc-400">File</p>
+              {loading ? (
+                <Skeleton width={120} height={20} baseColor={skeletonColor} />
+              ) : (
+                <h3 className="font-semibold text-lg text-white">{data.title}</h3>
+              )}
+              {loading ? (
+                <Skeleton width={50} height={14} baseColor={skeletonColor} />
+              ) : (
+                <p className="text-xs text-zinc-400">File</p>
+              )}
             </div>
             <div className="flex gap-3 text-zinc-400">
-              <button onClick={()=>{
-                viewincode(data)
-              }} className="hover:text-green-400 transition flex gap-2 items-center">
-                view in code
-                <VscOpenPreview />
-              </button>
-              <button
-                onClick={() => {
-                  deletefile(data);
-                  window.location.reload();
-                }}
-                className="hover:text-red-500 transition"
-              >
-                <FaTrash />
-              </button>
+              {loading ? (
+                <Skeleton width={90} height={24} baseColor={skeletonColor} />
+              ) : (
+                <>
+                  <button
+                    onClick={() => viewincode(data)}
+                    className="hover:text-green-400 transition flex gap-2 items-center"
+                  >
+                    view in code <VscOpenPreview />
+                  </button>
+                  <button
+                    onClick={() => {
+                      deletefile(data);
+                      window.location.reload();
+                    }}
+                    className="hover:text-red-500 transition"
+                  >
+                    <FaTrash />
+                  </button>
+                </>
+              )}
             </div>
           </div>
 
           <div className="bg-[#151516] h-[20vh] overflow-y-scroll codecard rounded-lg p-3 text-sm font-mono text-zinc-200">
-            <pre className="whitespace-pre-wrap break-words">{data.code}</pre>
+            {loading ? (
+              <Skeleton count={5} height={16} baseColor={skeletonColor} />
+            ) : (
+              <pre className="whitespace-pre-wrap break-words">{data.code}</pre>
+            )}
           </div>
         </div>
       ))}

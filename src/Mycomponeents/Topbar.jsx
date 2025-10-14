@@ -1,16 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { FaPlay, FaSave } from "react-icons/fa";
 import { MdContentCopy, MdOutlineFileDownload, MdOutlineClose } from "react-icons/md";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { Context } from "../context/context";
 import { Input } from "@base-ui-components/react";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const Topbar = () => {
   const [selectfilename, setselectfilename] = useState("Untitled.js");
   const [selectfileisopen, setselectfileisopen] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { funczoomin, funczoomout, outputformconsole, Copy, copied, Copiednotification, setNewfileisopen, compiledCode } = useContext(Context);
   const [msg] = useState("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   function download(filename) {
     const blob = new Blob([compiledCode], { type: "text/javascript;charset=utf-8" });
@@ -24,13 +32,22 @@ const Topbar = () => {
     URL.revokeObjectURL(url);
   }
 
+  const buttons = [
+    { label: "Zoom-Out", icon: <FiMinus size={14} />, action: funczoomout },
+    { label: "Zoom-In", icon: <FiPlus size={14} />, action: funczoomin },
+    { label: copied ? "Copied" : "Copy", icon: <MdContentCopy size={14} />, action: Copy },
+    { label: "Download File", icon: <MdOutlineFileDownload size={14} />, action: () => setselectfileisopen(true) },
+    { label: "Save", icon: <FaSave size={14} />, action: () => setNewfileisopen(true) },
+    { label: "Run", icon: <FaPlay size={14} />, action: outputformconsole, gradient: true },
+  ];
+
   return (
     <header className="w-full z-20 bg-[#0a0b0d] border-b border-[#27272A] shadow-sm text-white px-2 sm:px-4">
       {selectfileisopen && (
         <div className="fixed inset-0 z-20 flex justify-center items-center backdrop-blur-[20px] p-4">
           <MdOutlineClose
             onClick={() => setselectfileisopen(false)}
-            className="absolute top-4 right-4 text-white text-3xl max-[521px]: cursor-pointer"
+            className="absolute top-4 right-4 text-white text-3xl cursor-pointer"
           />
           {compiledCode === "" ? (
             <p className="text-gray-500 italic text-center">No code available at the moment.</p>
@@ -42,7 +59,7 @@ const Topbar = () => {
                 value={selectfilename}
                 onChange={(e) => setselectfilename(e.target.value)}
               />
-              <button
+              <button 
                 onClick={() => download(selectfilename)}
                 className="bg-white text-black py-2 rounded hover:bg-gray-200 transition"
               >
@@ -65,35 +82,31 @@ const Topbar = () => {
         </div>
 
         <nav className="flex flex-wrap gap-2">
-          <button onClick={funczoomout} className="flex items-center gap-1 sm:gap-2 bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white px-2 py-1 rounded text-xs sm:text-sm">
-            <span className="hidden sm:inline">Zoom-Out</span>
-            <FiMinus size={14} />
-          </button>
-
-          <button onClick={funczoomin} className="flex items-center gap-1 sm:gap-2 bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white px-2 py-1 rounded text-xs sm:text-sm">
-            <span className="hidden sm:inline">Zoom-In</span>
-            <FiPlus size={14} />
-          </button>
-
-          <button onClick={Copy} className="flex items-center gap-1 sm:gap-2 bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white px-2 py-1 rounded text-xs sm:text-sm">
-            <MdContentCopy size={14} />
-            <span className="hidden sm:inline">{copied ? "Copied" : "Copy"}</span>
-          </button>
-
-          <button onClick={() => setselectfileisopen(true)} className="flex items-center gap-1 sm:gap-2 bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white px-2 py-1 rounded text-xs sm:text-sm">
-            <MdOutlineFileDownload size={14} />
-            <span className="hidden sm:inline">Download File</span>
-          </button>
-
-          <button onClick={() => setNewfileisopen(true)} className="flex items-center gap-1 sm:gap-2 bg-zinc-900 border border-zinc-600 text-zinc-300 hover:bg-zinc-700 hover:text-white px-2 py-1 rounded text-xs sm:text-sm">
-            <FaSave size={14} />
-            <span className="hidden sm:inline">Save</span>
-          </button>
-
-          <button onClick={outputformconsole} className="flex items-center gap-1 sm:gap-2 bg-purple-600 text-white hover:bg-purple-500 px-2 py-1 rounded text-xs sm:text-sm">
-            <FaPlay size={14} />
-            <span className="hidden sm:inline">Run</span>
-          </button>
+          {loading
+            ? buttons.map((_, index) => (
+                <Skeleton
+                  key={index}
+                  width={90}
+                  height={32}
+                  baseColor="#27272A"
+                  highlightColor="#3f3f46"
+                  className="rounded"
+                />
+              ))
+            : buttons.map((btn, index) => (
+                <button
+                  key={index}
+                  onClick={btn.action}
+                  className={`flex items-center gap-1 sm:gap-2 px-2 py-1 rounded text-xs sm:text-sm transition-all duration-300 border border-zinc-600 ${
+                    btn.gradient
+                      ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-500 hover:to-indigo-500"
+                      : "bg-zinc-900 text-zinc-300 hover:bg-zinc-700 hover:text-white"
+                  }`}
+                >
+                  {btn.icon}
+                  <span className="hidden sm:inline">{btn.label}</span>
+                </button>
+              ))}
         </nav>
       </div>
 

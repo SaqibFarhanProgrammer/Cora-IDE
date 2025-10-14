@@ -1,11 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Topbar from "./Topbar";
 import Editor, { useMonaco } from "@monaco-editor/react";
 import { Context } from "../context/context";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Code = () => {
   const monaco = useMonaco();
   const { zoomin, compiledCode, setcompiledCode } = useContext(Context);
+  const [editorReady, setEditorReady] = useState(false);
 
   useEffect(() => {
     if (monaco) {
@@ -36,18 +39,29 @@ const Code = () => {
       });
 
       monaco.editor.setTheme("zincDark");
+      setEditorReady(true);
     }
   }, [monaco]);
 
   return (
-    <div className="w-full h-full flex flex-col ">
-      {/* Topbar always at top */}
+    <div className="w-full h-full flex flex-col">
       <div className="shrink-0">
         <Topbar />
       </div>
 
-      <div className="flex-1 min-h-0">
-        
+      <div className="flex-1 min-h-0 relative">
+        {!editorReady && (
+          <div className="absolute inset-0 p-4">
+            <Skeleton
+              count={10}
+              height={24}
+              baseColor="#1f1e1e"
+              highlightColor="##1f1e1e"
+              className="rounded"
+            />
+          </div>
+        )}
+
         <Editor
           onChange={(value) => setcompiledCode(value)}
           language="javascript"
@@ -57,9 +71,9 @@ const Code = () => {
             fontSize: zoomin,
             minimap: { enabled: false },
             scrollBeyondLastLine: false,
-            automaticLayout: true, // auto resize editor on window resize
+            automaticLayout: true,
           }}
-          className="w-full h-full"
+          className="w-full h-full relative"
         />
       </div>
     </div>
