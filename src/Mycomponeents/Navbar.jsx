@@ -33,7 +33,7 @@ const TopNavbar = () => {
             <Link to="/">
               <button
                 onClick={() => setswitchcompiler(true)}
-                className={`flex items-center gap-2 bg-[#1f1e1e] border border-zinc-700 px-3 sm:px-4 py-2 rounded-md transition-all hover:bg-gradient-to-r hover:from-purple-700 hover:to-indigo-700`}
+                className={`flex items-center gap-2 bg-[#1f1e1e] border border-zinc-700 px-3 sm:px-4 py-2 rounded-md transition-all`}
               >
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
@@ -47,7 +47,7 @@ const TopNavbar = () => {
             <Link to="/">
               <button
                 onClick={() => setswitchcompiler(false)}
-                className="flex items-center gap-2 bg-[#1f1e1e] border border-zinc-700 px-3 sm:px-4 py-1.5 rounded-md transition-all hover:bg-gradient-to-r hover:from-purple-700 hover:to-indigo-700"
+                className="flex items-center gap-2 bg-[#1f1e1e] border border-zinc-700 px-3 sm:px-4 py-1.5 rounded-md transition-all-"
               >
                 <div className="flex items-center gap-1">
                   <img
@@ -72,7 +72,7 @@ const TopNavbar = () => {
 
             <Link
               to="/"
-              className="hidden sm:flex py-2 items-center gap-2 bg-[#1f1e1e] border border-zinc-700 px-3 rounded-md text-sm hover:bg-gradient-to-r hover:from-purple-700 hover:to-indigo-700 transition-all"
+              className="hidden sm:flex py-2 items-center gap-2 bg-[#1f1e1e] border border-zinc-700 px-3 rounded-md text-sm hover:bg-gradient-to-r h transition-all"
             >
               Back To Code
             </Link>
