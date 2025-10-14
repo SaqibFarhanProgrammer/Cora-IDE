@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { FaCaretDown } from "react-icons/fa";
 import { Context } from "../context/context";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import profileIcon from "../assets/images/images (8).jpg";
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -9,8 +9,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 const TopNavbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [buttonsLoaded, setButtonsLoaded] = useState(false);
-  const { setswitchcompiler, signout, setisloginscreenopen, isloginscreenopen, profiledata } = useContext(Context);
-  const location = useLocation();
+  const { setswitchcompiler, signout, isloginscreenopen, profiledata } = useContext(Context);
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
