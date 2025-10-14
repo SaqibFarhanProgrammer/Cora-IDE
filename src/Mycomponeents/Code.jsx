@@ -40,7 +40,7 @@ const Code = () => {
   }, [monaco]);
 
   return (
-    <div className="w-full h-full flex flex-col border-r border-[#3f3f3f]">
+    <div className="w-full h-full flex flex-col ">
       {/* Topbar always at top */}
       <div className="shrink-0">
         <Topbar />

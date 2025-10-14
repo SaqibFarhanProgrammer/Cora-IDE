@@ -92,6 +92,7 @@ const TopNavbar = () => {
         {isDropdownOpen && (
           <div className="absolute right-0 mt-2 w-40 sm:w-48 backdrop-blur-2xl bg-zinc-900/80 border border-zinc-700 rounded-md shadow-lg py-1 z-20">
             <Link
+            onClick={()=>setIsDropdownOpen(false)}
               to="/profile"
               className="block px-4 py-2 text-zinc-300 hover:bg-zinc-800 transition"
             >
@@ -99,13 +100,18 @@ const TopNavbar = () => {
             </Link>
             <Link
               to="/settings"
+                 onClick={()=>setIsDropdownOpen(false)}
               className="block px-4 py-2 text-zinc-300 hover:bg-zinc-800 transition"
             >
               Settings
             </Link>
             {!isloginscreenopen ? (
               <button
-                onClick={signout}
+              
+                onClick={()=>{
+                  setIsDropdownOpen(false)
+                  signout()
+                }}
                 className="w-full text-left px-4 py-2 text-red-400 hover:bg-red-500/10 transition"
               >
                 Logout

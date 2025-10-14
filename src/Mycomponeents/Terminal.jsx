@@ -7,7 +7,7 @@ const Terminal = () => {
   return (
     <div className="w-full h-full bg-[#0a0b0d] flex flex-col border-t border-[#27272A]">
       <div className="p-3 text-xs sm:text-sm text-zinc-400 font-mono flex items-center justify-between border-b border-[#27272A]">
-        <span className="text-white ml-2">Output</span>
+        <span className="text-white ml-2">Output</span> 
         <div className="flex gap-2 mr-2">
           <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-red-500 rounded-full"></div>
           <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-yellow-400 rounded-full"></div>
