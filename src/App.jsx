@@ -9,7 +9,6 @@ const SideNavigate = React.lazy(() => import("./Mycomponeents/SideNavigate"));
 const TopNavbar = React.lazy(() => import("./Mycomponeents/Navbar"));
 const Mainprofile = React.lazy(() => import("./Pages/profile/MainProile"));
 import { HiMenuAlt4 } from "react-icons/hi";
-import "./Media.css";
 import Learn from "./Pages/Learn/Learn";
 import Notfound from "./Notfound";
 

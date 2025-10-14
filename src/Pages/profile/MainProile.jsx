@@ -17,8 +17,8 @@ const Mainprofile = () => {
   if (navigator.onLine) {
     return (
       <div
-        className={`w-full bg-[#0a0b0d] flex flex-col items-center transition-all duration-300 ${
-          !isloginscreenopen ? "min-h-screen pt-16" : "h-[90vh]"
+        className={`w-full ] flex flex-col items-center transition-all duration-300 ${
+          !isloginscreenopen ? "h-screen pt-16" : "h-[90vh]"
         }`}
       >
         {isloginscreenopen && (
