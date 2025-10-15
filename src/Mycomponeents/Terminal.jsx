@@ -17,7 +17,6 @@ const Terminal = () => {
   return (
     <div className="w-full h-full flex flex-col border-t border-[#27272A] bg-[#0a0b0d]">
       
-      {/* Header */}
       <div className="p-3 flex items-center justify-between border-b border-[#27272A]">
         {loading ? (
           <Skeleton width={100} height={20} baseColor={skeletonColor} />
@@ -33,7 +32,6 @@ const Terminal = () => {
         )}
       </div>
 
-      {/* Output */}
       <div className="flex-1 overflow-y-auto p-3 sm:p-4 text-sm sm:text-base lg:text-lg font-mono text-zinc-300">
         {loading ? (
           Array.from({ length: 5 }).map((_, idx) => (

@@ -71,22 +71,18 @@ const Mainprofile = () => {
   return (
     <div className="w-full h-[100%] bg-[#0a0b0d] flex flex-col items-center justify-center text-zinc-400 px-4 py-10">
       <div className="flex flex-col items-center gap-2 text-center max-w-xs sm:max-w-sm md:max-w-md">
-        {/* Icon Container */}
         <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-zinc-900 flex items-center justify-center shadow-lg border border-zinc-800">
           <FiWifiOff size={38} className="text-red-400 animate-pulse" />
         </div>
 
-        {/* Heading */}
         <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-wide ">
           You’re Offline
         </h1>
 
-        {/* Subtext */}
         <p className="text-sm sm:text-base text-zinc-500 leading-relaxed px-2">
           Please check your internet connection and try again.
         </p>
 
-        {/* Retry Button */}
         <button
           onClick={() => window.location.reload()}
           className=" w-full mt-2 sm:w-auto px-6 py-2.5 rounded-xl bg-zinc-700 text-white font-semibold 

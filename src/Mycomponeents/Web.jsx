@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { htmlcode, csscode } from "./semplecode";
 
-// Lazy load Monaco Editor
 const Editor = lazy(() => import("@monaco-editor/react"));
 
 export default function CodePenWithMonaco() {
@@ -46,7 +45,6 @@ export default function CodePenWithMonaco() {
 
   return (
     <div className="flex flex-col w-full text-white bg-[#0B0B0C] min-h-screen p-2 sm:p-4">
-      {/* Header */}
       <div className="flex flex-wrap justify-between items-center gap-2 px-3 sm:px-6 md:px-10 mb-3">
         {["html", "css", "js"].map((lang) => (
           <button
@@ -76,7 +74,6 @@ export default function CodePenWithMonaco() {
         ))}
       </div>
 
-      {/* Editor Section */}
       <div className="w-full flex flex-col md:flex-row gap-4 transition-all">
         <Suspense
           fallback={
@@ -104,7 +101,6 @@ export default function CodePenWithMonaco() {
             />
           </div>
 
-          {/* CSS */}
           <div
             className={`flex-1 rounded-md border border-[#27272A] overflow-hidden shadow-lg transition-all ${
               activeTab === "css" ? "block" : "hidden md:block"
@@ -125,7 +121,6 @@ export default function CodePenWithMonaco() {
             />
           </div>
 
-          {/* JS */}
           <div
             className={`flex-1 rounded-md border border-[#27272A] overflow-hidden shadow-lg transition-all ${
               activeTab === "js" ? "block" : "hidden md:block"
@@ -148,7 +143,6 @@ export default function CodePenWithMonaco() {
         </Suspense>
       </div>
 
-      {/* Live Preview */}
       <div className="border  border-[#2b2b2b] rounded-lg mt-6 overflow-hidden bg-white shadow-lg">
         <div className="bg-[#18181B] text-zinc-300 text-sm px-4 py-2 border-b border-[#27272A] flex justify-between items-center">
           <span>Live Preview</span>

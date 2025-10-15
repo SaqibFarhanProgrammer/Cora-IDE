@@ -27,7 +27,6 @@ const CodefileCard = () => {
     try {
       const userDoc = doc(db, "users", profiledata?.uid);
 
-      // Get the latest files from Firestore first (optional)
       const updatedFiles = files.filter((f) => f.title !== file.title);
 
       await updateDoc(userDoc, { files: updatedFiles });

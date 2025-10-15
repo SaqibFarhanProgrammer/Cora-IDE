@@ -6,7 +6,7 @@ import { Context } from "../../context/context";
 import { IoReload } from "react-icons/io5";
 
 const SearchBar = () => {
-  const { searchfilter, setsearchfilter, files, setfiles, setfilterdfiles } =
+  const { searchfilter, setsearchfilter, files,  setfilterdfiles } =
     useContext(Context);
 
   const filter = () => {
