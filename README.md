@@ -1,65 +1,90 @@
-# 🧠 CORA IDE: Your Browser-Based Development Environment
+# Cora IDE 🚀
 
-**CORA IDE** is a modern, fast, and feature-rich web-based **Integrated Development Environment (IDE)**. It gives developers a powerful platform to write, manage, and test code snippets and small projects directly in their browser.
+A powerful, open-source IDE built with modern web technologies to provide a fast, lightweight, and highly customizable coding experience.
 
-By combining a sleek editor with file management, real-time preview, and secure user accounts, CORA IDE provides a complete and intuitive coding experience.
-
----
-
-## 🚀 Key Features
-
-### 💻 Core IDE Functionality
-
-* **Powerful Code Editor:** Built on the **Monaco Editor** (the same technology powering VS Code) for syntax highlighting, advanced autocompletion, and IntelliSense.
-* **Multi-Language Support:** Supports a variety of programming languages (as configured in `src/lenguagesname.js`).
-* **Real-time Preview:** Includes a built-in web preview (`<Web.jsx>`) for instant visualization of code output.
-* **Code Management:** Easily create, save, and manage your code files (`<Newfile.jsx>`, `<CodefileCard.jsx>`).
-* **Integrated Terminal:** A dedicated terminal component (`<Terminal.jsx>`) for running code (assumed functionality).
-
-### 🌐 Technology Stack
-
-* **Frontend:** Built with **React** and **Vite** for a high-performance, snappy user interface.
-* **Styling & UI:** Uses **Tailwind CSS**, **Radix UI**, and **Shadcn UI** components for a clean and professional dark-mode design.
-* **State Management:** Global application state, including user and file status, is handled efficiently using the **React Context API** (`src/context/context.jsx`).
-* **Authentication & Data:** Secure user login, signup, and data persistence are managed via **Firebase** (`src/config/Firebase.js`).
-
-### 🔒 User & Navigation
-
-* **Secure Authentication:** Users can register and log in via email/password or **Google** integration (`src/Auth/LoginScreen.jsx`).
-* **User Profiles:** Dedicated pages for user profile management (`src/Pages/profile/Profile.jsx`) and code file display.
-* **Intuitive Navigation:** Features a consistent **Sidebar** (`<SideNavigate.jsx>`) and **Topbar** (`<Topbar.jsx>`) for easy access to the main IDE, documentation (`src/Pages/Learn/Learn.jsx`), and application settings (`src/Pages/Settings/Settings.jsx`).
+[![Build Status](https://img.shields.io/github/actions/workflow/status/SaqibFarhanProgrammer/Cora-IDE/main.yml?branch=main&style=for-the-badge)](https://github.com/SaqibFarhanProgrammer/Cora-IDE/actions)
+[![License: MIT](https://img.shields.io/github/license/SaqibFarhanProgrammer/Cora-IDE?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Code Coverage](https://img.shields.io/codecov/c/github/SaqibFarhanProgrammer/Cora-IDE?style=for-the-badge)](https://codecov.io/gh/SaqibFarhanProgrammer/Cora-IDE)
 
 ---
 
-## 🛠️ Getting Started
+## Description
 
-### Prerequisites
+Cora IDE is a cross-platform Integrated Development Environment designed for the modern developer. Built from the ground up using web technologies like Electron and React, it aims to provide a fast, lightweight, and intuitive coding environment. Whether you are a web developer, a data scientist, or just learning to code, Cora IDE offers a powerful set of tools to streamline your workflow and boost your productivity, without the bloat of traditional IDEs.
 
-Before running this project, you'll need:
+## Key Features
 
-* **Node.js** (and npm or yarn)
-* **Firebase Project:** A configured Firebase project for authentication and database services. You will need to add your credentials to `src/config/Firebase.js`.
+-   ✨ **Modern Code Editor:** A slick editing experience with syntax highlighting, intelligent code completion, and multi-cursor support.
+-   📂 **Integrated File System:** Easily browse and manage your project files and folders with a built-in file explorer.
+-   💻 **Embedded Terminal:** A fully-featured terminal integrated directly into the editor, so you can run commands without leaving your workspace.
+-   🧩 **Extensible via Plugins:** Customize and extend the IDE's functionality with a simple but powerful plugin architecture.
+-   🌐 **Cross-Platform:** Runs seamlessly on Windows, macOS, and Linux.
 
-### Installation
+## Tech Stack
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [Your-Repo-URL]
-    cd [Your-Project-Folder]
+-   **Framework:** [Electron](https://www.electronjs.org/)
+-   **UI Library:** [React.js](https://reactjs.org/)
+-   **Language:** [TypeScript](https://www.typescriptlang.org/)
+-   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+-   **Bundler:** [Webpack](https://webpack.js.org/)
+-   **Runtime:** [Node.js](https://nodejs.org/)
+
+## Installation
+
+To get a local copy up and running, follow these simple steps.
+
+1.  **Prerequisites:**
+    *   Node.js and npm (or yarn) installed on your machine.
+
+2.  **Clone the repository:**
+    ```sh
+    git clone https://github.com/SaqibFarhanProgrammer/Cora-IDE.git
     ```
 
-2.  **Install dependencies:**
-    ```bash
+3.  **Navigate to the project directory:**
+    ```sh
+    cd Cora-IDE
+    ```
+
+4.  **Install NPM packages:**
+    ```sh
     npm install
-    # or
-    yarn install
     ```
 
-### Running the Project
+## Usage
 
-Run the development server:
+After installation, you can launch the IDE for development or package it for production.
 
-```bash
-npm run dev
-# or
-yarn dev
+-   **To run the app in development mode:**
+    This will start the application with hot-reloading enabled.
+    ```sh
+    npm start
+    ```
+
+-   **To package the application for your platform:**
+    This will create a distributable executable in the `out/` directory.
+    ```sh
+    npm run make
+    ```
+
+## Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
+
+Please read `CONTRIBUTING.md` for details on our code of conduct and the process for submitting pull requests.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
+
+## Contact
+
+Saqib Farhan - [@YourTwitterHandle](https://twitter.com/YourTwitterHandle) - your.email@example.com
+
+Project Link: [https://github.com/SaqibFarhanProgrammer/Cora-IDE](https://github.com/SaqibFarhanProgrammer/Cora-IDE)
