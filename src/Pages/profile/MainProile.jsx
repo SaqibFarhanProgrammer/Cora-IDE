@@ -5,6 +5,7 @@ import Profile from "../profile/Profile";
 import { Context } from "../../context/context";
 import Loginscreen from "../../Auth/LoginScreen";
 import { FiFile, FiWifiOff } from "react-icons/fi";
+import { Button } from "../../components/ui/button";
 
 const Mainprofile = () => {
   const { isloginscreenopen, files } = useContext(Context);
@@ -56,10 +57,11 @@ const Mainprofile = () => {
                 </div>
                 <h2 className="text-lg font-medium tracking-wide">
                   No Saved Files Available
-                </h2>s
-                <p className="text-sm text-zinc-600 mt-2">
-                  Create or save files to view them here.
-                </p>
+                </h2>
+                  <Button className="mt-2 bg-white text-black" onClick={()=>{
+                    window.location.reload()
+                  }}> Please Refresh To See Saved Files</Button>
+              
               </div>
             )}
           </div>
