@@ -26,6 +26,7 @@ const Profile = () => {
             <img
               src={profiledata?.profileIMG || profileicon}
               alt="User Avatar"
+              loading="lazy"
               className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl border-4 border-[#19191c] shadow-lg object-cover hover:scale-105 transition-transform duration-300"
             />
           )}
