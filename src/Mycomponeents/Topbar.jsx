@@ -138,9 +138,9 @@ const Topbar = () => {
                 <button
                   key={index}
                   onClick={btn.action}
-                  className={`flex items-center gap-1 sm:gap-2 px-2 py-1 rounded text-xs sm:text-sm transition-all duration-300 border border-zinc-600 ${
+                  className={`flex items-center gap-1 sm:gap-2 px-2 py-1 rounded text-xs sm:text-sm transition-all duration-300 border border-zinc-700 ${
                     btn.gradient
-                      ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-500 hover:to-indigo-500"
+                      ?    " border-none bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-500 hover:to-indigo-500"
                       : "bg-zinc-900 text-zinc-300 hover:bg-zinc-700 hover:text-white"
                   }`}
                 >

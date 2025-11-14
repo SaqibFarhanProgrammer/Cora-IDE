@@ -34,7 +34,7 @@ export const Provider = ({ children }) => {
   // auth states
   const [isloginscreenopen, setisloginscreenopen] = useState(false);
   const [profiledata, setprofiledata] = useState(null);
-  const [filename, setfilename] = useState("Untiteled");
+  const [filename, setfilename] = useState("Untitled");
   const [files, setfiles] = useState([]);
   const [autherrormessage, setautherrormessage] = useState("");
   const [filterdfiles, setfilterdfiles] = useState([]);
@@ -107,7 +107,7 @@ export const Provider = ({ children }) => {
   async function getfilefromfirebase() {
     if (profiledata?.uid) {
       const userRef = doc(db, "users", profiledata.uid);
-      const snap = await getDoc(userRef); // pehle await yahan
+      const snap = await getDoc(userRef); 
 
       const data = snap.data();
       setfiles(data.files);
