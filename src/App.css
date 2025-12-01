@@ -83,3 +83,21 @@ body {
   background-clip: text;
   color: transparent;
 }
+
+.AI{
+  filter: drop-shadow( 0px 0px 20px rgb(0, 0, 0)); ;
+  filter: drop-shadow( 0px 0px 50px rgb(0, 0, 0)); ;
+  filter: drop-shadow( 0px 0px 100px rgb(0, 0, 0)); ;
+}
+
+.ai-image{
+  mask-image: linear-gradient(
+      black ,
+      black ,
+      transparent
+  );
+}
+
+.AI{
+  font-family: "inter", sans-serif;
+}

@@ -11,6 +11,7 @@ const Mainprofile = React.lazy(() => import("./Pages/profile/MainProile"));
 import { HiMenuAlt4 } from "react-icons/hi";
 import Learn from "./Pages/Learn/Learn";
 import Notfound from "./Notfound";
+import AI from "./AI/AI";
 
 const App = () => {
   const { Newfileisopen } = useContext(Context);
@@ -48,6 +49,7 @@ const App = () => {
       </div>
 
       {Newfileisopen && <Newfile />}
+      <AI/>
     </div>
   );
 };
