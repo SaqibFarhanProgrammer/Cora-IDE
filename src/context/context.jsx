@@ -107,7 +107,7 @@ export const Provider = ({ children }) => {
   async function getfilefromfirebase() {
     if (profiledata?.uid) {
       const userRef = doc(db, "users", profiledata.uid);
-      const snap = await getDoc(userRef); 
+      const snap = await getDoc(userRef);
 
       const data = snap.data();
       setfiles(data.files);
@@ -332,7 +332,6 @@ export const Provider = ({ children }) => {
     setautherrormessage,
     filterdfiles,
     setfilterdfiles,
- 
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
