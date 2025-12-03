@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
-import AI_navbar from "./AI_components/AI_navbar";
+import AI_navbar from "./AI_components/AI_navbar"; 
 import AI_BG from "../assets/images/AI_BG.png/";
 import Input_bar from "./AI_components/Input_Bar";
 import { Context } from "./context_AI/Ai_Context";
