@@ -1,27 +1,27 @@
 import React, { useContext, useState } from "react";
-import { Context } from "../context_AI/Ai_Context";
+import { AIContext } from "../context_AI/Ai_Context";
 
 export default function Input_bar() {
-  const {setmessages} = useContext(Context);
-  const [prompt, setprompt] = useState("")
+  const { setmessages } = useContext(AIContext);
+  const [prompt, setprompt] = useState("");
   return (
     <div className="w-full max-w-3xl mx-auto px-3 py-3 z-20">
       <div className="backdrop-blur-xl bg-black/40 border border-white/10 rounded-[10px] shadow-lg p-3 flex items-center">
         <div className="flex-1">
           <input
-          onChange={(e)=>{
-            setprompt(e.target.value)
-          }}
-          value={prompt}
+            onChange={(e) => {
+              setprompt(e.target.value);
+            }}
+            value={prompt}
             type="text"
             placeholder="Write a message..."
             className="w-full bg-transparent text-white text-sm outline-none placeholder-white/50 py-3"
           />
         </div>
 
-        <button className="p-2 rounded-xl hover:bg-white/10 transition" 
-            onClick={()=>setmessages((prev)=>[...prev , prompt])}
-          
+        <button
+          className="p-2 rounded-xl hover:bg-white/10 transition"
+          onClick={() => setmessages((prev) => [...prev, prompt])}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

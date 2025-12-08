@@ -1,12 +1,12 @@
 import { createContext, useState } from "react";
 
-export const Context = createContext();
+export const AIContext = createContext();
 
 export const AI_Context_provider = ({ children }) => {
   const [expand, setexpand] = useState(false);
   const [close, setclose] = useState(false);
-    const [messages, setmessages] = useState([]);
-  
+  const [messages, setmessages] = useState([]);
+  const [isAIOpen, setisAIOpen] = useState(false)
 
   const value = {
     expand,
@@ -15,7 +15,9 @@ export const AI_Context_provider = ({ children }) => {
     setclose,
     messages,
     setmessages,
+    isAIOpen,
+    setisAIOpen
   };
 
-  return <Context.Provider value={value}>{children}</Context.Provider>;
+  return <AIContext.Provider value={value}>{children}</AIContext.Provider>;
 };
