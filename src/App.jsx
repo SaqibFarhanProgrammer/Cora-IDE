@@ -18,6 +18,7 @@ const App = () => {
   const { Newfileisopen } = useContext(Context);
   const { isAIOpen } = useContext(AIContext);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  // ai
 
   return (
     <div className="flex bg-black h-screen w-screen relative">
