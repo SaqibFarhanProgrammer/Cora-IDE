@@ -15,17 +15,19 @@ function AI_navbar() {
           className="text-white text-2xl cursor-pointer hover:text-white/70 transition"
         />
 
-        {expand ? (
-          <FaExpand
-            onClick={() => setexpand(!expand)}
-            className="text-white text-[22px] cursor-pointer hover:text-white/70 transition"
-          />
-        ) : (
-          <BiExpandAlt
-            onClick={() => setexpand(!expand)}
-            className="text-white text-[22px] cursor-pointer hover:text-white/70 transition"
-          />
-        )}
+        {window.innerWidth > 600 ? (
+          expand ? (
+            <FaExpand
+              onClick={() => setexpand(!expand)}
+              className="text-white text-[22px] cursor-pointer hover:text-white/70 transition"
+            />
+          ) : (
+            <BiExpandAlt
+              onClick={() => setexpand(!expand)}
+              className="text-white text-[22px] cursor-pointer hover:text-white/70 transition"
+            />
+          )
+        ) : null}
       </div>
 
       <h2 className="text-white text-lg font-semibold tracking-wide">AI</h2>

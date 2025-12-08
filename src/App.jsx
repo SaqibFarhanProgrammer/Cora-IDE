@@ -65,11 +65,9 @@ const App = () => {
     rounded-full 
     cursor-pointer
 
-    bg-gradient-to-br from-[#4C6FFF] to-[#A56BFF] 
+    bg-gradient-to-br from-[#141414] to-[#424242] 
     text-white
 
-    shadow-[0_0_18px_rgba(120,90,255,0.6)]
-    hover:shadow-[0_0_25px_rgba(160,120,255,0.8)]
 
     transition-transform duration-300 
     hover:scale-110

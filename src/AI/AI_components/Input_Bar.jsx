@@ -15,6 +15,11 @@ export default function Input_bar() {
     <div className="w-full max-w-3xl mx-auto px-3 py-3">
       <div className="flex items-center bg-black/40 border border-white/10 backdrop-blur-xl rounded-xl p-3 shadow-lg">
         <input
+           onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              sendMessage();
+            }
+          }}
           value={prompt}
           onChange={(e) => setprompt(e.target.value)}
           placeholder="Write a message..."
@@ -22,6 +27,7 @@ export default function Input_bar() {
         />
 
         <button
+       
           onClick={sendMessage}
           className="p-2 rounded-lg hover:bg-white/10 transition"
         >
