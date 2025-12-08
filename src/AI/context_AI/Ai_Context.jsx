@@ -3,10 +3,10 @@ import { createContext, useState } from "react";
 export const AIContext = createContext();
 
 export const AI_Context_provider = ({ children }) => {
-  const [expand, setexpand] = useState(false);
+  const [expand, setexpand] = useState(true);
   const [close, setclose] = useState(false);
   const [messages, setmessages] = useState([]);
-  const [isAIOpen, setisAIOpen] = useState(false)
+  const [isAIOpen, setisAIOpen] = useState(true)
 
   const value = {
     expand,

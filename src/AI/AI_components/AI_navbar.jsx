@@ -5,34 +5,30 @@ import { BiExpandAlt } from "react-icons/bi";
 import { AIContext } from "../context_AI/Ai_Context";
 
 function AI_navbar() {
-  const {
-    expand,
-    setexpand,
-    setisAIOpen,
-
-    isAIOpen,
-  } = useContext(AIContext);
+  const { expand, setexpand, isAIOpen, setisAIOpen } = useContext(AIContext);
 
   return (
-    <div className=" flex justify-between items-center z-50 p-4 border-b border-gray-800">
-      <div className="flex z-40">
+    <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-black/20 backdrop-blur-md">
+      <div className="flex items-center space-x-4">
         <RiCloseLargeFill
           onClick={() => setisAIOpen(!isAIOpen)}
-          className="text-2xl text-white z-40  cursor-pointer"
+          className="text-white text-2xl cursor-pointer hover:text-white/70 transition"
         />
+
         {expand ? (
           <FaExpand
             onClick={() => setexpand(!expand)}
-            className="text-[23px] text-white cursor-pointer ml-4"
+            className="text-white text-[22px] cursor-pointer hover:text-white/70 transition"
           />
         ) : (
           <BiExpandAlt
             onClick={() => setexpand(!expand)}
-            className="text-[23px] text-white cursor-pointer ml-4"
+            className="text-white text-[22px] cursor-pointer hover:text-white/70 transition"
           />
         )}
       </div>
-      <h2 className='text-white text-lg font-semibold font:["Inter"] '>AI</h2>
+
+      <h2 className="text-white text-lg font-semibold tracking-wide">AI</h2>
     </div>
   );
 }

@@ -13,11 +13,13 @@ import Learn from "./Pages/Learn/Learn";
 import Notfound from "./Notfound";
 import AI from "./AI/AI";
 import { AIContext } from "./AI/context_AI/Ai_Context";
+import { BiMessageAdd } from "react-icons/bi";
 
 const App = () => {
   const { Newfileisopen } = useContext(Context);
-  const { isAIOpen } = useContext(AIContext);
+  const { isAIOpen, setisAIOpen } = useContext(AIContext);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
   // ai
 
   return (
@@ -50,9 +52,32 @@ const App = () => {
           </Suspense>
         </div>
       </div>
+      <BiMessageAdd
+        onClick={() => setisAIOpen(!isAIOpen)}
+        className="
+    fixed 
+    z-50
+    bottom-5 
+    right-5 
+    h-12 
+    w-12 
+    p-3
+    rounded-full 
+    cursor-pointer
+
+    bg-gradient-to-br from-[#4C6FFF] to-[#A56BFF] 
+    text-white
+
+    shadow-[0_0_18px_rgba(120,90,255,0.6)]
+    hover:shadow-[0_0_25px_rgba(160,120,255,0.8)]
+
+    transition-transform duration-300 
+    hover:scale-110
+  "
+      />
 
       {Newfileisopen && <Newfile />}
-      {!isAIOpen ? <AI /> : null}
+      {isAIOpen ? <AI /> : null}
     </div>
   );
 };

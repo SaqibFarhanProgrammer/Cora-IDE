@@ -4,12 +4,15 @@ import { Context } from "../context/context";
 import { Link } from "react-router-dom";
 import profileIcon from "../assets/images/images (8).jpg";
 import Skeleton from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css';
+import "react-loading-skeleton/dist/skeleton.css";
+import { BiMessageAdd } from "react-icons/bi";
+
 
 const TopNavbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [buttonsLoaded, setButtonsLoaded] = useState(false);
-  const { setswitchcompiler, signout, isloginscreenopen, profiledata } = useContext(Context);
+  const { setswitchcompiler, signout, isloginscreenopen, profiledata } =
+    useContext(Context);
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
@@ -20,13 +23,27 @@ const TopNavbar = () => {
 
   return (
     <div className="w-full h-16 bg-[#0a0b0d] text-[#FAFAFA] border-b border-[#27272A] flex items-center justify-between px-3 sm:px-6">
-      
       <div className="flex items-center max-[521px]:ml-10 ml-8 gap-2 sm:gap-3 flex-wrap">
         {!buttonsLoaded ? (
           <>
-            <Skeleton baseColor="#2a2929" highlightColor="#3a3838" width={90} height={36} />
-            <Skeleton baseColor="#2a2929" highlightColor="#3a3838" width={110} height={36} />
-            <Skeleton baseColor="#2a2929" highlightColor="#3a3838" width={120} height={36} />
+            <Skeleton
+              baseColor="#2a2929"
+              highlightColor="#3a3838"
+              width={90}
+              height={36}
+            />
+            <Skeleton
+              baseColor="#2a2929"
+              highlightColor="#3a3838"
+              width={110}
+              height={36}
+            />
+            <Skeleton
+              baseColor="#2a2929"
+              highlightColor="#3a3838"
+              width={120}
+              height={36}
+            />
           </>
         ) : (
           <>
@@ -40,7 +57,9 @@ const TopNavbar = () => {
                   alt="JS"
                   className="h-5 w-5 sm:h-5 sm:w-6"
                 />
-                <span className="hidden sm:inline text-xs sm:text-sm">Javascript</span>
+                <span className="hidden sm:inline text-xs sm:text-sm">
+                  Javascript
+                </span>
               </button>
             </Link>
 
@@ -53,7 +72,7 @@ const TopNavbar = () => {
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
                     alt="HTML"
-                    className="h-5 w-5 sm:h-6 sm:w-6"
+                    className="h-6 w-5 sm:h-6 sm:w-6"
                   />
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
@@ -82,7 +101,13 @@ const TopNavbar = () => {
 
       <div className="relative">
         {!buttonsLoaded ? (
-          <Skeleton circle width={28} height={28} baseColor="#2a2929" highlightColor="#3a3838" />
+          <Skeleton
+            circle
+            width={28}
+            height={28}
+            baseColor="#2a2929"
+            highlightColor="#3a3838"
+          />
         ) : (
           <>
             <button
@@ -97,13 +122,17 @@ const TopNavbar = () => {
                 />
               </div>
               <FaCaretDown
-                className={`transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`}
+                className={`transition-transform duration-200 ${
+                  isDropdownOpen ? "rotate-180" : ""
+                }`}
               />
             </button>
 
             <div
               className={`absolute right-0 mt-2 w-40 sm:w-48 backdrop-blur-2xl bg-zinc-900/80 border border-zinc-700 rounded-md shadow-lg py-1 z-20 transition-all duration-300 ${
-                isDropdownOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
+                isDropdownOpen
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 -translate-y-2 pointer-events-none"
               }`}
             >
               <Link
@@ -122,7 +151,10 @@ const TopNavbar = () => {
               </Link>
               {!isloginscreenopen ? (
                 <button
-                  onClick={() => { setIsDropdownOpen(false); signout(); }}
+                  onClick={() => {
+                    setIsDropdownOpen(false);
+                    signout();
+                  }}
                   className="w-full text-left px-4 py-2 text-red-400 hover:bg-red-500/10 transition"
                 >
                   Logout

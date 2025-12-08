@@ -4,24 +4,26 @@ import { AIContext } from "../context_AI/Ai_Context";
 export default function Input_bar() {
   const { setmessages } = useContext(AIContext);
   const [prompt, setprompt] = useState("");
+
+  const sendMessage = () => {
+    if (!prompt.trim()) return;
+    setmessages((prev) => [...prev, prompt]);
+    setprompt("");
+  };
+
   return (
-    <div className="w-full max-w-3xl mx-auto px-3 py-3 z-20">
-      <div className="backdrop-blur-xl bg-black/40 border border-white/10 rounded-[10px] shadow-lg p-3 flex items-center">
-        <div className="flex-1">
-          <input
-            onChange={(e) => {
-              setprompt(e.target.value);
-            }}
-            value={prompt}
-            type="text"
-            placeholder="Write a message..."
-            className="w-full bg-transparent text-white text-sm outline-none placeholder-white/50 py-3"
-          />
-        </div>
+    <div className="w-full max-w-3xl mx-auto px-3 py-3">
+      <div className="flex items-center bg-black/40 border border-white/10 backdrop-blur-xl rounded-xl p-3 shadow-lg">
+        <input
+          value={prompt}
+          onChange={(e) => setprompt(e.target.value)}
+          placeholder="Write a message..."
+          className="flex-1 bg-transparent text-white text-sm outline-none placeholder-white/40 py-2"
+        />
 
         <button
-          className="p-2 rounded-xl hover:bg-white/10 transition"
-          onClick={() => setmessages((prev) => [...prev, prompt])}
+          onClick={sendMessage}
+          className="p-2 rounded-lg hover:bg-white/10 transition"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
