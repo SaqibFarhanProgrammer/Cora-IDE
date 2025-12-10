@@ -36,7 +36,7 @@ function AI() {
             <h1
               className="
                 mx-auto text-center relative 
-                text-4xl sm:text-5xl md:text-6xl lg:text-7xl 
+                text-3xl sm:text-5xl md:text-6xl lg:text-6xl 
                 pl-2 sm:pl-4
               "
             >
@@ -47,7 +47,7 @@ function AI() {
               className="
                 mx-auto blur-[20px] opacity-20 absolute top-0 left-0 
                 text-center 
-                text-4xl sm:text-5xl md:text-6xl lg:text-7xl 
+                text-4xl sm:text-5xl md:text-6xl lg:text-6xl 
                 pl-2 sm:pl-4
               "
             >
